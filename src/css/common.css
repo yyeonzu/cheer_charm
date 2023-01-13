@@ -20,6 +20,12 @@
 }
 
 @font-face {
-  font-family: 'Gamuri';
+  font-family: 'Galmuri';
   src: url('./fonts/Galmuri11.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Galmuri';
+  src: url('./fonts/Galmuri11-Bold.woff2') format('woff2');
+  font-weight: 700;
 }
