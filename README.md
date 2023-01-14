@@ -7,8 +7,8 @@
 
 <table border="" cellspacing="0" cellpadding="0" width="100%">
     <tr width="100%">
-        <td  align="center"><a href= "">이서진</a></td>
-        <td  align="center"><a href= "">정연주</a></td>
+        <td  align="center"><a href="https://github.com/529539">이서진</a></td>
+        <td  align="center"><a href="https://github.com/yyeonzu">정연주</a></td>
     </tr>
     <tr width="100%">
     <td  align="center"><img src = "https://ifh.cc/g/3pJqOT.jpg" width="80px"/></td>
