@@ -3,13 +3,13 @@ import * as S from "./CreateCharm.style";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import blueback from "../../assets/images/bluegradient.png";
-import RangeSlider from "react-range-slider-input";
-import "react-range-slider-input/dist/style.css";
+import InputRange from "react-input-range";
 
 const CreateCharm = () => {
 	const nickname = "이름이름";
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
+	const [num, setNum] = useState(0);
 	const onChangeTitleInput = useCallback(
 		(e) => {
 			setTitle(e.target.value);
@@ -41,9 +41,14 @@ const CreateCharm = () => {
 				<S.QuesRect>
 					<S.Ques>몇 명의 응원을 받고 싶나요?</S.Ques>
 				</S.QuesRect>
-				<S.SliderRect>
-					<RangeSlider />
-				</S.SliderRect>
+				<S.RangeRect>
+					<InputRange
+						maxValue={50}
+						minValue={5}
+						step={5}
+						onChange={(e) => setNum(e.target.value)}
+					/>
+				</S.RangeRect>
 				<S.QuesRect>
 					<S.Ques>원하는 부적 이미지를 골라주세요</S.Ques>
 				</S.QuesRect>
