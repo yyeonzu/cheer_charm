@@ -8,21 +8,21 @@ const Footer = () => {
 		<>
 			<S.Container>
 				<S.Inner>
+					<NanoomSquare weight="500" size="12px" margin="0px 0px 0px 0px">
+						상호: 소원수리 연구소 | 대표자명: 이화멋사졸프2팀
+					</NanoomSquare>
+					<S.Border />
 					<div style={{ display: "flex" }}>
 						<NanoomSquare weight="500" size="12px" margin="0px 0px 0px 0px">
-							상호: 소원수리 연구소 | 대표자명: 이화멋사졸프2팀 |
+							Copyright ⓒ 소원수리 연구소
 						</NanoomSquare>
 						<S.Link href="https://github.com/CheerCharm" target="_blank">
-							<BsGithub size="15" style={{ margin: "0px 0px 0px 5px" }} />
+							<BsGithub size="12" style={{ margin: "0px 0px 0px 5px" }} />
 							<NanoomSquare weight="500" size="12px" margin="0px 0px 0px 5px">
 								GitHub
 							</NanoomSquare>
 						</S.Link>
 					</div>
-					<S.Border />
-					<NanoomSquare weight="500" size="12px" margin="0px 0px 0px 0px">
-						Copyright ⓒ 소원수리 연구소
-					</NanoomSquare>
 				</S.Inner>
 			</S.Container>
 		</>
