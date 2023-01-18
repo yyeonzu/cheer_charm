@@ -14,6 +14,7 @@ export const Container = styled.div`
 export const Link = styled.a`
 	text-decoration: none;
 	display: flex;
+	color: #000;
 `;
 
 export const Border = styled.div`
