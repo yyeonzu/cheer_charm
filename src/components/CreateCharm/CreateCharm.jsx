@@ -3,7 +3,8 @@ import * as S from "./CreateCharm.style";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import blueback from "../../assets/images/bluegradient.png";
-import { Galmuri } from "../../css/Font";
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
 
 const CreateCharm = () => {
 	const nickname = "이름이름";
@@ -40,6 +41,9 @@ const CreateCharm = () => {
 				<S.QuesRect>
 					<S.Ques>몇 명의 응원을 받고 싶나요?</S.Ques>
 				</S.QuesRect>
+				<S.SliderRect>
+					<RangeSlider />
+				</S.SliderRect>
 				<S.QuesRect>
 					<S.Ques>원하는 부적 이미지를 골라주세요</S.Ques>
 				</S.QuesRect>

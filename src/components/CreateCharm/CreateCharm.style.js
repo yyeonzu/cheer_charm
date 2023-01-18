@@ -89,3 +89,8 @@ export const ContentInput = styled.textarea`
 	margin: 10px 0;
 	padding: 7px;
 `;
+
+export const SliderRect = styled.div`
+	width: 85%;
+	height: 50px;
+`;
