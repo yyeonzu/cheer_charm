@@ -18,6 +18,7 @@ export const TopRect = styled.div`
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	overflow: initial;
 `;
 
 export const TopImg = styled.img`
@@ -39,18 +40,22 @@ export const TopText = styled.div`
 
 export const QuesRect = styled.div`
 	width: 85%;
-	height: 30px;
+	min-height: 30px;
+	height: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: relative;
 	margin-top: 10px;
+	overflow: initial;
 `;
 
 export const Ques = styled.div`
 	font-family: "Galmuri";
 	font-weight: 400;
 	font-size: 15px;
+	line-height: 17px;
+	overflow: initial;
 	text-align: left;
 	word-break: keep-all;
 	position: absolute;
@@ -91,6 +96,35 @@ export const ContentInput = styled.textarea`
 `;
 
 export const RangeRect = styled.div`
-	width: 85%;
-	height: 50px;
+	width: 88%;
+	height: 80px;
+	overflow-x: initial;
+	margin-top: 10px;
+	div {
+		overflow-x: initial;
+	}
+	span {
+		overflow-x: initial;
+	}
+	.css-1f77kgo {
+		width: calc(100% - 24px);
+		.MuiSlider-root {
+			width: 100%;
+			.MuiSlider-mark {
+				margin-left: -4px;
+			}
+			.MuiSlider-markActive {
+				display: none;
+			}
+			.MuiSlider-markLabel {
+				font-family: "Galmuri";
+				font-weight: 400;
+				font-size: 12px;
+				color: rgba(0, 0, 0, 0.5);
+			}
+			.MuiSlider-markLabelActive {
+				color: #000;
+			}
+		}
+	}
 `;

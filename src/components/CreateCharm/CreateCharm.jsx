@@ -3,13 +3,14 @@ import * as S from "./CreateCharm.style";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import blueback from "../../assets/images/bluegradient.png";
-import InputRange from "react-input-range";
+import CustomizedSlider from "./Range.tsx";
+import { PinkButton } from "../common/PinkButton.style";
 
 const CreateCharm = () => {
 	const nickname = "이름이름";
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
-	const [num, setNum] = useState(0);
+	const [num, setNum] = useState(5);
 	const onChangeTitleInput = useCallback(
 		(e) => {
 			setTitle(e.target.value);
@@ -22,6 +23,12 @@ const CreateCharm = () => {
 		},
 		[content]
 	);
+	const onChangeNumInput = (e, value) => {
+		setNum(value);
+	};
+	useEffect(() => {
+		console.log(num);
+	}, [num]);
 	return (
 		<>
 			<S.Container>
@@ -42,16 +49,27 @@ const CreateCharm = () => {
 					<S.Ques>몇 명의 응원을 받고 싶나요?</S.Ques>
 				</S.QuesRect>
 				<S.RangeRect>
-					<InputRange
-						maxValue={50}
-						minValue={5}
-						step={5}
-						onChange={(e) => setNum(e.target.value)}
-					/>
+					<CustomizedSlider value={num} onChange={onChangeNumInput} />
 				</S.RangeRect>
 				<S.QuesRect>
 					<S.Ques>원하는 부적 이미지를 골라주세요</S.Ques>
 				</S.QuesRect>
+				<h1>.</h1>
+				<h1>.</h1>
+				<h1>.</h1>
+				<h1>.</h1>
+				<h1>.</h1>
+				<h1>.</h1>
+				<h1>.</h1>
+				<h1>.</h1>
+				<PinkButton
+					width="165px"
+					height="50px"
+					size="15px"
+					style={{ margin: "40px" }}
+				>
+					부적 생성 시작!
+				</PinkButton>
 				<Footer />
 			</S.Container>
 		</>
