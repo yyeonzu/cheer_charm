@@ -6,9 +6,12 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	background-color: #fdfbf7;
-	margin-top: 30px;
-	padding-left: 50px;
+`;
+
+export const Inner = styled.div`
+	width: calc(100% - 50px);
 `;
 
 export const Link = styled.a`
@@ -18,7 +21,7 @@ export const Link = styled.a`
 `;
 
 export const Border = styled.div`
-	width: 90%;
-	border-bottom: 2px solid #000;
-	margin: 7px 0;
+	width: 100%;
+	border-bottom: 1px solid #000;
+	margin: 8px 0;
 `;
