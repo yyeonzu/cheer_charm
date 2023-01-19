@@ -4,6 +4,7 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import blueback from "../../assets/images/bluegradient.png";
 import CustomizedSlider from "./Range.tsx";
+import ImageSelect from "./ImageSelect";
 import { PinkButton } from "../common/PinkButton.style";
 
 const CreateCharm = () => {
@@ -11,6 +12,7 @@ const CreateCharm = () => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 	const [num, setNum] = useState(5);
+	const [img, setImg] = useState(0);
 	const onChangeTitleInput = useCallback(
 		(e) => {
 			setTitle(e.target.value);
@@ -29,6 +31,22 @@ const CreateCharm = () => {
 	useEffect(() => {
 		console.log(num);
 	}, [num]);
+
+	const onPost = () => {
+		if (title === "") alert("부적의 이름을 입력해주세요.");
+		if (content === "") alert("부적의 내용을 입력해주세요.");
+		if (img === 0) alert("부적의 이미지를 선택해주세요.");
+		console.log(
+			"제목: ",
+			title,
+			", 내용: ",
+			content,
+			", 사람: ",
+			num,
+			", 사진번호: ",
+			img
+		);
+	};
 	return (
 		<>
 			<S.Container>
@@ -54,19 +72,18 @@ const CreateCharm = () => {
 				<S.QuesRect>
 					<S.Ques>원하는 부적 이미지를 골라주세요</S.Ques>
 				</S.QuesRect>
-				<h1>.</h1>
-				<h1>.</h1>
-				<h1>.</h1>
-				<h1>.</h1>
-				<h1>.</h1>
-				<h1>.</h1>
-				<h1>.</h1>
-				<h1>.</h1>
+				<S.ImageContainer>
+					<ImageSelect setImg={setImg} />
+				</S.ImageContainer>
 				<PinkButton
 					width="165px"
 					height="50px"
 					size="15px"
 					style={{ margin: "40px" }}
+					onClick={() => {
+						onPost();
+						console.log("nav to page");
+					}}
 				>
 					부적 생성 시작!
 				</PinkButton>

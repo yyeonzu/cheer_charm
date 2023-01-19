@@ -128,3 +128,45 @@ export const RangeRect = styled.div`
 		}
 	}
 `;
+
+export const ImageContainer = styled.div`
+	width: 85%;
+	height: 850px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top: 20px;
+`;
+
+export const CharmRect = styled.div`
+	width: 48%;
+	height: 260px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+`;
+
+export const CharmImg = styled.img`
+	width: 154px;
+	height: 221px;
+`;
+
+export const Circle = styled.div`
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	border: 2px solid #afafaf;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
+export const CheckedCircle = styled.div`
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: #4a4a4a;
+`;
