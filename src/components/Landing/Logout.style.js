@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import landingimage from '../../assets/images/landinglogo.svg';
 
 export const TitleBar = styled.div`
   display: flex;
@@ -13,3 +12,5 @@ export const ImageWrapper = styled.div`
   margin-top: 60px;
   margin-bottom: 60px;
 `;
+
+export const YesCharm = styled.div``;
