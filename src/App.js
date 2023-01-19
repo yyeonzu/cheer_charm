@@ -8,6 +8,8 @@ import RegisterPage from "./pages/RegisterPage";
 import LandingPage from "./pages/LandingPage";
 // 마이페이지
 import MyPage from "./pages/MyPage";
+// 부적 생성 페이지
+import CreateCharmPage from "./pages/CreateCharmPage";
 // 응원 전송 페이지
 import SendCheerPage from "./pages/SendCheerPage";
 
@@ -25,6 +27,9 @@ function App() {
 
 					{/* 마이페이지 */}
 					<Route exact path="/my" element={<MyPage />} />
+
+					{/* 부적 생성 페이지 */}
+					<Route exact path="/create" element={<CreateCharmPage />} />
 
 					{/* 응원 전송 페이지 */}
 					<Route exact path="/sendcheer" element={<SendCheerPage />} />
