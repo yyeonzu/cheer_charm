@@ -8,7 +8,7 @@ import { PinkButton } from '../common/PinkButton.style';
 
 const SendCheerMenu = () => {
   // 토큰값의 response를 통해 가져올 예정
-  const nickname = '성연';
+  const nickname = '연주연주연주연주연주연주';
   const content =
     '감사위원은 원장의 제청으로 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다. 모든 국민은 사생활의 비밀과 자유를 침해받지 아니한다. 누구든지 체포 또는 구속을 당한 때에는 적부의 심사를 법원에 청구할 권리를 가진다.';
 
