@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import clovericon from "../../../assets/images/Landing/clover2.svg";
+import styled from 'styled-components';
+import clovericon from '../../../assets/images/Landing/clover3.svg';
 
 export const Container = styled.div`
 	width: 100%;

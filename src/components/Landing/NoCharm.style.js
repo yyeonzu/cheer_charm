@@ -5,6 +5,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: solid; */
+  margin-bottom: 50px;
 `;
 
 export const TitleBar = styled.div`
@@ -25,6 +27,7 @@ export const AddBox = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  margin-bottom: 10px;
 `;
 
 export const ButtonWrapper = styled.div`
