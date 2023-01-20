@@ -47,7 +47,7 @@ const marks = [
 ];
 
 const PrettoSlider = styled(Slider)({
-	color: "#52af77",
+	color: "#B7CCB5",
 	margin: "0 15px",
 	height: 8,
 	borderRadius: 4,
