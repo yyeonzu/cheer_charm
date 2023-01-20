@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CheerRect = styled.div`
-	width: 60px;
+	width: 57px;
 	height: auto;
 	margin: 10px;
 	flex-shrink: 0;
