@@ -35,3 +35,11 @@
 	src: url("./fonts/Galmuri11-Condensed.woff2") format("woff2");
 	font-stretch: condensed;
 }
+
+@font-face {
+	font-family: "PFStardust";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/PFStardust.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
