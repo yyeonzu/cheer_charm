@@ -1,16 +1,43 @@
 import React, { useState } from "react";
 import * as S from "./My.style";
+import Modal from "../common/Modal";
 import { Galmuri } from "../../css/Font";
-import { BiCheck } from "react-icons/bi";
+import { BiTrash } from "react-icons/bi";
 
 const MyList = ({ isDone }) => {
 	let arr = [];
 	if (isDone) {
-		arr = [1, 2, 3];
+		arr = [
+			{ title: "부적이름1", id: 1 },
+			{ title: "부적이름2", id: 2 },
+			{ title: "부적이름3", id: 3 },
+		];
 	} else {
 		arr = [];
 	}
+	const findById = (fId) => {
+		for (let i = 0; i < arr.length; i++) {
+			if (fId === arr[i].id) return arr[i].title;
+		}
+	};
 	const [isEditing, setIsEditing] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [deleteId, setDeleteId] = useState();
+	const openModal = () => {
+		setIsModalOpen(true);
+	};
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
+	const preDelete = (cId) => {
+		setDeleteId(cId);
+		openModal();
+	};
+	const onButton = () => {
+		console.log(findById(deleteId), " 삭제하기");
+		closeModal();
+	};
+	console.log(isModalOpen);
 	return (
 		<>
 			{arr.length === 0 ? (
@@ -19,18 +46,18 @@ const MyList = ({ isDone }) => {
 				<>
 					<S.FlexContainer>
 						{arr &&
-							arr.map((ch, index) => {
+							arr.map((ch) => {
 								return (
 									<>
 										<S.CharmRect>
 											{isEditing ? (
-												<S.CheckCircle>
-													<BiCheck fill="#155726" size="15" />
-												</S.CheckCircle>
+												<S.TrashRect onClick={() => preDelete(ch.id)}>
+													<BiTrash fill="#155726" size="18" />
+												</S.TrashRect>
 											) : null}
 											<S.TestCharm />
 											<Galmuri weight="400" size="12px" color="#4A4A4A">
-												제목{index + 1}
+												{ch.title}
 											</Galmuri>
 										</S.CharmRect>
 									</>
@@ -49,6 +76,18 @@ const MyList = ({ isDone }) => {
 							</Galmuri>
 						</S.DButton>
 					</S.ButtonContainer>
+					{isModalOpen ? (
+						<Modal
+							isModalOpen={isModalOpen}
+							closer={closeModal}
+							maintext={`삭제한 부적은 복구할 수 없습니다. \n 정말 '${findById(
+								deleteId
+							)}' 부적을 삭제하시겠습니까?`}
+							buttontext="삭제하기"
+							onClick={onButton}
+							height="200px"
+						/>
+					) : null}
 				</>
 			)}
 		</>

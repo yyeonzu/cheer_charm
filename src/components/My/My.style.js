@@ -78,14 +78,12 @@ export const CharmRect = styled.div`
 	position: relative;
 `;
 
-export const CheckCircle = styled.div`
-	width: 15px;
-	height: 15px;
+export const TrashRect = styled.div`
+	width: 20px;
+	height: 25px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 50%;
-	border: 2px solid #155726;
 	position: absolute;
 	top: 15px;
 	left: 10px;
