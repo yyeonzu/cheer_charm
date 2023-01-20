@@ -12,6 +12,8 @@ import MyPage from "./pages/MyPage";
 import CreateCharmPage from "./pages/CreateCharmPage";
 // 응원 전송 페이지
 import SendCheerPage from "./pages/SendCheerPage";
+// 부적 링크 페이지
+import CheeringCharm from "./components/CheeringCharm/CheeringCharm";
 
 function App() {
 	return (
@@ -33,6 +35,9 @@ function App() {
 
 					{/* 응원 전송 페이지 */}
 					<Route exact path="/sendcheer" element={<SendCheerPage />} />
+
+					{/* 부적 링크 페이지 */}
+					<Route exact path="/cheering" element={<CheeringCharm />} />
 				</Routes>
 			</BrowserRouter>
 		</>
