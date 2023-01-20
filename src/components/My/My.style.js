@@ -49,7 +49,7 @@ export const TabTitle = styled.div`
 export const FlexContainer = styled.div`
 	width: 85%;
 	display: flex;
-	overflow-x: scroll;
+	overflow-x: auto;
 	padding: 5px;
 	//-ms-overflow-style: none;
 	//scrollbar-width: none;
