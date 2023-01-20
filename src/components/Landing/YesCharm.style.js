@@ -4,7 +4,7 @@ import arrowR from '../../assets/images/Landing/arrowR.svg';
 export const TitleBar = styled.div`
   display: flex;
   align-items: flex-end;
-  margin-top: 60px;
+  margin-top: 20px;
   margin-bottom: 40px;
 `;
 
@@ -14,7 +14,6 @@ export const CharmWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-
   width: 100%;
 `;
 
@@ -48,6 +47,13 @@ export const ImageWrapper = styled.div`
   top: 0;
   left: 0;
   display: flex;
+  z-index: -1;
+`;
+
+// 예시, API 나오면 사라질 컴포넌트
+export const Div = styled.div`
+  width: 238px;
+  height: 337px;
 `;
 
 export const Img = styled.img`
