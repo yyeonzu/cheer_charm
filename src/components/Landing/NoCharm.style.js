@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   /* border: solid; */
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 `;
 
 export const TitleBar = styled.div`

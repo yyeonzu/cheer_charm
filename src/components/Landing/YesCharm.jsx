@@ -1,53 +1,55 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Galmuri, NanoomSquare } from '../../css/Font';
 import * as S from './YesCharm.style';
-import temp from '../../assets/images/Landing/landinglogo.svg';
 import linkicon from '../../assets/images/linkicon.svg';
 import ProgressBar from '../common/progressbar/ProgressBar';
 import { PinkButton } from '../common/PinkButton.style';
+import { charmlist } from '../../_mock/data';
 
-// 눈 내리는 애니메이션 아직 적용 X
-// scss를 통해 해야할 지 pure css로도 가능할 지 잘 고민해보고 적용하기
+/*
+  미완성
+  
+  1. 자연스러운 렌더링
+    좌/우 버튼 클릭했을 때 화면 깜빡임이 있음. (렌더링이 느려서 그런건지...)
 
-// 부적 목록을 불러오는 방법
-// 랜딩페이지에서 필요한 항목: 전체 id에 대한 부적 목록만 불러올 수 있으면 된다
-// 부적 목록을 불러오면, 부적 이미지 & 비율만 뽑아서 렌더링하면 된다.
+  2. 내 부적 링크 역시 data를 통해 받아와야 함. 
 
-// 이 때 done/total은 버튼이 클릭될 때마다 렌더링을 새로 해줘야한다
-// 이미지의 경우 하나의 div 내에 전부 저장되어 있고, 이를 하나씩 이동시켜주는 것이므로 numbering에 주의
+  3. 새 부적 만들러 가기 url 연결(navigate 통해서 하면 되고, 일단은 alert)
+
+  4. 애니메이션 (눈내리기, 프로그레스바)
+
+*/
 
 const YesCharm = () => {
-  // 닉네임 받아오기 (전역변수에 함께 존재하지 않을까)
-  const nickname = '성연';
+  // 닉네임
+  const nickname = '연주';
+
+  // 전체 부적 개수
+  const numberOfCheer = charmlist.length;
+
+  // 현재 보여지는 부적 id
+  const [charmId, setCharmId] = useState(1);
 
   // 응원 개수
-  // 이 때 done과 total은 가짜 db에서 받아오기
-  // 굳이 useState로 받아와야하는 이유가 있는가? <= 고민해보기
   const [done, setDone] = useState(0);
-  const [total, setTotal] = useState(10);
-  // 전체 부적 개수
-  const [numberOfCheer, setNumberOfCheer] = useState(2);
-  // 현재 보여지는 부적 id
-  const [charmId, setCharmId] = useState(0);
+  const [total, setTotal] = useState(0);
 
-  // 전체 data 받아오기 (image 정렬할 때 필요) <= 물론 이걸 굳이 여기서 할 필요는??
-  const response = 0;
+  // 부적 링크
+  const [hlink, setHlink] = useState('');
 
-  // done과 total 할당
+  // 완성된 부적인지에 대한 값
+  const [unfinished, setUnfinished] = useState('');
+
   useEffect(() => {
-    setDone(charmId);
-    // setTotal(charmId);
+    setDone(charmlist[charmId - 1].cur_cheer);
+    setTotal(charmlist[charmId - 1].total_cheer);
+    setUnfinished(!charmlist[charmId - 1].is_created);
   }, [charmId]);
 
-  // Sliding 부적과 관련된 코드
-
-  // 렌더링없이 이미지 슬라이딩을 위해 ref를 사용
-  // 하지만 이미지 슬라이딩 때 어차피 progress도 함께 변하기 때문에, 굳이 ref를 사용할 필요는 없다고도 생각한다.
-  // 이미 슬라이드를 이렇게 구현했으니 일단은 그대로...
-
+  // 이미지 슬라이더를 위한 Ref
   const slideRef = useRef(null);
   const [imageOrder, setImageOrder] = useState(0);
-  const IMG_WIDTH = 238; // 상수값으로 지정, 부적과  동일한 width
+  const IMG_WIDTH = 238; // 상수값, 부적과  동일한 width
   const slideRange = imageOrder * IMG_WIDTH; // 애니메이션 범위
 
   // imageOrder가 바뀔 때마다 애니메이션
@@ -56,21 +58,24 @@ const YesCharm = () => {
     slideRef.current.style.transform = `translateX(-${slideRange}px)`;
   }, [imageOrder]);
 
-  // 좌,우 버튼에 대한 함수
-  const moveToPrevSlide = () => {
+  // prev 버튼 이벤트
+  const moveToPrevSlide = (e) => {
+    e.preventDefault();
     if (imageOrder === 0) {
       setImageOrder(numberOfCheer - 1);
-      setCharmId(numberOfCheer - 1);
+      setCharmId(numberOfCheer);
       return;
     }
     setImageOrder(imageOrder - 1);
-    setCharmId(charmId + 1);
+    setCharmId(charmId - 1);
   };
 
-  const moveToNextSlide = () => {
+  // next 버튼 이벤트
+  const moveToNextSlide = (e) => {
+    e.preventDefault();
     if (imageOrder === numberOfCheer - 1) {
       setImageOrder(0);
-      setCharmId(0);
+      setCharmId(1);
       return;
     }
     setImageOrder(imageOrder + 1);
@@ -102,11 +107,10 @@ const YesCharm = () => {
         <S.Transparent>
           <S.SlideWrapper>
             <S.ImageWrapper ref={slideRef}>
-              {/* {data.map((data) => (
-                <S.Img key={data.id} src={data.image} />
-              ))} */}
-              <S.Img src={temp} />
-              <S.Img src={linkicon} />
+              {charmlist &&
+                charmlist.map((data) => (
+                  <S.Div key={data.id}>{data.image}</S.Div>
+                ))}
             </S.ImageWrapper>
           </S.SlideWrapper>
           <S.ProgressBarWrapper>
@@ -122,7 +126,12 @@ const YesCharm = () => {
         <S.ArrowWrapperR onClick={moveToNextSlide} />
       </S.CharmWrapper>
       <S.ButtonWrapper>
-        <PinkButton width='160px' height='50px' radius='30px'>
+        <PinkButton
+          width='160px'
+          height='50px'
+          radius='30px'
+          margin='0px 2px 10px 2px'
+        >
           새 부적 만들러 가기
         </PinkButton>
       </S.ButtonWrapper>
