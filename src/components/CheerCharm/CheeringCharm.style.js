@@ -86,6 +86,7 @@ export const CheerTitleContainer = styled.div`
 	width: 85%;
 	height: auto;
 	display: flex;
+	margin-top: 20px;
 	.icon {
 		margin-right: 5px;
 	}
@@ -119,8 +120,17 @@ export const CheerTitleBlue = styled.div`
 
 export const CheerContainer = styled.div`
 	width: 90%;
-	height: 253px;
-	margin: 20px 0;
+	height: 155px;
+	margin: 20px 0 40px 0;
 	background: rgba(255, 255, 255, 0.35);
 	border-radius: 22px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.inner {
+		display: flex;
+		overflow-x: auto;
+		width: 90%;
+		height: 140px;
+	}
 `;

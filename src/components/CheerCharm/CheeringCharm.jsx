@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as S from "./CheeringCharm.style";
 import Footer from "../common/Footer";
 import ProgressBar from "../common/progressbar/ProgressBar";
+import CheerList from "./CheerList";
 import logo from "../../assets/images/CharmPage/charmpagelogo.svg";
 import speechbubble from "../../assets/images/CharmPage/speechbubble.svg";
 import testcharm from "../../assets/images/testcharm.png";
@@ -14,6 +15,14 @@ const CheeringCharm = () => {
 	let done = 6;
 	const nickname = "이이름이름";
 	const currentURL = window.location.href;
+	const cheers = [
+		{ name: "일이삼사오육칠팔구십일이", content: "내용~" },
+		{ name: "하이2", content: "내용~" },
+		{ name: "하이3", content: "내용~" },
+		{ name: "하이4", content: "내용~" },
+		{ name: "하이5", content: "내용~" },
+		{ name: "하이6", content: "내용~" },
+	];
 	return (
 		<>
 			<S.Container>
@@ -56,7 +65,9 @@ const CheeringCharm = () => {
 						<S.CheerTitle>개의 응원</S.CheerTitle>
 					</div>
 				</S.CheerTitleContainer>
-				<S.CheerContainer></S.CheerContainer>
+				<S.CheerContainer>
+					<div className="inner">{cheers && <CheerList cheers={cheers} />}</div>
+				</S.CheerContainer>
 				<Footer />
 			</S.Container>
 		</>
