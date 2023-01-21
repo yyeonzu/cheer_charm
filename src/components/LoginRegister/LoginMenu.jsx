@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import * as S from './LoginRegister.style';
 import { NanoomSquare } from '../../css/Font';
 
-import idIcon from '../../assets/images/Login/idicon.svg';
-import pwIcon from '../../assets/images/Login/pwicon.svg';
+import idIcon from '../../assets/images/Login/idicon.png';
+import pwIcon from '../../assets/images/Login/pwicon.png';
 import axios from 'axios';
 
 /*
