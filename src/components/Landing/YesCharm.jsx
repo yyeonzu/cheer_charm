@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Galmuri, NanoomSquare } from '../../css/Font';
 import * as S from './YesCharm.style';
-import linkicon from '../../assets/images/linkicon.png';
 import ProgressBar from '../common/progressbar/ProgressBar';
 import { PinkButton } from '../common/PinkButton.style';
 import { charmlist } from '../../_mock/data';
@@ -114,7 +113,7 @@ const YesCharm = () => {
             </S.ImageWrapper>
           </S.SlideWrapper>
           <S.ProgressBarWrapper>
-            <ProgressBar done={done} total={total} />
+            <ProgressBar done={done} total={total} isRight={true} />
           </S.ProgressBarWrapper>
           <S.LinkWrapper>
             <S.LinkImage />
