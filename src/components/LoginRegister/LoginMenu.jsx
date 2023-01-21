@@ -4,7 +4,6 @@ import { NanoomSquare } from '../../css/Font';
 
 import idIcon from '../../assets/images/Login/idicon.png';
 import pwIcon from '../../assets/images/Login/pwicon.png';
-import axios from 'axios';
 
 /*
   JWT Token을 사용한 사용자 인증절차
