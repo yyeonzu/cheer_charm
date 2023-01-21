@@ -9,6 +9,7 @@ export const Container = styled.div`
   background-image: url(${background});
   background-repeat: repeat-y;
   background-size: 100%;
+  padding-bottom: 100px;
 `;
 
 export const TitleBar = styled.div`
@@ -45,8 +46,8 @@ export const Input = styled.input`
   outline: none;
 
   margin-bottom: 22px;
-  font-family: ${(props) => props.fontFamily};
-  font-weight: 500;
+  font-family: ${(props) => props.fontFamily || 'NanoomSquare'};
+  font-weight: ${(props) => props.fontWeight || 500};
   font-size: 14px;
   padding-left: 8px;
   padding-bottom: 8px;
@@ -74,12 +75,12 @@ export const Button = styled.button`
   margin-left: 40px;
   margin-right: 40px;
   margin-top: 64px;
+  margin-bottom: 30px;
 `;
 
 export const Line = styled.div`
   display: flex;
   margin-top: 50px;
-  margin-bottom: 160px;
 `;
 
 export const Hr = styled.div`
@@ -91,3 +92,10 @@ export const Hr = styled.div`
 `;
 
 export const Kakao = styled.div``;
+
+export const Text = styled.div`
+  font-size: 13px;
+  font-family: NanoomSquare;
+  color: ${(props) => props.color};
+  margin-left: 8px;
+`;
