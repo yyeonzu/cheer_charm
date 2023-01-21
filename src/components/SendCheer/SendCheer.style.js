@@ -9,6 +9,8 @@ export const Container = styled.div`
   background-image: url(${background});
   background-repeat: repeat-y;
   background-size: 100%;
+
+  position: static;
 `;
 
 export const TitleText = styled.div`
