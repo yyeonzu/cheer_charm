@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import arrowR from '../../assets/images/Landing/arrowR.svg';
+import linkicon from '../../assets/images/linkicon.png';
 
 export const TitleBar = styled.div`
   display: flex;
@@ -82,6 +83,11 @@ export const LinkWrapper = styled.div`
   border-radius: 4px;
   background: rgba(58, 58, 58, 0.1);
   padding: 4px;
+`;
+
+export const LinkImage = styled.img.attrs({ src: `${linkicon}` })`
+  width: 16px;
+  height: auto;
 `;
 
 // 핑크 버튼

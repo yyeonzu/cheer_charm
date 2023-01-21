@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Galmuri, NanoomSquare } from '../../css/Font';
 import * as S from './YesCharm.style';
-import linkicon from '../../assets/images/linkicon.svg';
+import linkicon from '../../assets/images/linkicon.png';
 import ProgressBar from '../common/progressbar/ProgressBar';
 import { PinkButton } from '../common/PinkButton.style';
 import { charmlist } from '../../_mock/data';
@@ -117,7 +117,7 @@ const YesCharm = () => {
             <ProgressBar done={done} total={total} />
           </S.ProgressBarWrapper>
           <S.LinkWrapper>
-            <img src={linkicon} />
+            <S.LinkImage />
             <NanoomSquare size='14px' weight='400' margin='0 0 0 6px'>
               내 부적 링크 복사하기
             </NanoomSquare>

@@ -39,8 +39,11 @@ export const Input = styled.input`
   border-left: none;
   border-right: none;
   border-bottom: 1px solid #f5b5a2;
+  border-radius: 0px;
 
+  background: none;
   outline: none;
+
   margin-bottom: 22px;
   font-family: ${(props) => props.fontFamily};
   font-weight: 500;
@@ -51,7 +54,6 @@ export const Input = styled.input`
   ::placeholder {
     font-family: NanoomSquare;
   }
-
   background-image: url(${(props) => props.icon});
   background-size: 14px;
   background-repeat: no-repeat;
