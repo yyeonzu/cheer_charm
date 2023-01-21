@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import * as S from "./CreateCharm.style";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import blueback from "../../assets/images/bluegradient.png";
+import blueback from "../../assets/images/bluegradient.svg";
 import CustomizedSlider from "./Range.tsx";
 import ImageSelect from "./ImageSelect";
 import { PinkButton } from "../common/PinkButton.style";
@@ -58,11 +58,20 @@ const CreateCharm = () => {
 				<S.QuesRect>
 					<S.Ques>부적의 이름은 무엇인가요?</S.Ques>
 				</S.QuesRect>
-				<S.TitleInput type="text" maxLength={8} onChange={onChangeTitleInput} />
+				<S.TitleInput
+					type="text"
+					maxLength={8}
+					onChange={onChangeTitleInput}
+					autoComplete="off"
+				/>
 				<S.QuesRect>
 					<S.Ques>부적의 내용을 적어주세요</S.Ques>
 				</S.QuesRect>
-				<S.ContentInput maxLength={100} onChange={onChangeContentInput} />
+				<S.ContentInput
+					maxLength={100}
+					onChange={onChangeContentInput}
+					autoComplete="off"
+				/>
 				<S.QuesRect>
 					<S.Ques>몇 명의 응원을 받고 싶나요?</S.Ques>
 				</S.QuesRect>
