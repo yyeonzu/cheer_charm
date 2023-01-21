@@ -112,6 +112,7 @@ export const RangeRect = styled.div`
 			width: 100%;
 			.MuiSlider-mark {
 				margin-left: -4px;
+				background-color: #97b094;
 			}
 			.MuiSlider-markActive {
 				display: none;
