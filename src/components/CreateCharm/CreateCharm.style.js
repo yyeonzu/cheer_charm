@@ -71,16 +71,16 @@ export const TitleInput = styled.input`
 	&:focus {
 		outline: none;
 	}
-	font-family: "NanoomSquare";
+	font-family: "Galmuri";
 	font-weight: 400;
-	font-size: 15px;
+	font-size: 14px;
 	margin: 10px 0;
-	padding-left: 7px;
+	padding-left: 10px;
 `;
 
 export const ContentInput = styled.textarea`
 	width: 85%;
-	height: 90px;
+	height: 100px;
 	background-color: #fdfbf7;
 	border-radius: 8px;
 	border: 0;
@@ -88,11 +88,11 @@ export const ContentInput = styled.textarea`
 		outline: none;
 	}
 	resize: none;
-	font-family: "NanoomSquare";
+	font-family: "Galmuri";
 	font-weight: 400;
-	font-size: 15px;
+	font-size: 14px;
 	margin: 10px 0;
-	padding: 7px;
+	padding: 10px 0 0 10px;
 `;
 
 export const RangeRect = styled.div`
