@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./My.style";
 import * as H from "../common/Header.style";
 import logo from "../../assets/images/minilogo.svg";
@@ -9,7 +9,8 @@ import { MdEdit } from "react-icons/md";
 import MyList from "./MyList";
 
 const MyMenu = () => {
-	const nickname = "이름";
+	const nickname = "이름이름";
+	// 닉네임 수정 api 없으면 수정 아이콘 삭제
 	const [isDoneTab, setIsDoneTab] = useState(true);
 	return (
 		<>

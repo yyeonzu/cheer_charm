@@ -63,6 +63,7 @@ const CreateCharm = () => {
 					maxLength={8}
 					onChange={onChangeTitleInput}
 					autoComplete="off"
+					placeholder="최대 8글자 이하"
 				/>
 				<S.QuesRect>
 					<S.Ques>부적의 내용을 적어주세요</S.Ques>
@@ -71,6 +72,7 @@ const CreateCharm = () => {
 					maxLength={100}
 					onChange={onChangeContentInput}
 					autoComplete="off"
+					placeholder="최대 100글자 이하"
 				/>
 				<S.QuesRect>
 					<S.Ques>몇 명의 응원을 받고 싶나요?</S.Ques>

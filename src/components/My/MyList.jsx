@@ -1,25 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./My.style";
 import Modal from "../common/Modal";
 import { Galmuri } from "../../css/Font";
 import { BiTrash } from "react-icons/bi";
+import { testlist } from "../../_mock/data2";
+
+import charm1 from "../../assets/images/Charm/charm1.svg";
+import charm2 from "../../assets/images/Charm/charm2.svg";
+import charm3 from "../../assets/images/Charm/charm3.svg";
+import charm4 from "../../assets/images/Charm/charm4.svg";
+import charm5 from "../../assets/images/Charm/charm5.svg";
+import charm6 from "../../assets/images/Charm/charm6.svg";
 
 const MyList = ({ isDone }) => {
-	let arr = [];
-	if (isDone) {
-		arr = [
-			{ title: "부적이름1", id: 1 },
-			{ title: "부적이름2", id: 2 },
-			{ title: "부적이름3", id: 3 },
-		];
-	} else {
-		arr = [];
+	let doneArr = [];
+	let yetArr = [];
+	for (let i = 0; i < testlist.length; i++) {
+		if (testlist[i].cur_cheer === testlist[i].total_cheer) {
+			doneArr.push(testlist[i]);
+		} else {
+			yetArr.push(testlist[i]);
+		}
 	}
+	const [arr, setArr] = useState([]);
+	useEffect(() => {
+		if (isDone) {
+			setArr(doneArr);
+		} else {
+			setArr(yetArr);
+		}
+		console.log(doneArr, yetArr);
+	}, [isDone]);
+
 	const findById = (fId) => {
 		for (let i = 0; i < arr.length; i++) {
 			if (fId === arr[i].id) return arr[i].title;
 		}
 	};
+	const src = [charm1, charm2, charm3, charm4, charm5, charm6];
 	const [isEditing, setIsEditing] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [deleteId, setDeleteId] = useState();
@@ -55,7 +73,7 @@ const MyList = ({ isDone }) => {
 													<BiTrash fill="#155726" size="18" />
 												</S.TrashRect>
 											) : null}
-											<S.TestCharm />
+											<S.CharmImg src={src[ch.image]} />
 											<Galmuri weight="400" size="12px" color="#4A4A4A">
 												{ch.title}
 											</Galmuri>
