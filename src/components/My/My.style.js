@@ -58,13 +58,6 @@ export const FlexContainer = styled.div`
 	}
 `;
 
-export const TestCharm = styled.div`
-	width: 160px;
-	height: 230px;
-	background-color: beige;
-	margin-bottom: 10px;
-`;
-
 export const CharmRect = styled.div`
 	width: 160px;
 	height: 270px;
@@ -78,6 +71,11 @@ export const CharmRect = styled.div`
 	position: relative;
 `;
 
+export const CharmImg = styled.img`
+	width: 154px;
+	height: 221px;
+`;
+
 export const TrashRect = styled.div`
 	width: 20px;
 	height: 25px;
@@ -85,8 +83,8 @@ export const TrashRect = styled.div`
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	top: 15px;
-	left: 10px;
+	top: 20px;
+	left: 5px;
 `;
 
 export const ButtonContainer = styled.div`
