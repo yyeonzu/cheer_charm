@@ -23,8 +23,6 @@ const SendCheerMenu = () => {
     setIsModal(false);
   };
 
-  console.log(cheerName.length);
-
   // 모달 ID에 따른 textlist 관리
   const [modalId, setModalId] = useState(0);
 

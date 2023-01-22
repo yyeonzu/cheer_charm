@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./CheeredCharm.style";
+import CompleteCharm from "../CompletedCharm/CompleteCharm";
 import Footer from "../common/Footer";
 import ProgressBar from "../common/progressbar/ProgressBar";
 import CheeredList from "./CheeredList";
@@ -48,7 +49,7 @@ const CheeredCharm = () => {
 					<S.LogoImg src={logo} />
 				</S.LogoContainer>
 				<S.CharmContainer>
-					<S.CharmImg src={src[currentCharm.image]} />
+					<CompleteCharm click={charmclick} />
 				</S.CharmContainer>
 				<ProgressBar total={total} done={done} isRight={false} />
 				<S.BubbleContainer>
@@ -56,7 +57,7 @@ const CheeredCharm = () => {
 					<div className="text1">친구들의 응원을 모아 부적 생성 완료!</div>
 					<div className="text2">( ˘͈ ᵕ ˘͈♡)˚๐*˟</div>
 				</S.BubbleContainer>
-				<S.ButtonRect>
+				<S.ButtonRect onClick={(e) => setCharmclick(!charmclick)}>
 					<MdOutlineFlipCameraAndroid size="12" />
 					<NanoomSquare size="11px" weight="400">
 						부적 뒷면 보기
