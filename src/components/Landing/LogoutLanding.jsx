@@ -5,7 +5,7 @@ import Header from '../common/Header';
 import { Container } from '../SendCheer/SendCheer.style';
 import { Galmuri } from '../../css/Font';
 import { PinkButton } from '../common/PinkButton.style';
-import landingimage from '../../assets/images/landinglogo.svg';
+import landingimage from '../../assets/images/Landing/landinglogo.svg';
 
 const LogoutLanding = () => {
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ const LogoutLanding = () => {
         <PinkButton width='173px' height='50px' radius='30px' onClick={onClick}>
           부적 만들러 가기
         </PinkButton>
+        <S.Space></S.Space>
       </Container>
     </>
   );

@@ -18,4 +18,5 @@ export const Galmuri = styled.p`
   color: ${({ color }) => color};
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
+  width: ${({ width }) => width};
 `;

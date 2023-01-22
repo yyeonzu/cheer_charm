@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import * as S from './LoginRegister.style';
 import { NanoomSquare } from '../../css/Font';
 
-import idIcon from '../../assets/images/Login/idicon.svg';
-import pwIcon from '../../assets/images/Login/pwicon.svg';
-import axios from 'axios';
+import idIcon from '../../assets/images/Login/idicon.png';
+import pwIcon from '../../assets/images/Login/pwicon.png';
 
 /*
   JWT Token을 사용한 사용자 인증절차
