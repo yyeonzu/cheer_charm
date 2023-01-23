@@ -59,7 +59,15 @@ const MyList = ({ isDone }) => {
 	return (
 		<>
 			{arr.length === 0 ? (
-				<h1>텅</h1>
+				isDone ? (
+					<Galmuri size="15px" weight="400" color="#3a3a3a" margin="30px 0 0 0">
+						아직 완성된 부적이 없네요!
+					</Galmuri>
+				) : (
+					<Galmuri size="15px" weight="400" color="#3a3a3a" margin="30px 0 0 0">
+						아직 생성 중인 부적이 없네요!
+					</Galmuri>
+				)
 			) : (
 				<>
 					<S.FlexContainer>

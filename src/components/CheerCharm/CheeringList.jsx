@@ -4,6 +4,7 @@ import cheer1 from "../../assets/images/CharmPage/cheer1.svg";
 import cheer2 from "../../assets/images/CharmPage/cheer2.svg";
 import cheer3 from "../../assets/images/CharmPage/cheer3.svg";
 import { testlist } from "../../_mock/data2";
+import { Galmuri } from "../../css/Font";
 
 const CheeringList = ({ setModal, cId }) => {
 	const src = [cheer1, cheer2, cheer3];
@@ -18,27 +19,31 @@ const CheeringList = ({ setModal, cId }) => {
 			}
 		}
 		console.log(currentCharm);
-
 		setCheerlist(currentCharm.cheer);
 		console.log(cheerlist);
 	});
 	return (
 		<>
-			{cheerlist && cheerlist.length === 0 ? (
-				<h1>텅</h1>
-			) : (
-				<>
-					{cheerlist &&
-						cheerlist.map((ch, idx) => {
-							return (
-								<S.CheerRect onClick={() => setModal(true)}>
-									<S.CheerImg src={src[idx % 3]} />
-									<S.CheerText>{ch.nickname}</S.CheerText>
-								</S.CheerRect>
-							);
-						})}
-				</>
-			)}
+			{cheerlist &&
+				(cheerlist.length === 0 ? (
+					<S.NoCheerContainer>
+						<Galmuri size="15px" weight="400" color="#3a3a3a">
+							아직 도착한 응원이 없네요!
+						</Galmuri>
+					</S.NoCheerContainer>
+				) : (
+					<>
+						{cheerlist &&
+							cheerlist.map((ch, idx) => {
+								return (
+									<S.CheerRect onClick={() => setModal(true)}>
+										<S.CheerImg src={src[idx % 3]} />
+										<S.CheerText>{ch.nickname}</S.CheerText>
+									</S.CheerRect>
+								);
+							})}
+					</>
+				))}
 		</>
 	);
 };
