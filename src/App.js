@@ -14,6 +14,7 @@ import CreateCharmPage from "./pages/CreateCharmPage";
 import SendCheerPage from "./pages/SendCheerPage";
 // 부적 공유 페이지
 import CheeringCharm from "./pages/CheeringCharmPage";
+
 // 부적 결과 페이지
 import CheeredCharm from "./pages/CheeredCharmPage";
 
