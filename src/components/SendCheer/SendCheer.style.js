@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import background from '../../assets/images/background.png';
+import styled from "styled-components";
+import background from "../../assets/images/background.png";
 
 export const Container = styled.div`
   width: 100%;
@@ -15,9 +15,9 @@ export const Container = styled.div`
 
 export const TitleText = styled.div`
   display: flex;
-  flex-direction: ${(props) => props.direction};
-  align-items: ${(props) =>
-    props.direction == 'column' ? 'center' : 'flex-end'};
+  flex-direction: ${props => props.direction};
+  align-items: ${props =>
+    props.direction == "column" ? "center" : "flex-end"};
   margin-top: 35px;
 `;
 

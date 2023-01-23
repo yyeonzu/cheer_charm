@@ -9,44 +9,44 @@
 
 /* for password in Input */
 @font-face {
-  font-family: 'Pretendard';
-  src: url('./fonts/PretendardVariable.ttf') format('woff2');
+  font-family: "Pretendard";
+  src: url("./fonts/PretendardVariable.ttf") format("woff2");
   /* font-weight: 100 - 900 */
 }
 
 @font-face {
-  font-family: 'NanoomSquare';
-  src: url('./fonts/NanumSquareR.ttf') format('woff2');
+  font-family: "NanoomSquare";
+  src: url("./fonts/NanumSquareR.ttf") format("woff2");
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'NanoomSquare';
-  src: url('./fonts/NanumSquareEB.ttf') format('woff2');
+  font-family: "NanoomSquare";
+  src: url("./fonts/NanumSquareEB.ttf") format("woff2");
   font-weight: 800;
 }
 
 @font-face {
-  font-family: 'Galmuri';
-  src: url('./fonts/Galmuri11.woff2') format('woff2');
+  font-family: "Galmuri";
+  src: url("./fonts/Galmuri11.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Galmuri';
-  src: url('./fonts/Galmuri11-Bold.woff2') format('woff2');
+  font-family: "Galmuri";
+  src: url("./fonts/Galmuri11-Bold.woff2") format("woff2");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Galmuri';
-  src: url('./fonts/Galmuri11-Condensed.woff2') format('woff2');
+  font-family: "Galmuri";
+  src: url("./fonts/Galmuri11-Condensed.woff2") format("woff2");
   font-stretch: condensed;
 }
 
 @font-face {
-  font-family: 'PFStardust';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/PFStardust.woff')
-    format('woff');
+  font-family: "PFStardust";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/PFStardust.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }

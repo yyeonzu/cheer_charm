@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import * as S from './LoginRegister.style';
-import { NanoomSquare } from '../../css/Font';
+import React, { useState } from "react";
+import * as S from "./LoginRegister.style";
+import { NanoomSquare } from "../../css/Font";
 
-import idIcon from '../../assets/images/Login/idicon.png';
-import pwIcon from '../../assets/images/Login/pwicon.png';
+import idIcon from "../../assets/images/Login/idicon.png";
+import pwIcon from "../../assets/images/Login/pwicon.png";
 
 /*
   JWT Token을 사용한 사용자 인증절차
@@ -38,19 +38,19 @@ import pwIcon from '../../assets/images/Login/pwicon.png';
 // };
 
 const LoginMenu = () => {
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
 
   // 로그인 기능 함수 (미완)
-  const Login = (e) => {
+  const Login = e => {
     e.preventDefault();
 
     if (!id) {
-      return alert('아이디를 입력해주세요');
+      return alert("아이디를 입력해주세요");
     } else if (!pw) {
-      return alert('비밀번호를 입력해주세요');
+      return alert("비밀번호를 입력해주세요");
     } else {
-      return alert('아이디와 비밀번호가 전송은 되고 있답니다');
+      return alert("아이디와 비밀번호가 전송은 되고 있답니다");
     }
   };
 
@@ -58,37 +58,37 @@ const LoginMenu = () => {
     <>
       <S.Container>
         <S.TitleBar>
-          <NanoomSquare weight='800' size='20px' color='#3A3A3A'>
+          <NanoomSquare weight="800" size="20px" color="#3A3A3A">
             나만의 부적을 만들어볼까요?
           </NanoomSquare>
         </S.TitleBar>
-        <S.LoginBox height='380px'>
-          <NanoomSquare weight='800' size='18px' margin='30px'>
+        <S.LoginBox height="380px">
+          <NanoomSquare weight="800" size="18px" margin="30px">
             로그인
           </NanoomSquare>
           <S.InputForm onSubmit={Login}>
             <S.Input
-              type='text'
-              placeholder='아이디'
-              fontFamily='NanoomSquare'
+              type="text"
+              placeholder="아이디"
+              fontFamily="NanoomSquare"
               icon={idIcon}
               value={id}
-              onChange={(e) => {
+              onChange={e => {
                 setId(e.target.value);
               }}
             />
             <S.Input
-              type='password'
-              placeholder='비밀번호'
+              type="password"
+              placeholder="비밀번호"
               icon={pwIcon}
               value={pw}
-              onChange={(e) => {
+              onChange={e => {
                 setPw(e.target.value);
               }}
             />
 
-            <S.Button type='submit'>
-              <NanoomSquare weight='800' size='15px' color='#545454'>
+            <S.Button type="submit">
+              <NanoomSquare weight="800" size="15px" color="#545454">
                 로그인
               </NanoomSquare>
             </S.Button>
@@ -96,7 +96,7 @@ const LoginMenu = () => {
         </S.LoginBox>
         <S.Line>
           <S.Hr></S.Hr>
-          <NanoomSquare weight='800' size='10px' color='#FFFFFF'>
+          <NanoomSquare weight="800" size="10px" color="#FFFFFF">
             OR
           </NanoomSquare>
           <S.Hr></S.Hr>

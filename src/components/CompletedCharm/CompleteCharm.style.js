@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import frontImage from '../../assets/images/CompletedCharm/frontofcheer.png';
-import backImage from '../../assets/images/CompletedCharm/backofcheer.png';
+import styled from "styled-components";
+import frontImage from "../../assets/images/CompletedCharm/frontofcheer.png";
+import backImage from "../../assets/images/CompletedCharm/backofcheer.png";
 
 export const Container = styled.div`
   width: 100%;
@@ -21,8 +21,8 @@ export const FlipWrapper = styled.div`
   position: absolute;
   z-index: 1;
 
-  left: ${(props) => props.left};
-  filter: blur(${(props) => props.blur});
+  left: ${props => props.left};
+  filter: blur(${props => props.blur});
   backface-visibility: hidden;
   /* transition: 1s linear; */
 `;
@@ -36,7 +36,7 @@ export const FrontWrapper = styled.div`
   backface-visibility: hidden;
   background-image: url(${frontImage});
   background-size: cover;
-  transform: rotateY(${(props) => (props.cur ? 0 : -180)}deg);
+  transform: rotateY(${props => (props.cur ? 0 : -180)}deg);
   transition: 1s linear;
 `;
 
@@ -48,6 +48,6 @@ export const BackWrapper = styled.div`
   backface-visibility: hidden;
   background-image: url(${backImage});
   background-size: cover;
-  transform: rotateY(${(props) => (props.cur ? 0 : 180)}deg);
+  transform: rotateY(${props => (props.cur ? 0 : 180)}deg);
   transition: 1s linear;
 `;

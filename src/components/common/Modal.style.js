@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   position: fixed;
@@ -35,7 +35,7 @@ export const ModalBlock = styled.div`
   position: relative;
   background-color: #fdfbf7;
   width: 85%;
-  height: ${(props) => props.height};
+  height: ${props => props.height};
   box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   animation: modal-show 0.3s;
@@ -70,7 +70,7 @@ export const TextWrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: ${(props) => props.padding || 0};
+  padding: ${props => props.padding || 0};
 `;
 
 export const ButtonWrapper = styled.div`

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import background from '../../assets/images/background.png';
+import styled from "styled-components";
+import background from "../../assets/images/background.png";
 
 export const Container = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ export const TitleBar = styled.div`
 
 export const LoginBox = styled.div`
   width: 350px;
-  height: ${(props) => props.height};
+  height: ${props => props.height};
   display: flex;
   flex-direction: column;
   margin-top: 50px;
@@ -46,8 +46,8 @@ export const Input = styled.input`
   outline: none;
 
   margin-bottom: 22px;
-  font-family: ${(props) => props.fontFamily || 'NanoomSquare'};
-  font-weight: ${(props) => props.fontWeight || 500};
+  font-family: ${props => props.fontFamily || "NanoomSquare"};
+  font-weight: ${props => props.fontWeight || 500};
   font-size: 14px;
   padding-left: 8px;
   padding-bottom: 8px;
@@ -55,7 +55,7 @@ export const Input = styled.input`
   ::placeholder {
     font-family: NanoomSquare;
   }
-  background-image: url(${(props) => props.icon});
+  background-image: url(${props => props.icon});
   background-size: 14px;
   background-repeat: no-repeat;
   background-position: 95%;
@@ -96,6 +96,6 @@ export const Kakao = styled.div``;
 export const Text = styled.div`
   font-size: 13px;
   font-family: NanoomSquare;
-  color: ${(props) => props.color};
+  color: ${props => props.color};
   margin-left: 8px;
 `;

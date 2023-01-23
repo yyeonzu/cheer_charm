@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import clovericon from '../../../assets/images/Landing/clover3.svg';
+import styled from "styled-components";
+import clovericon from "../../../assets/images/Landing/clover3.svg";
 
 export const Container = styled.div`
   width: 100%;
@@ -44,7 +44,7 @@ export const CloverProgress = styled.div`
 export const Progress = styled.div`
   width: 100%;
   position: absolute;
-  left: ${(props) => -100 + props.percent}%;
+  left: ${props => -100 + props.percent}%;
   top: 0px;
   height: 100%;
   background-color: rgba(110, 190, 124, 0.59);
@@ -60,14 +60,14 @@ export const Progress = styled.div`
       transform: scaleX(0);
     }
     100% {
-      transform: scaleX(${(props) => props.percent * 0.01});
+      transform: scaleX(${props => props.percent * 0.01});
     }
   } */
 `;
 
 export const CloverIcon = styled.img.attrs({ src: `${clovericon}` })`
   position: absolute;
-  left: ${(props) => -7 + props.percent}%;
+  left: ${props => -7 + props.percent}%;
   z-index: 5;
   transform: rotate(-33.39deg);
 
@@ -81,7 +81,7 @@ export const CloverIcon = styled.img.attrs({ src: `${clovericon}` })`
       transform: translateX(0);
     }
     100% {
-      transform: translateX(${(props) => -7 + props.percent}%);
+      transform: translateX(${props => -7 + props.percent}%);
       transform: translateX(23px);
     }
   } */
@@ -92,13 +92,13 @@ export const FontWrapper = styled.div`
   width: 45px;
   display: flex;
   justify-content: flex-end;
-  font-family: 'Galmuri';
+  font-family: "Galmuri";
   font-weight: 700;
   margin-bottom: 3.5px;
 `;
 
 export const UnderFontWrapper = styled.div`
-  font-family: 'Galmuri';
+  font-family: "Galmuri";
   font-stretch: condensed;
   font-weight: 400;
   font-size: 14px;
