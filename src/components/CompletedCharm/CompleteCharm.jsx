@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import * as S from './CompleteCharm.style';
+import React, { useEffect, useState } from "react";
+import * as S from "./CompleteCharm.style";
 
-const CompleteCharm = (props) => {
+const CompleteCharm = props => {
   const [front, setFront] = useState(true);
 
   useEffect(() => {
@@ -11,11 +11,11 @@ const CompleteCharm = (props) => {
   return (
     <>
       <S.Container>
-        <S.FlipWrapper left='35%' blur='2px'>
+        <S.FlipWrapper left="35%" blur="2px">
           <S.FrontWrapper cur={!front}></S.FrontWrapper>
           <S.BackWrapper cur={front}></S.BackWrapper>
         </S.FlipWrapper>
-        <S.FlipWrapper left='25%'>
+        <S.FlipWrapper left="25%">
           <S.FrontWrapper cur={front}></S.FrontWrapper>
           <S.BackWrapper cur={!front}></S.BackWrapper>
         </S.FlipWrapper>
