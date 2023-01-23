@@ -4,10 +4,8 @@ import CompleteCharm from "../CompletedCharm/CompleteCharm";
 import Footer from "../common/Footer";
 import ProgressBar from "../common/progressbar/ProgressBar";
 import CheeredList from "./CheeredList";
-import CheerModal from "./CheerModal";
 import logo from "../../assets/images/CharmPage/charmpagelogo.svg";
 import speechbubble from "../../assets/images/CharmPage/speechbubble.svg";
-import testcharm from "../../assets/images/testcharm.png";
 import { NanoomSquare, Galmuri } from "../../css/Font.js";
 import { MdOutlineFlipCameraAndroid } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
@@ -88,14 +86,11 @@ const CheeredCharm = () => {
 				</S.CheerTitleContainer>
 				<S.CheerContainer>
 					<div className="inner">
-						<CheeredList cId={cId} setModal={setModal} />
+						<CheeredList cId={cId} modal={modal} setModal={setModal} />
 					</div>
 				</S.CheerContainer>
 				<Footer />
 			</S.Container>
-			{modal ? (
-				<CheerModal isModalOpen={modal} closer={() => setModal(false)} />
-			) : null}
 		</>
 	);
 };

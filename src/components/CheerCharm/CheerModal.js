@@ -3,7 +3,7 @@ import styled from "styled-components";
 import cheerbubble from "../../assets/images/CharmPage/cheerbubble.svg";
 
 const CheerModal = (props) => {
-	const { isModalOpen, closer } = props;
+	const { isModalOpen, closer, from, text } = props;
 	useEffect(() => {
 		document.body.style.cssText = `
           position: fixed;
@@ -24,6 +24,27 @@ const CheerModal = (props) => {
 					<ModalBlock>
 						<Contents>
 							<img src={cheerbubble} />
+							<Text1>From. {from}</Text1>
+							<div className="inner">
+								<Text2>
+									{text.includes("\n") ? (
+										<>
+											{text.split("\n").map((line) => {
+												return (
+													<span>
+														{line}
+														<br />
+													</span>
+												);
+											})}
+										</>
+									) : (
+										<>
+											<span>{text}</span>
+										</>
+									)}
+								</Text2>
+							</div>
 						</Contents>
 					</ModalBlock>
 				</Container>
@@ -91,13 +112,28 @@ const Contents = styled.div`
 		width: 100%;
 		height: auto;
 	}
+	.inner {
+		width: 75%;
+		height: 120px;
+		position: absolute;
+		top: 110px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 `;
 
-const Text = styled.div`
-	font-family: "Galmuri";
-	font-stretch: condensed;
-	font-size: 15px;
-	width: 90%;
+const Text1 = styled.div`
+	font-family: "PFStardust";
+	font-size: 16px;
+	position: absolute;
+	top: 55px;
+	left: 45px;
+`;
+
+const Text2 = styled.div`
+	font-family: "PFStardust";
 	text-align: center;
-	margin: 3px 0;
+	font-size: 13px;
+	line-height: 20px;
 `;
