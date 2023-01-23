@@ -12,7 +12,7 @@ import MyPage from "./pages/MyPage";
 import CreateCharmPage from "./pages/CreateCharmPage";
 // 응원 전송 페이지
 import SendCheerPage from "./pages/SendCheerPage";
-// 부적 링크 페이지
+// 부적 공유 페이지
 import CheeringCharm from "./pages/CheeringCharmPage";
 // 부적 결과 페이지
 import CheeredCharm from "./pages/CheeredCharmPage";
@@ -23,25 +23,23 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					{/* 로그인 & 회원가입 */}
-					<Route exact path="/login" element={<LoginPage />} />
-					<Route exact path="/register" element={<RegisterPage />} />
+					<Route exact path="/auth/login" element={<LoginPage />} />
+					<Route exact path="/auth/join" element={<RegisterPage />} />
 
 					{/* 랜딩페이지 (메인페이지) */}
-					<Route exact path="/main" element={<LandingPage />} />
+					<Route exact path="/" element={<LandingPage />} />
 
 					{/* 마이페이지 */}
-					<Route exact path="/my" element={<MyPage />} />
+					<Route exact path="/mypage" element={<MyPage />} />
 
 					{/* 부적 생성 페이지 */}
-					<Route exact path="/create" element={<CreateCharmPage />} />
+					<Route exact path="/create-charm" element={<CreateCharmPage />} />
 
 					{/* 응원 전송 페이지 */}
-					<Route exact path="/sendcheer" element={<SendCheerPage />} />
+					<Route exact path="/send-cheer" element={<SendCheerPage />} />
 
-					{/* 부적 링크 페이지 */}
+					{/* 부적 공유 페이지 & 부적 결과 페이지 */}
 					<Route exact path="/cheering" element={<CheeringCharm />} />
-
-					{/* 부적 결과 페이지 */}
 					<Route exact path="/cheered" element={<CheeredCharm />} />
 				</Routes>
 			</BrowserRouter>
