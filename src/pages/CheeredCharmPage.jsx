@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import CheeredCharm from '../components/CheerCharm/CheeredCharm';
+import React, { useState } from "react";
+import CheeredCharm from "../components/CheerCharm/CheeredCharm";
 
 const CheeredCharmPage = () => {
   return (

@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import * as S from './LoginRegister.style';
-import { NanoomSquare } from '../../css/Font';
+import React, { useEffect, useState } from "react";
+import * as S from "./LoginRegister.style";
+import { NanoomSquare } from "../../css/Font";
 
-import idIcon from '../../assets/images/Login/idicon.png';
-import pwIcon from '../../assets/images/Login/pwicon.png';
-import nicknameIcon from '../../assets/images/Login/nicknameicon.png';
+import idIcon from "../../assets/images/Login/idicon.png";
+import pwIcon from "../../assets/images/Login/pwicon.png";
+import nicknameIcon from "../../assets/images/Login/nicknameicon.png";
 
 const RegisterMenu = () => {
   // 아이디 중복 확인 방식 어떻게 할 지 정하기 -> lower priority
   // 이외 모든 기능 퍼블리싱 완료
 
   // Input 상태 관리
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
-  const [pw2, setPw2] = useState('');
-  const [nickname, setNickname] = useState('');
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [pw2, setPw2] = useState("");
+  const [nickname, setNickname] = useState("");
 
   // active Input 관리
-  const [activeBorder, setActiveBorder] = useState('');
+  const [activeBorder, setActiveBorder] = useState("");
 
   // 비밀번호 확인
   const [isValidPassword, setIsValidPassword] = useState(false);
 
   useEffect(() => {
-    if (pw2 !== '' && pw === pw2) setIsValidPassword(true);
+    if (pw2 !== "" && pw === pw2) setIsValidPassword(true);
     else setIsValidPassword(false);
   }, [pw2]);
 
   // Submit
-  const onSubmitAccount = (e) => {
+  const onSubmitAccount = e => {
     e.preventDefault();
   };
 
@@ -36,82 +36,82 @@ const RegisterMenu = () => {
     <>
       <S.Container>
         <S.TitleBar>
-          <NanoomSquare weight='800' size='20px' color='#3A3A3A'>
+          <NanoomSquare weight="800" size="20px" color="#3A3A3A">
             나만의 부적을 만들어볼까요?
           </NanoomSquare>
         </S.TitleBar>
-        <S.LoginBox height='425px'>
-          <NanoomSquare weight='800' size='18px' margin='30px'>
+        <S.LoginBox height="425px">
+          <NanoomSquare weight="800" size="18px" margin="30px">
             회원가입
           </NanoomSquare>
           <S.InputForm onSubmit={onSubmitAccount}>
             <S.Input
-              type='text'
-              placeholder='아이디'
+              type="text"
+              placeholder="아이디"
               icon={idIcon}
               value={id}
-              onChange={(e) => {
+              onChange={e => {
                 setId(e.target.value);
               }}
-              onFocus={() => setActiveBorder('id')}
+              onFocus={() => setActiveBorder("id")}
             />
             <S.Input
-              type='password'
-              placeholder='비밀번호'
-              fontFamily='Pretendard'
-              fontWeight='400'
+              type="password"
+              placeholder="비밀번호"
+              fontFamily="Pretendard"
+              fontWeight="400"
               icon={pwIcon}
               value={pw}
-              onChange={(e) => {
+              onChange={e => {
                 setPw(e.target.value);
               }}
-              onFocus={() => setActiveBorder('pw')}
+              onFocus={() => setActiveBorder("pw")}
             />
             <S.Input
-              type='password'
-              placeholder='비밀번호 확인'
-              fontFamily='Pretendard'
-              fontWeight='400'
+              type="password"
+              placeholder="비밀번호 확인"
+              fontFamily="Pretendard"
+              fontWeight="400"
               icon={pwIcon}
               value={pw2}
-              onChange={(e) => {
+              onChange={e => {
                 setPw2(e.target.value);
               }}
-              onFocus={() => setActiveBorder('pw2')}
+              onFocus={() => setActiveBorder("pw2")}
             />
             <S.Input
-              type='text'
-              placeholder='닉네임'
+              type="text"
+              placeholder="닉네임"
               icon={nicknameIcon}
               value={nickname}
-              onChange={(e) => {
+              onChange={e => {
                 setNickname(e.target.value);
               }}
-              onFocus={() => setActiveBorder('name')}
+              onFocus={() => setActiveBorder("name")}
             />
             {
               {
                 id: <S.Text>아이디 형식 제공</S.Text>,
                 pw: <S.Text>비밀번호 형식 제공</S.Text>,
                 pw2: isValidPassword ? (
-                  <S.Text color='green'>비밀번호가 일치합니다.</S.Text>
+                  <S.Text color="green">비밀번호가 일치합니다.</S.Text>
                 ) : (
-                  <S.Text color='red'>비밀번호가 일치하지 않습니다.</S.Text>
+                  <S.Text color="red">비밀번호가 일치하지 않습니다.</S.Text>
                 ),
                 name:
                   nickname.length > 8 ? (
-                    <S.Text color='red'>
+                    <S.Text color="red">
                       닉네임을 8글자 이하로 설정해주세요.
                     </S.Text>
                   ) : (
-                    <S.Text color='green'>
+                    <S.Text color="green">
                       닉네임을 8글자 이하로 설정해주세요.
                     </S.Text>
                   ),
               }[activeBorder]
             }
-            <S.Button type='submit'>
-              <NanoomSquare weight='800' size='15px' color='#545454'>
+            <S.Button type="submit">
+              <NanoomSquare weight="800" size="15px" color="#545454">
                 회원가입
               </NanoomSquare>
             </S.Button>

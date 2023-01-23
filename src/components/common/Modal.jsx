@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import * as S from './Modal.style';
-import { Galmuri } from '../../css/Font';
-import { PinkButton } from './PinkButton.style';
-import { MdClose } from 'react-icons/md';
+import React, { useEffect } from "react";
+import * as S from "./Modal.style";
+import { Galmuri } from "../../css/Font";
+import { PinkButton } from "./PinkButton.style";
+import { MdClose } from "react-icons/md";
 
-const Modal = (props) => {
+const Modal = props => {
   const {
     isModalOpen,
     closer,
@@ -24,8 +24,8 @@ const Modal = (props) => {
           width: 100%;`;
     return () => {
       const scrollY = document.body.style.top;
-      document.body.style.cssText = '';
-      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
     };
   }, []);
   return (
@@ -35,16 +35,16 @@ const Modal = (props) => {
           <S.Background onClick={closer} />
           <S.ModalBlock height={height}>
             <S.DeleteRect onClick={closer}>
-              <MdClose size='25' fill='#6B6A6A' />
+              <MdClose size="25" fill="#6B6A6A" />
             </S.DeleteRect>
             <S.Contents>
               <div>
                 <S.TextWrapper padding={padding}>
-                  <Galmuri size={size || '14px'}>
+                  <Galmuri size={size || "14px"}>
                     {maintext &&
-                      (maintext.includes('\n') ? (
+                      (maintext.includes("\n") ? (
                         <>
-                          {maintext.split('\n').map((line) => {
+                          {maintext.split("\n").map(line => {
                             return (
                               <span>
                                 {line}
@@ -63,8 +63,8 @@ const Modal = (props) => {
                 <S.ButtonWrapper>
                   <PinkButton
                     onClick={onClick}
-                    width='123px'
-                    height='45px'
+                    width="123px"
+                    height="45px"
                     size={size}
                   >
                     {buttontext}

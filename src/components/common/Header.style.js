@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import logo from '../../assets/images/minilogo.svg';
+import styled from "styled-components";
+import logo from "../../assets/images/minilogo.svg";
 
 export const Container = styled.div`
   width: 100%;

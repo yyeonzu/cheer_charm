@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import arrowR from '../../assets/images/Landing/arrowR.svg';
-import linkicon from '../../assets/images/linkicon.png';
+import styled from "styled-components";
+import arrowR from "../../assets/images/Landing/arrowR.svg";
+import linkicon from "../../assets/images/linkicon.png";
 
 export const TitleBar = styled.div`
   display: flex;

@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Galmuri, NanoomSquare } from '../../css/Font';
-import * as S from './YesCharm.style';
-import ProgressBar from '../common/progressbar/ProgressBar';
-import { PinkButton } from '../common/PinkButton.style';
-import { charmlist } from '../../_mock/data';
+import React, { useEffect, useRef, useState } from "react";
+import { Galmuri, NanoomSquare } from "../../css/Font";
+import * as S from "./YesCharm.style";
+import ProgressBar from "../common/progressbar/ProgressBar";
+import { PinkButton } from "../common/PinkButton.style";
+import { charmlist } from "../../_mock/data";
 
 /*
   미완성
@@ -21,7 +21,7 @@ import { charmlist } from '../../_mock/data';
 
 const YesCharm = () => {
   // 닉네임
-  const nickname = '연주';
+  const nickname = "연주";
 
   // 전체 부적 개수
   const numberOfCheer = charmlist.length;
@@ -34,10 +34,10 @@ const YesCharm = () => {
   const [total, setTotal] = useState(0);
 
   // 부적 링크
-  const [hlink, setHlink] = useState('');
+  const [hlink, setHlink] = useState("");
 
   // 완성된 부적인지에 대한 값
-  const [unfinished, setUnfinished] = useState('');
+  const [unfinished, setUnfinished] = useState("");
 
   useEffect(() => {
     setDone(charmlist[charmId - 1].cur_cheer);
@@ -53,12 +53,12 @@ const YesCharm = () => {
 
   // imageOrder가 바뀔 때마다 애니메이션
   useEffect(() => {
-    slideRef.current.style.transition = 'all 0.5s ease-in-out';
+    slideRef.current.style.transition = "all 0.5s ease-in-out";
     slideRef.current.style.transform = `translateX(-${slideRange}px)`;
   }, [imageOrder]);
 
   // prev 버튼 이벤트
-  const moveToPrevSlide = (e) => {
+  const moveToPrevSlide = e => {
     e.preventDefault();
     if (imageOrder === 0) {
       setImageOrder(numberOfCheer - 1);
@@ -70,7 +70,7 @@ const YesCharm = () => {
   };
 
   // next 버튼 이벤트
-  const moveToNextSlide = (e) => {
+  const moveToNextSlide = e => {
     e.preventDefault();
     if (imageOrder === numberOfCheer - 1) {
       setImageOrder(0);
@@ -84,18 +84,18 @@ const YesCharm = () => {
   return (
     <>
       <S.TitleBar>
-        <Galmuri size='15px' weight='700'>
+        <Galmuri size="15px" weight="700">
           {nickname}님의 부적을 위한
         </Galmuri>
         <Galmuri
-          size='20px'
-          weight='700'
-          color='#748EDB'
-          margin='0px 0px 0px 4px'
+          size="20px"
+          weight="700"
+          color="#748EDB"
+          margin="0px 0px 0px 4px"
         >
           응원
         </Galmuri>
-        <Galmuri size='15px' weight='700'>
+        <Galmuri size="15px" weight="700">
           이 쌓이는 중이에요!
         </Galmuri>
       </S.TitleBar>
@@ -107,7 +107,7 @@ const YesCharm = () => {
           <S.SlideWrapper>
             <S.ImageWrapper ref={slideRef}>
               {charmlist &&
-                charmlist.map((data) => (
+                charmlist.map(data => (
                   <S.Div key={data.id}>{data.image}</S.Div>
                 ))}
             </S.ImageWrapper>
@@ -117,7 +117,7 @@ const YesCharm = () => {
           </S.ProgressBarWrapper>
           <S.LinkWrapper>
             <S.LinkImage />
-            <NanoomSquare size='14px' weight='400' margin='0 0 0 6px'>
+            <NanoomSquare size="14px" weight="400" margin="0 0 0 6px">
               내 부적 링크 복사하기
             </NanoomSquare>
           </S.LinkWrapper>
@@ -126,10 +126,10 @@ const YesCharm = () => {
       </S.CharmWrapper>
       <S.ButtonWrapper>
         <PinkButton
-          width='160px'
-          height='50px'
-          radius='30px'
-          margin='0px 2px 10px 2px'
+          width="160px"
+          height="50px"
+          radius="30px"
+          margin="0px 2px 10px 2px"
         >
           새 부적 만들러 가기
         </PinkButton>
