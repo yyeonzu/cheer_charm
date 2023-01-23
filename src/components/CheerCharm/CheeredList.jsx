@@ -24,9 +24,7 @@ const CheeredList = ({ setModal, cId }) => {
 	});
 	return (
 		<>
-			{cheerlist && cheerlist.length === 0 ? (
-				<h1>텅</h1>
-			) : (
+			{cheerlist && (
 				<>
 					{cheerlist &&
 						cheerlist.map((ch, idx) => {

@@ -10,6 +10,9 @@ export const Container = styled.div`
 	background-repeat: repeat-y;
 	background-size: 100%;
 	position: relative;
+	.button-container {
+		margin: 20px 0;
+	}
 `;
 
 export const LogoContainer = styled.div`
@@ -41,6 +44,20 @@ export const CharmImg = styled.img`
 	padding: 20px;
 `;
 
+export const ButtonRect = styled.div`
+	width: 130px;
+	height: 24px;
+	background: #f1f1f1;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+	svg {
+		margin: 0 3px 1px 0;
+	}
+`;
+
 export const BubbleContainer = styled.div`
 	width: 100%;
 	height: auto;
@@ -65,20 +82,6 @@ export const BubbleImg = styled.img`
 	opacity: 0.8;
 	width: 220px;
 	height: auto;
-`;
-
-export const ButtonRect = styled.div`
-	width: 130px;
-	height: 24px;
-	background: #f1f1f1;
-	border-radius: 5px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 5px;
-	svg {
-		margin: 0 3px 1px 0;
-	}
 `;
 
 export const CheerTitleContainer = styled.div`

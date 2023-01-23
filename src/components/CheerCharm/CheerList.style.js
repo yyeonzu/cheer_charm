@@ -26,3 +26,11 @@ export const CheerText = styled.div`
 	text-align: center;
 	word-break: break-all;
 `;
+
+export const NoCheerContainer = styled.div`
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
