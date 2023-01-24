@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import * as S from "./LoginRegister.style";
 import { NanoomSquare } from "../../css/Font";
 
@@ -41,6 +43,9 @@ const LoginMenu = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
+  // 회원가입 navigate
+  const navigate = useNavigate();
+
   // 로그인 기능 함수 (미완)
   const Login = e => {
     e.preventDefault();
@@ -50,7 +55,8 @@ const LoginMenu = () => {
     } else if (!pw) {
       return alert("비밀번호를 입력해주세요");
     } else {
-      return alert("아이디와 비밀번호가 전송은 되고 있답니다");
+      console.log(id, pw);
+      return alert(`아이디와 비밀번호가 전송은 되고 있답니다: ${id} ${pw}`);
     }
   };
 
@@ -79,6 +85,8 @@ const LoginMenu = () => {
             />
             <S.Input
               type="password"
+              fontFamily="Pretendard"
+              fontWeight="300"
               placeholder="비밀번호"
               icon={pwIcon}
               value={pw}
@@ -93,6 +101,9 @@ const LoginMenu = () => {
               </NanoomSquare>
             </S.Button>
           </S.InputForm>
+          <S.ButtonforRegister onClick={() => navigate("/auth/join")}>
+            회원가입
+          </S.ButtonforRegister>
         </S.LoginBox>
         <S.Line>
           <S.Hr></S.Hr>

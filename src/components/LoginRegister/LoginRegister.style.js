@@ -30,6 +30,7 @@ export const LoginBox = styled.div`
 export const InputForm = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-top: 28px;
   margin-left: 30px;
   margin-right: 30px;
@@ -42,7 +43,7 @@ export const Input = styled.input`
   border-bottom: 1px solid #f5b5a2;
   border-radius: 0px;
 
-  background: none;
+  background-color: #fdfbf7;
   outline: none;
 
   margin-bottom: 22px;
@@ -62,8 +63,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  width: 210px;
-  height: 32px;
+  width: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,11 +71,25 @@ export const Button = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: none;
-
-  margin-left: 40px;
+  /* margin-left: 40px;
   margin-right: 40px;
-  margin-top: 64px;
+  margin-top: 32px;
+  margin-bottom: 30px; */
+
+  margin: 0 auto;
+  margin-top: 30px;
   margin-bottom: 30px;
+  padding: 8px;
+`;
+
+export const ButtonforRegister = styled.div`
+  display: flex;
+  font-family: NanoomSquare;
+  font-size: 14px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.4); ;
 `;
 
 export const Line = styled.div`
@@ -97,5 +111,5 @@ export const Text = styled.div`
   font-size: 13px;
   font-family: NanoomSquare;
   color: ${props => props.color};
-  margin-left: 8px;
+  padding: 0 0 4px 8px;
 `;
