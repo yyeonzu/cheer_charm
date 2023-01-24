@@ -1,21 +1,20 @@
 import styled from "styled-components";
-import frontImage from "../../assets/images/CompletedCharm/frontofcheer.png";
+import frontImage from "../../assets/images/CompletedCharm/customcharm.png";
 import backImage from "../../assets/images/CompletedCharm/backofcheer.png";
 
 export const Container = styled.div`
   width: 100%;
-
-  height: 350px;
+  margin-top: 12px;
+  height: 280px;
   /* border: solid 1px; */
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 `;
 
 export const FlipWrapper = styled.div`
-  width: 150px;
-  height: 220px;
+  width: 160px;
+  height: 250px;
   perspective: 1000px;
 
   position: absolute;
@@ -28,26 +27,27 @@ export const FlipWrapper = styled.div`
 `;
 
 export const FrontWrapper = styled.div`
-  width: 150px;
-  height: 200px;
-
+  width: 160px;
+  height: 240px;
   position: absolute;
-
   backface-visibility: hidden;
   background-image: url(${frontImage});
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   transform: rotateY(${props => (props.cur ? 0 : -180)}deg);
   transition: 1s linear;
 `;
 
 export const BackWrapper = styled.div`
-  width: 150px;
-  height: 200px;
-
+  width: 160px;
+  height: 240px;
   position: absolute;
   backface-visibility: hidden;
   background-image: url(${backImage});
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   transform: rotateY(${props => (props.cur ? 0 : 180)}deg);
   transition: 1s linear;
 `;

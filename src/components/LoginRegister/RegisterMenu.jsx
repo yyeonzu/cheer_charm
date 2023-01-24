@@ -30,6 +30,7 @@ const RegisterMenu = () => {
   // Submit
   const onSubmitAccount = e => {
     e.preventDefault();
+    alert("회원가입 전송");
   };
 
   return (

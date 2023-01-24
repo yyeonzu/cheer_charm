@@ -1,12 +1,32 @@
 import styled from "styled-components";
 import arrowR from "../../assets/images/Landing/arrowR.svg";
 import linkicon from "../../assets/images/linkicon.png";
+import blueback from "../../assets/images/bluegradient.svg";
+
+export const SnowingBack = styled.div`
+  width: 100%;
+  background-image: url(${blueback});
+  height: 75px;
+  margin-bottom: 40px;
+`;
 
 export const TitleBar = styled.div`
   display: flex;
-  align-items: flex-end;
+  justify-content: center;
   margin-top: 20px;
-  margin-bottom: 40px;
+
+  flex-direction: ${props => (props.length > 4 ? "column" : "row")};
+  align-items: ${props => (props.length > 4 ? "center" : "flex-end")};
+
+  @media screen and (max-width: 300px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const MiniTitle = styled.div`
+  display: flex;
+  align-items: flex-end;
 `;
 
 // 이 아이가 과연 정말로 필요한 것인지..

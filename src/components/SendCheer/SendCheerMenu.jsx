@@ -50,13 +50,9 @@ const SendCheerMenu = () => {
   const onClickModalButton = () => {
     if (modalId === 0) {
       alert("부적생성 or 랜딩으로 이동");
-      setCheerContent("");
-      setCheerName("");
+      // 무조건 랜딩으로 이동! -> 다만 로그인 상태는 그대로 유지
     }
     setIsModal(false);
-
-    // 무조건 비로그인상태가 맞는건지? 로그인 하고 나서, 무조건 비로그인 상태로 되돌릴 수가 있는건지?
-    // 쿠키 방식을 사용한다면 그게 불가능 할 것 같은데, 이 부분에서 백엔드와 논의 필요
   };
 
   // 응원 전송 함수 (정상 제출 || 부족한 경우)
@@ -69,6 +65,10 @@ const SendCheerMenu = () => {
       setModalId(3);
     } else {
       setModalId(0);
+      // 이곳에서 request 예정
+      console.log(cheerContent, cheerName);
+      setCheerContent("");
+      setCheerName("");
     }
     setIsModal(true);
   };
