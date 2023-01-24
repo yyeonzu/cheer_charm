@@ -98,6 +98,9 @@ export const CheerTitleContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
+  .one {
+    display: flex;
+  }
 `;
 
 export const CheerTitle = styled.div`
@@ -134,5 +137,6 @@ export const CheerContainer = styled.div`
     flex-wrap: wrap;
     width: 90%;
     height: auto;
+    margin-bottom: 10px;
   }
 `;

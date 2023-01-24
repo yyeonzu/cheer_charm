@@ -12,7 +12,13 @@ const CreateCharm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [num, setNum] = useState(5);
-  const [img, setImg] = useState(0);
+  const [img, setImg] = useState("");
+  useEffect(() => {
+    setTitle("");
+    setContent("");
+    setNum(5);
+    setImg("");
+  }, []);
   const onChangeTitleInput = useCallback(
     e => {
       setTitle(e.target.value);
@@ -28,24 +34,33 @@ const CreateCharm = () => {
   const onChangeNumInput = (e, value) => {
     setNum(value);
   };
-  useEffect(() => {
-    console.log(num);
-  }, [num]);
+  useEffect(() => {});
 
   const onPost = () => {
-    if (title === "") alert("부적의 이름을 입력해주세요.");
-    if (content === "") alert("부적의 내용을 입력해주세요.");
-    if (img === 0) alert("부적의 이미지를 선택해주세요.");
-    console.log(
-      "제목: ",
-      title,
-      ", 내용: ",
-      content,
-      ", 사람: ",
-      num,
-      ", 사진번호: ",
-      img,
-    );
+    if (title === "" && content === "" && img === "")
+      alert("부적의 이름, 내용을 입력하고 이미지를 선택해주세요.");
+    else if (title === "" && content === "")
+      alert("부적의 이름, 내용을 입력해주세요.");
+    else if (img === "" && content === "")
+      alert("부적의 내용을 입력하고 이미지를 선택해주세요.");
+    else if (title === "" && img === "")
+      alert("부적의 이름을 입력하고 이미지를 선택해주세요.");
+    else if (title === "") alert("부적의 이름을 입력해주세요.");
+    else if (content === "") alert("부적의 내용을 입력해주세요.");
+    else if (img === "") alert("부적의 이미지를 선택해주세요.");
+    else {
+      console.log(
+        "제목: ",
+        title,
+        ", 내용: ",
+        content,
+        ", 사람: ",
+        num,
+        ", 사진: ",
+        img,
+      );
+      console.log("POST & navigate");
+    }
   };
   return (
     <>
@@ -93,7 +108,6 @@ const CreateCharm = () => {
           style={{ margin: "40px" }}
           onClick={() => {
             onPost();
-            console.log("nav to page");
           }}
         >
           부적 생성 시작!
@@ -104,4 +118,4 @@ const CreateCharm = () => {
   );
 };
 
-export default CreateCharm;
+export default React.memo(CreateCharm);

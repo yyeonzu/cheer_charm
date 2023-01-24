@@ -96,6 +96,9 @@ export const CheerTitleContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
+  .one {
+    display: flex;
+  }
 `;
 
 export const CheerTitle = styled.div`
@@ -120,8 +123,8 @@ export const CheerTitleBlue = styled.div`
 
 export const CheerContainer = styled.div`
   width: 90%;
-  height: 155px;
-  margin: 20px 0 40px 0;
+  height: 150px;
+  margin: 20px 0;
   background: rgba(255, 255, 255, 0.35);
   border-radius: 22px;
   display: flex;
@@ -131,6 +134,38 @@ export const CheerContainer = styled.div`
     display: flex;
     overflow-x: auto;
     width: 90%;
-    height: 140px;
+    height: 145px;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 80%;
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  .inner {
+    position: relative;
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const ButtonImg = styled.img`
+  width: 90%;
+  height: auto;
+  filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.25));
+  padding: 5px;
+  position: absolute;
+`;
+
+export const ButtonText = styled.div`
+  font-family: "PFStardust";
+  font-size: 3.5vw;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  padding: 0 3px;
 `;

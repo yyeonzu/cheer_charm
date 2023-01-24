@@ -132,7 +132,7 @@ export const RangeRect = styled.div`
 
 export const ImageContainer = styled.div`
   width: 85%;
-  height: 850px;
+  min-height: 830px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -141,22 +141,22 @@ export const ImageContainer = styled.div`
 
 export const CharmRect = styled.div`
   width: 48%;
-  height: 260px;
+  min-height: 260px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
 `;
 
 export const CharmImg = styled.img`
-  width: 154px;
-  height: 221px;
+  width: 90%;
+  height: auto;
+  object-fit: contain;
 `;
 
 export const Circle = styled.div`
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 2px solid #afafaf;
   margin: 10px;

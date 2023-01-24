@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 80px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,5 +23,5 @@ export const Link = styled.a`
 export const Border = styled.div`
   width: 100%;
   border-bottom: 1px solid #000;
-  margin: 8px 0;
+  margin: 10px 0;
 `;

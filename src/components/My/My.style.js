@@ -74,6 +74,7 @@ export const CharmRect = styled.div`
 export const CharmImg = styled.img`
   width: 154px;
   height: 221px;
+  margin-bottom: 10px;
 `;
 
 export const TrashRect = styled.div`
@@ -83,8 +84,8 @@ export const TrashRect = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 20px;
-  left: 5px;
+  top: 17px;
+  left: 3px;
 `;
 
 export const ButtonContainer = styled.div`
