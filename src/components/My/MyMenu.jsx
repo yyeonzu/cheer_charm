@@ -25,7 +25,6 @@ const MyMenu = () => {
             <Galmuri weight="600" size="16px" color="#4A4A4A">
               {nickname}
             </Galmuri>
-            <MdEdit size="15" style={{ margin: "4px 0 0 7px" }} />
           </div>
           <Galmuri
             weight="400"
