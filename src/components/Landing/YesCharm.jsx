@@ -23,6 +23,9 @@ const YesCharm = () => {
   // 닉네임
   const nickname = "연주";
 
+  // 닉네임 길이 (title bar overflow 관련)
+  const namelength = nickname.length;
+
   // 전체 부적 개수
   const numberOfCheer = charmlist.length;
 
@@ -83,22 +86,26 @@ const YesCharm = () => {
 
   return (
     <>
-      <S.TitleBar>
-        <Galmuri size="15px" weight="700">
-          {nickname}님의 부적을 위한
-        </Galmuri>
-        <Galmuri
-          size="20px"
-          weight="700"
-          color="#748EDB"
-          margin="0px 0px 0px 4px"
-        >
-          응원
-        </Galmuri>
-        <Galmuri size="15px" weight="700">
-          이 쌓이는 중이에요!
-        </Galmuri>
-      </S.TitleBar>
+      <S.SnowingBack>
+        <S.TitleBar length={namelength}>
+          <Galmuri size="15px" weight="700">
+            {nickname}님의 부적을 위한
+          </Galmuri>
+          <S.MiniTitle>
+            <Galmuri
+              size="18px"
+              weight="700"
+              color="#748EDB"
+              margin="0px 0px 0px 4px"
+            >
+              응원
+            </Galmuri>
+            <Galmuri size="15px" weight="700">
+              이 쌓이는 중이에요!
+            </Galmuri>
+          </S.MiniTitle>
+        </S.TitleBar>
+      </S.SnowingBack>
 
       {/* 부적 페이지 */}
       <S.CharmWrapper>
