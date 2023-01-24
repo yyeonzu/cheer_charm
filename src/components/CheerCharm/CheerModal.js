@@ -113,10 +113,10 @@ const Contents = styled.div`
     height: auto;
   }
   .inner {
-    width: 75%;
-    height: 120px;
+    width: 80%;
+    height: 130px;
     position: absolute;
-    top: 110px;
+    top: 95px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,10 +125,11 @@ const Contents = styled.div`
 
 const Text1 = styled.div`
   font-family: "PFStardust";
+  font-weight: 600;
   font-size: 16px;
   position: absolute;
-  top: 55px;
-  left: 45px;
+  top: 45px;
+  left: 38px;
 `;
 
 const Text2 = styled.div`
@@ -136,4 +137,5 @@ const Text2 = styled.div`
   text-align: center;
   font-size: 13px;
   line-height: 20px;
+  word-break: keep-all;
 `;

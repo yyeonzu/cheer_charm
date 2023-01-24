@@ -5,12 +5,12 @@ import { Galmuri } from "../../css/Font";
 import { BiTrash } from "react-icons/bi";
 import { testlist } from "../../_mock/data2";
 
-import charm1 from "../../assets/images/Charm/charm1.svg";
-import charm2 from "../../assets/images/Charm/charm2.svg";
-import charm3 from "../../assets/images/Charm/charm3.svg";
-import charm4 from "../../assets/images/Charm/charm4.svg";
-import charm5 from "../../assets/images/Charm/charm5.svg";
-import charm6 from "../../assets/images/Charm/charm6.svg";
+import charm1 from "../../assets/images/Charm/mousecharm.png";
+import charm2 from "../../assets/images/Charm/rabbitcharm.png";
+import charm3 from "../../assets/images/Charm/squirrelcharm.png";
+import charm4 from "../../assets/images/Charm/goatcharm.png";
+import charm5 from "../../assets/images/Charm/monkeycharm.png";
+import charm6 from "../../assets/images/Charm/birdcharm.png";
 
 const MyList = ({ isDone }) => {
   let doneArr = [];
@@ -38,6 +38,14 @@ const MyList = ({ isDone }) => {
     }
   };
   const src = [charm1, charm2, charm3, charm4, charm5, charm6];
+  const imgSrc = string => {
+    if (string === "MOUSE") return charm1;
+    else if (string === "RABBIT") return charm2;
+    else if (string === "SQUIRREL") return charm3;
+    else if (string === "GOAT") return charm4;
+    else if (string === "MONKEY") return charm5;
+    else if (string === "BIRD") return charm6;
+  };
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState();
@@ -81,7 +89,7 @@ const MyList = ({ isDone }) => {
                           <BiTrash fill="#155726" size="18" />
                         </S.TrashRect>
                       ) : null}
-                      <S.CharmImg src={src[ch.image]} />
+                      <S.CharmImg src={imgSrc(ch.image)} />
                       <Galmuri weight="400" size="12px" color="#4A4A4A">
                         {ch.title}
                       </Galmuri>

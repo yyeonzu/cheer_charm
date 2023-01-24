@@ -6,24 +6,39 @@ import CheeringList from "./CheeringList";
 import NotYetModal from "./NotYetModal";
 import logo from "../../assets/images/CharmPage/charmpagelogo.svg";
 import speechbubble from "../../assets/images/CharmPage/speechbubble.svg";
-import testcharm from "../../assets/images/testcharm.png";
+import button1 from "../../assets/images/CharmPage/button1.svg";
+import button2 from "../../assets/images/CharmPage/button2.svg";
 import { NanoomSquare, Galmuri } from "../../css/Font.js";
 import { AiOutlineLink } from "react-icons/ai";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { testlist } from "../../_mock/data2";
 
-import charm1 from "../../assets/images/Charm/charm1.svg";
-import charm2 from "../../assets/images/Charm/charm2.svg";
-import charm3 from "../../assets/images/Charm/charm3.svg";
-import charm4 from "../../assets/images/Charm/charm4.svg";
-import charm5 from "../../assets/images/Charm/charm5.svg";
-import charm6 from "../../assets/images/Charm/charm6.svg";
+import charm1 from "../../assets/images/Charm/mousecharm.png";
+import charm2 from "../../assets/images/Charm/rabbitcharm.png";
+import charm3 from "../../assets/images/Charm/squirrelcharm.png";
+import charm4 from "../../assets/images/Charm/goatcharm.png";
+import charm5 from "../../assets/images/Charm/monkeycharm.png";
+import charm6 from "../../assets/images/Charm/birdcharm.png";
 
 const CheeringCharm = () => {
   const src = [charm1, charm2, charm3, charm4, charm5, charm6];
-  const nickname = "이이름이름";
+  const imgSrc = string => {
+    if (string === "MOUSE") return charm1;
+    else if (string === "RABBIT") return charm2;
+    else if (string === "SQUIRREL") return charm3;
+    else if (string === "GOAT") return charm4;
+    else if (string === "MONKEY") return charm5;
+    else if (string === "BIRD") return charm6;
+  };
+  const nickname = "일이삼사오육칠팔";
   const currentURL = window.location.href;
   const [modal, setModal] = useState(false);
+  const fadeOut = () => {
+    setModal(true);
+    setTimeout(() => {
+      setModal(false);
+    }, 3000);
+  };
 
   const [cId, setCId] = useState(1);
   // 부적 개별 조회 api
@@ -48,7 +63,7 @@ const CheeringCharm = () => {
           <S.LogoImg src={logo} />
         </S.LogoContainer>
         <S.CharmContainer>
-          <S.CharmImg src={src[currentCharm.image]} />
+          <S.CharmImg src={imgSrc(currentCharm.image)} />
         </S.CharmContainer>
         <Galmuri size="18px" weight="700" color="#3A3A3A" margin="0 0 10px 0">
           {currentCharm.title}
@@ -82,20 +97,30 @@ const CheeringCharm = () => {
           <div className="inner">
             <S.CheerTitleBlue className="name">{nickname}</S.CheerTitleBlue>
             <S.CheerTitle>님에게 도착한</S.CheerTitle>
-            <S.CheerTitleBlue>{done}</S.CheerTitleBlue>
-            <S.CheerTitle>개의 응원</S.CheerTitle>
+            <div className="one">
+              <S.CheerTitleBlue>{done}</S.CheerTitleBlue>
+              <S.CheerTitle>개의 응원</S.CheerTitle>
+            </div>
           </div>
         </S.CheerTitleContainer>
         <S.CheerContainer>
           <div className="inner">
-            <CheeringList setModal={setModal} cId={cId} />
+            <CheeringList setModal={fadeOut} cId={cId} />
           </div>
         </S.CheerContainer>
+        <S.ButtonContainer>
+          <div className="inner">
+            <S.ButtonImg src={button1} />
+            <S.ButtonText>응원 남기기 ♬</S.ButtonText>
+          </div>
+          <div className="inner">
+            <S.ButtonImg src={button2} />
+            <S.ButtonText>나도 부적 만들기 ♪</S.ButtonText>
+          </div>
+        </S.ButtonContainer>
         <Footer />
       </S.Container>
-      {modal ? (
-        <NotYetModal isModalOpen={modal} closer={() => setModal(false)} />
-      ) : null}
+      {modal ? <NotYetModal isModalOpen={modal} /> : null}
     </>
   );
 };

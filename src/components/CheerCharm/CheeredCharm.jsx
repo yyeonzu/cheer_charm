@@ -80,8 +80,10 @@ const CheeredCharm = () => {
           <div className="inner">
             <S.CheerTitleBlue className="name">{nickname}</S.CheerTitleBlue>
             <S.CheerTitle>님에게 도착한</S.CheerTitle>
-            <S.CheerTitleBlue>{done}</S.CheerTitleBlue>
-            <S.CheerTitle>개의 응원</S.CheerTitle>
+            <div className="one">
+              <S.CheerTitleBlue>{done}</S.CheerTitleBlue>
+              <S.CheerTitle>개의 응원</S.CheerTitle>
+            </div>
           </div>
         </S.CheerTitleContainer>
         <S.CheerContainer>

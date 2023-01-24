@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const NotYetModal = props => {
-  const { isModalOpen, closer } = props;
+const NotYetModal = isModalOpen => {
   useEffect(() => {
     document.body.style.cssText = `
           position: fixed;
@@ -15,16 +14,32 @@ const NotYetModal = props => {
       window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
     };
   }, []);
+
+  const [opacity, setOpacity] = useState(100);
+  useEffect(() => {
+    softRemover();
+  }, [softRemover]);
+
+  function softRemover() {
+    if (opacity > 96) {
+      setTimeout(() => {
+        setOpacity(opacity - 1);
+      }, 500);
+    } else if (opacity > 5)
+      setTimeout(() => {
+        setOpacity(opacity - 8);
+      }, 80);
+  }
   return (
     <>
       {isModalOpen ? (
         <Container>
-          <Background onClick={closer} />
-          <ModalBlock>
+          <Background />
+          <ModalBlock opacity={`${opacity}%`}>
             <Contents>
               <div className="inner">
                 <Text>🥺🪄⏱️</Text>
-                <Text>
+                <Text style={{ marginBottom: "5px" }}>
                   부적이 완성되어야 친구들의 응원 메시지를 확인할 수 있어요!
                 </Text>
               </div>
@@ -49,7 +64,6 @@ const Container = styled.div`
   bottom: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: transparent;
 `;
 
@@ -60,13 +74,15 @@ const Background = styled.div`
 `;
 
 const ModalBlock = styled.div`
-  position: relative;
+  position: absolute;
+  bottom: 10%;
   background-color: #969696;
   width: 85%;
   height: 75px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
   border-radius: 18px;
   animation: modal-show 0.3s;
+  opacity: ${props => props.opacity};
   @keyframes modal-show {
     from {
       opacity: 0;
@@ -96,8 +112,9 @@ const Contents = styled.div`
 const Text = styled.div`
   font-family: "Galmuri";
   font-stretch: condensed;
-  font-size: 15px;
+  font-size: 13px;
   width: 90%;
   text-align: center;
   margin: 3px 0;
+  word-break: keep-all;
 `;
