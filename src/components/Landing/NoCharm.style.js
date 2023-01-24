@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   /* border: solid; */
-  margin-bottom: 50px;
+  margin-bottom: 200px;
 `;
 
 export const TitleBar = styled.div`
@@ -14,6 +14,7 @@ export const TitleBar = styled.div`
   margin-bottom: 54px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const AddBox = styled.div`

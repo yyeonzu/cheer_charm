@@ -16,7 +16,7 @@ const NoCharm = () => {
     <>
       <S.Container>
         <S.TitleBar>
-          <Galmuri size="15px" weight="700">
+          <Galmuri size="15px" weight="700" margin="0 0 4px 0">
             아직 응원 받을 부적이 없어요 : (
           </Galmuri>
           <Galmuri size="15px" weight="700">
