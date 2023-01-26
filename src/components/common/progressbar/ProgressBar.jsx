@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./ProgressBar.style";
+import clovericon from "../../../assets/images/Landing/clover.svg";
 
 const ProgressBar = props => {
   // 퍼센트는 프론트에서 구하는 것
@@ -13,7 +14,11 @@ const ProgressBar = props => {
     <>
       <S.Container>
         <S.ProgressContainer>
-          <S.CloverIcon percent={percent} />
+          <S.CloverIcon percent={percent}>
+            <object type="image/svg+xml" data={clovericon}>
+              <img src={clovericon} />
+            </object>
+          </S.CloverIcon>
           <S.CloverProgress>
             <div className="inner">
               <S.Progress percent={percent}></S.Progress>
