@@ -1,6 +1,14 @@
-# 응원이 부적해 (Cheer Charm) 프론트엔드 레포지토리
-</br>
-</br>
+# 응원이 부적해 front-end
+
+gif 또는 스크린샷 모은 이미지
+
+### 🍀[배포 페이지](https://)🍀
+<br>
+
+### 프로젝트 소개
+- 나만의 **커스텀 부적**을 생성하고 링크 공유
+- 친구의 부적에 **익명 닉네임과 내용**을 남겨 응원
+- 응원이 모두 모이면 **완성된 부적 이미지**를 공유, 응원을 열람
 
 
 ### 프론트엔드 팀원 소개
@@ -20,13 +28,6 @@
    </tr>
 </table>
 
-### 프로젝트 시작
-```
-git clone https://github.com/CheerCharm/CheerCharm_Front.git
-npm install
-npm start
-```
-
 ### 기술 스택
 - Frontend : <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/ReduxToolkit-764ABC?style=flat-square&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/ReduxPersist-764ABC?style=flat-square&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/styled_components-DB7093?style=flat-square&logo=styled-components&logoColor=white">
 - Package Manager : <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white">
@@ -41,4 +42,11 @@ npm start
 ├─ 📂 assets  ▶️ 이미지 파일
 ├─ 📂 pages  ▶️ 조건에 따라 라우팅되는 페이지
 └─ 📂 css  ▶️ 공통적으로 사용되는 스타일 값
+```
+
+### 프로젝트 시작
+```
+git clone https://github.com/CheerCharm/CheerCharm_Front.git
+npm install
+npm start
 ```
