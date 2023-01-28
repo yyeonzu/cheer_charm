@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// import style.js & fonts
 import * as S from "./LoginRegister.style";
 import { NanoomSquare } from "../../css/Font";
 
+// import Images
 import idIcon from "../../assets/images/Login/idicon.png";
 import pwIcon from "../../assets/images/Login/pwicon.png";
+
+// import api
+import { requestLogin } from "../../api/user";
 
 /*
   JWT Token을 사용한 사용자 인증절차
@@ -24,21 +29,6 @@ import pwIcon from "../../assets/images/Login/pwicon.png";
   -Fake API 사용
 */
 
-// const apiTest = (url) => {
-//   return new Promise((resolve, reject) => {
-//     const response = {
-//       data: { message: 'Hello world!' },
-//       status: 200,
-//       statusText: 'OK',
-//       // headers:; config:; request:;
-//     };
-
-//     setTimeout(() => {
-//       resolve(response);
-//     }, 1000);
-//   });
-// };
-
 const LoginMenu = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -55,8 +45,9 @@ const LoginMenu = () => {
     } else if (!pw) {
       return alert("비밀번호를 입력해주세요");
     } else {
-      console.log(id, pw);
-      return alert(`아이디와 비밀번호가 전송은 되고 있답니다: ${id} ${pw}`);
+      const profile = requestLogin(id, pw);
+      console.log(profile);
+      // navigate("/");
     }
   };
 

@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+
+// import style.js & fonts
 import * as S from "./LoginRegister.style";
 import { NanoomSquare } from "../../css/Font";
 
+// import Images
 import idIcon from "../../assets/images/Login/idicon.png";
 import pwIcon from "../../assets/images/Login/pwicon.png";
 import nicknameIcon from "../../assets/images/Login/nicknameicon.png";
+
+// import api
+import { requestSignin } from "../../api/user";
 
 const RegisterMenu = () => {
   // 아이디 중복 확인 방식 어떻게 할 지 정하기 -> lower priority
@@ -30,7 +36,7 @@ const RegisterMenu = () => {
   // Submit
   const onSubmitAccount = e => {
     e.preventDefault();
-    alert("회원가입 전송");
+    requestSignin(id, pw, nickname);
   };
 
   return (
@@ -92,8 +98,8 @@ const RegisterMenu = () => {
             />
             {
               {
-                id: <S.Text>아이디 형식 제공</S.Text>,
-                pw: <S.Text>비밀번호 형식 제공</S.Text>,
+                // id: <S.Text>아이디 형식 제공</S.Text>,
+                // pw: <S.Text>비밀번호 형식 제공</S.Text>,
                 pw2: isValidPassword ? (
                   <S.Text color="green">비밀번호가 일치합니다.</S.Text>
                 ) : (
