@@ -11,6 +11,7 @@ import pwIcon from "../../assets/images/Login/pwicon.png";
 
 // import api
 import { requestLogin } from "../../api/user";
+import { requesGetUser } from "../../api/user";
 
 /*
   JWT Token을 사용한 사용자 인증절차
@@ -45,9 +46,8 @@ const LoginMenu = () => {
     } else if (!pw) {
       return alert("비밀번호를 입력해주세요");
     } else {
-      const profile = requestLogin(id, pw);
-      console.log(profile);
-      // navigate("/");
+      requestLogin(id, pw);
+      navigate("/");
     }
   };
 

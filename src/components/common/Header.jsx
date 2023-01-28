@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router";
+
+// import style.js
 import * as S from "./Header.style";
+
+// import Image
 import logo from "../../assets/images/minilogo.svg";
-import { NanoomSquare } from "../../css/Font";
 
 const Header = props => {
   const status = props.type;
-
+  const navigate = useNavigate();
   return (
     <>
       <S.Container>
@@ -13,11 +17,19 @@ const Header = props => {
           <S.LogoImage src={logo} />
         </S.LogoWrapper>
         <S.Menus>
-          {status === "logout" && <S.Text>로그인</S.Text>}
+          {status === "logout" && (
+            <S.Text
+              onClick={() => {
+                navigate("/auth/login");
+              }}
+            >
+              로그인
+            </S.Text>
+          )}
           {status === "login" && (
             <>
-              <S.Text>마이페이지</S.Text>
-              <S.Text>로그아웃</S.Text>
+              <S.Text onClick={() => navigate("/mypage")}>마이페이지</S.Text>
+              <S.Text onClick={() => alert("로그아웃!")}>로그아웃</S.Text>
             </>
           )}
         </S.Menus>
