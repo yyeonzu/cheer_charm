@@ -1,4 +1,5 @@
-import CheerService from "./services/CheerService";
+import CheerService from "./services/cheerservice";
+import { requestLogout } from "./user";
 
 export const GetAllCheer = async () => {
   try {
@@ -9,7 +10,7 @@ export const GetAllCheer = async () => {
       error.response.data.detail ==
       "이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다"
     ) {
-      Logout();
+      requestLogout();
     }
     return Promise.reject(error, "모든 응원 조회 실패");
   }
@@ -24,7 +25,7 @@ export const GetCheer = async () => {
       error.response.data.detail ==
       "이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다"
     ) {
-      Logout();
+      requestLogout();
     }
     return Promise.reject(error, "개별 응원 조회 실패");
   }
@@ -39,7 +40,7 @@ export const SendCheer = async (nickname, content) => {
       error.response.data.detail ==
       "이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다"
     ) {
-      Logout();
+      requestLogout();
     }
     return Promise.reject(error, "응원 전송 실패");
   }
