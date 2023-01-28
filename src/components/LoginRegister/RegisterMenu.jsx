@@ -10,7 +10,7 @@ import pwIcon from "../../assets/images/Login/pwicon.png";
 import nicknameIcon from "../../assets/images/Login/nicknameicon.png";
 
 // import api
-import { requestSignin } from "../../api/user";
+import { RequestSignin } from "../../api/user";
 import { useNavigate } from "react-router-dom";
 
 const RegisterMenu = () => {
@@ -39,7 +39,7 @@ const RegisterMenu = () => {
   // Submit
   const onSubmitAccount = e => {
     e.preventDefault();
-    requestSignin(id, pw, nickname);
+    RequestSignin(id, pw, nickname);
     alert("회원가입 성공!");
     navigate("/login");
   };
