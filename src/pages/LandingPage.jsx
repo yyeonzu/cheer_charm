@@ -7,7 +7,7 @@ const LandingPage = () => {
   // 토큰값으로 login 상태 받아오기
 
   const isLogin = !!localStorage.getItem("token");
-  console.log(isLogin);
+
   return (
     <>
       {isLogin ? <LoginLanding /> : <LogoutLanding />}

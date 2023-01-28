@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../common/Header";
 import { Container } from "../SendCheer/SendCheer.style";
 import { Space } from "./Logout.style";
 import NoCharm from "./NoCharm";
 import YesCharm from "./YesCharm";
-
-import { requesGetUser } from "../../api/user";
-import { token } from "../../api/http";
 
 const LoginLanding = () => {
   // 부적 리스트를 api를 통해 받아오고, (아마 useEffect/useMemo 사용)
@@ -21,7 +18,7 @@ const LoginLanding = () => {
       <Container>
         <Header type="login" />
         {isCharm === "" ? <NoCharm /> : <YesCharm />}
-        <Space onClick={() => requesGetUser({ token })}>dddd</Space>
+        <Space></Space>
       </Container>
     </>
   );

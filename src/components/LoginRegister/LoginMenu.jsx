@@ -47,7 +47,7 @@ const LoginMenu = () => {
       return alert("비밀번호를 입력해주세요");
     } else {
       requestLogin(id, pw);
-      // navigate("/");
+      navigate("/");
     }
   };
 
