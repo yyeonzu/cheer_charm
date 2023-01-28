@@ -12,6 +12,7 @@ import { NanoomSquare, Galmuri } from "../../css/Font.js";
 import { AiOutlineLink } from "react-icons/ai";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { testlist } from "../../_mock/data2";
+import Background from "../common/Background";
 
 import charm1 from "../../assets/images/Charm/mousecharm.png";
 import charm2 from "../../assets/images/Charm/rabbitcharm.png";
@@ -58,7 +59,7 @@ const CheeringCharm = () => {
   });
   return (
     <>
-      <S.Container>
+      <Background>
         <S.LogoContainer>
           <S.LogoImg src={logo} />
         </S.LogoContainer>
@@ -119,7 +120,7 @@ const CheeringCharm = () => {
           </div>
         </S.ButtonContainer>
         <Footer />
-      </S.Container>
+      </Background>
       {modal ? <NotYetModal isModalOpen={modal} /> : null}
     </>
   );
