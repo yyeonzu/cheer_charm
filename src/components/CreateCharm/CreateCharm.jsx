@@ -1,13 +1,16 @@
 import React, { useCallback, useState, useEffect } from "react";
 import * as S from "./CreateCharm.style";
+import Background from "../common/Background";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import blueback from "../../assets/images/bluegradient.svg";
 import CustomizedSlider from "./Range.tsx";
 import ImageSelect from "./ImageSelect";
 import { PinkButton } from "../common/PinkButton.style";
+import { CreateCharmA } from "../../api/charm";
 
 const CreateCharm = () => {
+  const token_id = localStorage.getItem("id");
   const nickname = "이름이름";
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -60,11 +63,16 @@ const CreateCharm = () => {
         img,
       );
       console.log("POST & navigate");
+      CreateCharmA(title, token_id, content, num, img)
+        .then(res => {
+          console.log(res);
+        })
+        .catch();
     }
   };
   return (
     <>
-      <S.Container>
+      <Background>
         <Header type="login" />
         <S.TopRect>
           <S.TopImg src={blueback} />
@@ -113,7 +121,7 @@ const CreateCharm = () => {
           부적 생성 시작!
         </PinkButton>
         <Footer />
-      </S.Container>
+      </Background>
     </>
   );
 };

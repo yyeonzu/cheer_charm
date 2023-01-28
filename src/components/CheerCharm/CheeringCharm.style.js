@@ -6,9 +6,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(${background});
-  background-repeat: repeat-y;
-  background-size: 100%;
+  background: linear-gradient(
+    107.73deg,
+    #eae7ec 0%,
+    #efebe6 15.24%,
+    #e7eae7 30.97%,
+    #d4dfe6 47.18%,
+    #d9dfe9 62.42%,
+    #e1e0e9 78.15%,
+    #f0ece9 94.37%
+  );
   position: relative;
 `;
 

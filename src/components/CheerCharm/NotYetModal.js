@@ -2,19 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const NotYetModal = isModalOpen => {
-  useEffect(() => {
-    document.body.style.cssText = `
-          position: fixed;
-          top: -${window.scrollY}px;
-          overflow-y: scroll;
-          width: 100%;`;
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = "";
-      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-    };
-  }, []);
-
   const [opacity, setOpacity] = useState(100);
   useEffect(() => {
     softRemover();
@@ -56,7 +43,7 @@ export default React.memo(NotYetModal);
 const Container = styled.div`
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: auto;
   z-index: 100;
   top: 0;
   left: 0;
@@ -68,14 +55,14 @@ const Container = styled.div`
 `;
 
 const Background = styled.div`
-  position: fixed;
+  position: absolute;
   width: 100%;
-  height: 100%;
+  height: auto;
 `;
 
 const ModalBlock = styled.div`
   position: absolute;
-  bottom: 10%;
+  bottom: 20%;
   background-color: #969696;
   width: 85%;
   height: 75px;
