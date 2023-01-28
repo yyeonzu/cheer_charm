@@ -6,9 +6,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(${background});
-  background-repeat: repeat-y;
-  background-size: 100%;
   position: relative;
 `;
 
