@@ -3,7 +3,7 @@ import { http } from "./http";
 
 const serverURL = "https://server.cheercharms.link";
 
-// 회원가입 요청
+// 회원가입
 export const requestSignin = async (id, pw, nickname) => {
   const userData = {
     username: id,
@@ -11,19 +11,14 @@ export const requestSignin = async (id, pw, nickname) => {
     nickname: nickname,
   };
   try {
-    const response = await axios.post(
-      `${serverURL}/accounts/signup/`,
-      userData,
-    );
-
-    console.log(response);
-    console.log("회원가입 성공");
+    await axios.post(`${serverURL}/accounts/signup/`, userData);
   } catch (error) {
     console.log(error.response);
+    alert("회원가입에 실패했습니다. 다시 요청해주세요.");
   }
 };
 
-// 로그인 요청
+// 로그인
 export const requestLogin = async (id, pw) => {
   const userData = {
     username: id,
@@ -33,15 +28,14 @@ export const requestLogin = async (id, pw) => {
   try {
     const response = await axios.post(
       `${serverURL}/accounts/login/`,
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(userData),
       userData,
+      { withCredentials: true },
     );
+    // 로컬 스토리지에 토큰 저장
     localStorage.setItem("token", response.data.data.access_token);
-    localStorage.setItem("nickname", response.data.data.nickname);
-    localStorage.setItem("id", response.data.data.id);
+    //localStorage.setItem("nickname", response.data.data.nickname);
+    //localStorage.setItem("id", response.data.data.id);
+    console.log(response);
   } catch (error) {
     console.log(error);
   }
@@ -50,7 +44,8 @@ export const requestLogin = async (id, pw) => {
 // 로그아웃 요청
 export const requestLogout = async () => {
   window.localStorage.removeItem("token");
-  window.location.href = `${serverURL}/accounts/login/`;
+  // window.location.href = `${serverURL}/accounts/login/`;
+  window.location.href = "/auth/login";
 };
 
 // export const requesGetUser = async () => {

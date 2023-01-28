@@ -7,6 +7,9 @@ import * as S from "./Header.style";
 // import Image
 import logo from "../../assets/images/minilogo.svg";
 
+// import api
+import { requestLogout } from "../../api/user";
+
 const Header = props => {
   const status = props.type;
   const navigate = useNavigate();
@@ -29,7 +32,7 @@ const Header = props => {
           {status === "login" && (
             <>
               <S.Text onClick={() => navigate("/mypage")}>마이페이지</S.Text>
-              <S.Text onClick={() => alert("로그아웃!")}>로그아웃</S.Text>
+              <S.Text onClick={() => requestLogout()}>로그아웃</S.Text>
             </>
           )}
         </S.Menus>
