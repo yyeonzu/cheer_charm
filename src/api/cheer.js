@@ -1,9 +1,9 @@
 import CheerService from "./services/cheerservice";
 import { requestLogout } from "./user";
 
-export const GetAllCheer = async () => {
+export const GetAllCheer = async id => {
   try {
-    const response = await CheerService.getAllCheer();
+    const response = await CheerService.getAllCheer(id);
     return Promise.resolve(response);
   } catch (error) {
     if (
@@ -16,9 +16,9 @@ export const GetAllCheer = async () => {
   }
 };
 
-export const GetCheer = async () => {
+export const GetCheer = async cId => {
   try {
-    const response = await CheerService.getCheer();
+    const response = await CheerService.getCheer(cId);
     return Promise.resolve(response);
   } catch (error) {
     if (
@@ -31,9 +31,9 @@ export const GetCheer = async () => {
   }
 };
 
-export const SendCheer = async (nickname, content) => {
+export const SendCheer = async (id, nickname, content) => {
   try {
-    const response = await CheerService.sendCheer(nickname, content);
+    const response = await CheerService.sendCheer(id, nickname, content);
     return Promise.resolve(response);
   } catch (error) {
     if (

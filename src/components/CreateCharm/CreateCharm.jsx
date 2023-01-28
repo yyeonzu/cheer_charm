@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./CreateCharm.style";
 import Background from "../common/Background";
 import Header from "../common/Header";
@@ -10,6 +11,7 @@ import { PinkButton } from "../common/PinkButton.style";
 import { CreateCharmA } from "../../api/charm";
 
 const CreateCharm = () => {
+  const nav = useNavigate();
   const token_id = localStorage.getItem("id");
   const nickname = "이름이름";
   const [title, setTitle] = useState("");
@@ -62,10 +64,10 @@ const CreateCharm = () => {
         ", 사진: ",
         img,
       );
-      console.log("POST & navigate");
       CreateCharmA(title, token_id, content, num, img)
         .then(res => {
           console.log(res);
+          nav("/");
         })
         .catch();
     }

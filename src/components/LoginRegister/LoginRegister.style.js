@@ -1,14 +1,10 @@
 import styled from "styled-components";
-import background from "../../assets/images/background.png";
 
 export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(${background});
-  background-repeat: repeat-y;
-  background-size: 100%;
   padding-bottom: 100px;
 `;
 
