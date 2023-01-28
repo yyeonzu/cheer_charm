@@ -10,6 +10,7 @@ import { NanoomSquare, Galmuri } from "../../css/Font.js";
 import { MdOutlineFlipCameraAndroid } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
 import { testlist } from "../../_mock/data2";
+import Background from "../common/Background";
 
 import charm1 from "../../assets/images/Charm/charm1.svg";
 import charm2 from "../../assets/images/Charm/charm2.svg";
@@ -45,7 +46,7 @@ const CheeredCharm = () => {
   });
   return (
     <>
-      <S.Container>
+      <Background>
         <S.LogoContainer>
           <S.LogoImg src={logo} />
         </S.LogoContainer>
@@ -92,7 +93,7 @@ const CheeredCharm = () => {
           </div>
         </S.CheerContainer>
         <Footer />
-      </S.Container>
+      </Background>
     </>
   );
 };

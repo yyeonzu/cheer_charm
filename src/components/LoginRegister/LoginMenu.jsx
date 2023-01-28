@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 // import style.js & fonts
 import * as S from "./LoginRegister.style";
 import { NanoomSquare } from "../../css/Font";
+import Background from "../common/Background";
 
 // import Images
 import idIcon from "../../assets/images/Login/idicon.png";
@@ -53,7 +54,7 @@ const LoginMenu = () => {
 
   return (
     <>
-      <S.Container>
+      <Background>
         <S.TitleBar>
           <NanoomSquare weight="800" size="20px" color="#3A3A3A">
             나만의 부적을 만들어볼까요?
@@ -103,7 +104,7 @@ const LoginMenu = () => {
           </NanoomSquare>
           <S.Hr></S.Hr>
         </S.Line>
-      </S.Container>
+      </Background>
     </>
   );
 };
