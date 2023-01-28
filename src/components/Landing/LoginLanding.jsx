@@ -11,7 +11,6 @@ const LoginLanding = () => {
   // 위의 내용은 각각 NoCharm, YesCharm이라는 별도의 컴포넌트를 데려오는 방식으로 적용
 
   const [isCharm, setIsCharm] = useState("");
-
   return (
     <>
       {/* 컨테이너 다른 폴더에서 데리고 왔음 까먹지 말기 */}
