@@ -83,7 +83,7 @@ const MyList = ({ isDone }) => {
               arr.map(ch => {
                 return (
                   <>
-                    <S.CharmRect>
+                    <S.CharmRect key={ch.id}>
                       {isEditing ? (
                         <S.TrashRect onClick={() => preDelete(ch.id)}>
                           <BiTrash fill="#155726" size="18" />
