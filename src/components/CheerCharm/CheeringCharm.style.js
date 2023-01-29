@@ -46,6 +46,7 @@ export const BubbleContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-bottom: 20px;
   div {
     position: absolute;
     font-family: "Galmuri";
@@ -139,10 +140,11 @@ export const ButtonContainer = styled.div`
   height: 85px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin: 20px 0 40px 0;
   .inner {
     position: relative;
     width: 48%;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;

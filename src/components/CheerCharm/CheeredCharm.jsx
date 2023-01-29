@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import * as S from "./CheeredCharm.style";
 import CompleteCharm from "../CompletedCharm/CompleteCharm";
 import Footer from "../common/Footer";
@@ -9,8 +10,9 @@ import speechbubble from "../../assets/images/CharmPage/speechbubble.svg";
 import { NanoomSquare, Galmuri } from "../../css/Font.js";
 import { MdOutlineFlipCameraAndroid } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
-import { testlist } from "../../_mock/data2";
 import Background from "../common/Background";
+import { GetCharm } from "../../api/charm";
+import { RequestGetUser } from "../../api/user";
 
 import charm1 from "../../assets/images/Charm/charm1.svg";
 import charm2 from "../../assets/images/Charm/charm2.svg";
@@ -20,6 +22,9 @@ import charm5 from "../../assets/images/Charm/charm5.svg";
 import charm6 from "../../assets/images/Charm/charm6.svg";
 
 const CheeredCharm = () => {
+  const isLogin = !!localStorage.getItem("token");
+  const params = useParams();
+  const nav = useNavigate();
   const src = [charm1, charm2, charm3, charm4, charm5, charm6];
   const nickname = "이이름이름";
   const currentURL = window.location.href;
@@ -33,17 +38,28 @@ const CheeredCharm = () => {
 
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
-  const [done, setDone] = useState(0);
+  const [cur, setCur] = useState(0);
+  const [user, setUser] = useState("");
+  const [currnetUser, setCurrentUser] = useState("");
   useEffect(() => {
-    for (let i = 0; i < testlist.length; i++) {
-      if (testlist[i].id === cId) {
-        setCurrentCharm(testlist[i]);
-      }
+    GetCharm(params.charm_id)
+      .then(res => {
+        setCurrentCharm(res.data.data);
+        setTotal(res.data.data.total_cheer);
+        setCur(res.data.data.cur_cheer);
+        setUser(res.data.data.user);
+      })
+      .catch();
+    RequestGetUser().then(res => setCurrentUser(res.data.data.id));
+  }, []);
+  const [isMine, setIsMine] = useState(false);
+  useEffect(() => {
+    if (user === currnetUser) {
+      setIsMine(true);
+    } else {
+      setIsMine(false);
     }
-    setTotal(currentCharm.total_cheer);
-    setDone(currentCharm.cur_cheer);
-    console.log(currentCharm, total, done);
-  });
+  }, [user]);
   return (
     <>
       <Background>
@@ -72,7 +88,7 @@ const CheeredCharm = () => {
             </NanoomSquare>
           </S.ButtonRect>
         </div>
-        <ProgressBar total={total} done={done} isRight={false} />
+        <ProgressBar total={total} done={cur} isRight={false} />
         <S.BubbleContainer>
           <S.BubbleImg src={speechbubble} />
           <div className="text1">친구들의 응원을 모아 부적 생성 완료!</div>
@@ -84,7 +100,7 @@ const CheeredCharm = () => {
             <S.CheerTitleBlue className="name">{nickname}</S.CheerTitleBlue>
             <S.CheerTitle>님에게 도착한</S.CheerTitle>
             <div className="one">
-              <S.CheerTitleBlue>{done}</S.CheerTitleBlue>
+              <S.CheerTitleBlue>{cur}</S.CheerTitleBlue>
               <S.CheerTitle>개의 응원</S.CheerTitle>
             </div>
           </div>
