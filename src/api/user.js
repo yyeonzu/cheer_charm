@@ -39,11 +39,19 @@ export const Refresh = async error => {
   if (
     error.response.data.detail === "Given token not valid for any token type"
   ) {
-    const response = await http.post(`/accounts/token/refresh/`, {
-      refresh: refresh,
-    });
-    localStorage.setItem("token", response.data.access);
-    window.location.reload();
+    try {
+      const response = await http.post(`/accounts/token/refresh/`, {
+        refresh: refresh,
+      });
+      localStorage.setItem("token", response.data.access);
+      window.location.reload();
+    } catch (error) {
+      // test를 아직 못해봄
+      alert("세션 만료. 다시 로그인해주세요.");
+      localStorage.removeItem("token");
+      localStorage.removeItem("refresh_token");
+      window.location.href("/auth/login");
+    }
   }
 };
 
