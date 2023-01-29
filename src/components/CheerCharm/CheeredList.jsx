@@ -37,15 +37,13 @@ const CheeredList = ({ modal, setModal, cId }) => {
           {cheerlist &&
             cheerlist.map((ch, idx) => {
               return (
-                <>
-                  <S.CheerRect
-                    key={ch.nickname + idx}
-                    onClick={() => preOpen(ch.nickname, ch.content)}
-                  >
-                    <S.CheerImg src={src[idx % 3]} />
-                    <S.CheerText>{ch.nickname}</S.CheerText>
-                  </S.CheerRect>
-                </>
+                <S.CheerRect
+                  key={ch.id}
+                  onClick={() => preOpen(ch.nickname, ch.content)}
+                >
+                  <S.CheerImg src={src[idx % 3]} />
+                  <S.CheerText>{ch.nickname}</S.CheerText>
+                </S.CheerRect>
               );
             })}
         </>
