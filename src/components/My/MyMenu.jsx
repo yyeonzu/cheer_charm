@@ -7,6 +7,7 @@ import Footer from "../common/Footer";
 import { Galmuri } from "../../css/Font";
 import { MdEdit } from "react-icons/md";
 import MyList from "./MyList";
+import Background from "../common/Background";
 
 const MyMenu = () => {
   const nickname = "이름이름";
@@ -14,7 +15,7 @@ const MyMenu = () => {
   const [isDoneTab, setIsDoneTab] = useState(true);
   return (
     <>
-      <S.Container>
+      <Background>
         <H.Container>
           <H.LogoWrapper>
             <H.LogoImage src={logo} />
@@ -64,7 +65,7 @@ const MyMenu = () => {
           {isDoneTab ? <MyList isDone={true} /> : <MyList isDone={false} />}
         </S.MyBox>
         <Footer />
-      </S.Container>
+      </Background>
     </>
   );
 };

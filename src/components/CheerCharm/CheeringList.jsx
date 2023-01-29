@@ -36,7 +36,10 @@ const CheeringList = ({ setModal, cId }) => {
             {cheerlist &&
               cheerlist.map((ch, idx) => {
                 return (
-                  <S.CheerRect onClick={() => setModal(true)}>
+                  <S.CheerRect
+                    key={ch.nickname + idx}
+                    onClick={() => setModal(true)}
+                  >
                     <S.CheerImg src={src[idx % 3]} />
                     <S.CheerText>{ch.nickname}</S.CheerText>
                   </S.CheerRect>

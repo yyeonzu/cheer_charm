@@ -11,7 +11,7 @@ const LogoutLanding = () => {
   const navigate = useNavigate();
 
   const onClick = () => {
-    navigate("/login");
+    navigate("/auth/login");
   };
 
   return (

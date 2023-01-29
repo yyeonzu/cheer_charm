@@ -4,6 +4,7 @@ import Modal from "../common/Modal";
 import { Galmuri } from "../../css/Font";
 import { BiTrash } from "react-icons/bi";
 import { testlist } from "../../_mock/data2";
+import { GetAllCharm, GetCreatingCharm, DeleteCharm } from "../../api/charm";
 
 import charm1 from "../../assets/images/Charm/mousecharm.png";
 import charm2 from "../../assets/images/Charm/rabbitcharm.png";
@@ -13,23 +14,42 @@ import charm5 from "../../assets/images/Charm/monkeycharm.png";
 import charm6 from "../../assets/images/Charm/birdcharm.png";
 
 const MyList = ({ isDone }) => {
-  let doneArr = [];
-  let yetArr = [];
-  for (let i = 0; i < testlist.length; i++) {
-    if (testlist[i].cur_cheer === testlist[i].total_cheer) {
-      doneArr.push(testlist[i]);
-    } else {
-      yetArr.push(testlist[i]);
-    }
-  }
   const [arr, setArr] = useState([]);
+  const [allArr, setAllArr] = useState([]);
+  const [creatingArr, setCreatingArr] = useState([]);
   useEffect(() => {
+    setArr([]);
+    setAllArr([]);
+    setCreatingArr([]);
+    GetAllCharm()
+      .then(res => {
+        console.log(res.data);
+        setAllArr(res.data.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    GetCreatingCharm()
+      .then(res => {
+        console.log(res.data);
+        setCreatingArr(res.data.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+  useEffect(() => {
+    setArr([]);
     if (isDone) {
-      setArr(doneArr);
+      for (let i = 0; i < allArr.length; i++) {
+        if (allArr[i].cur_cheer === allArr[i].total_cheer) {
+          arr.push(allArr[i]);
+        }
+      }
     } else {
-      setArr(yetArr);
+      setArr(creatingArr);
     }
-    console.log(doneArr, yetArr);
+    console.log("arr: ", arr);
   }, [isDone]);
 
   const findById = fId => {
@@ -60,10 +80,15 @@ const MyList = ({ isDone }) => {
     openModal();
   };
   const onButton = () => {
-    console.log(findById(deleteId), " 삭제하기");
+    DeleteCharm(deleteId)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     closeModal();
   };
-  console.log(isModalOpen);
   return (
     <>
       {arr.length === 0 ? (
@@ -82,19 +107,17 @@ const MyList = ({ isDone }) => {
             {arr &&
               arr.map(ch => {
                 return (
-                  <>
-                    <S.CharmRect>
-                      {isEditing ? (
-                        <S.TrashRect onClick={() => preDelete(ch.id)}>
-                          <BiTrash fill="#155726" size="18" />
-                        </S.TrashRect>
-                      ) : null}
-                      <S.CharmImg src={imgSrc(ch.image)} />
-                      <Galmuri weight="400" size="12px" color="#4A4A4A">
-                        {ch.title}
-                      </Galmuri>
-                    </S.CharmRect>
-                  </>
+                  <S.CharmRect key={ch.id + ch.title}>
+                    {isEditing ? (
+                      <S.TrashRect onClick={() => preDelete(ch.id)}>
+                        <BiTrash fill="#155726" size="18" />
+                      </S.TrashRect>
+                    ) : null}
+                    <S.CharmImg src={imgSrc(ch.image)} />
+                    <Galmuri weight="400" size="12px" color="#4A4A4A">
+                      {ch.title}
+                    </Galmuri>
+                  </S.CharmRect>
                 );
               })}
           </S.FlexContainer>

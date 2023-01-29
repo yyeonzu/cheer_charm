@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
+
+// import style.js & fonts
 import * as S from "./LoginRegister.style";
 import { NanoomSquare } from "../../css/Font";
+import Background from "../common/Background";
 
+// import Images
 import idIcon from "../../assets/images/Login/idicon.png";
 import pwIcon from "../../assets/images/Login/pwicon.png";
 import nicknameIcon from "../../assets/images/Login/nicknameicon.png";
 
+// import api
+import { RequestSignin } from "../../api/user";
+import { useNavigate } from "react-router-dom";
+
 const RegisterMenu = () => {
   // 아이디 중복 확인 방식 어떻게 할 지 정하기 -> lower priority
   // 이외 모든 기능 퍼블리싱 완료
+
+  const navigate = useNavigate();
 
   // Input 상태 관리
   const [id, setId] = useState("");
@@ -30,12 +40,14 @@ const RegisterMenu = () => {
   // Submit
   const onSubmitAccount = e => {
     e.preventDefault();
-    alert("회원가입 전송");
+    RequestSignin(id, pw, nickname);
+    alert("회원가입 성공!");
+    navigate("/login");
   };
 
   return (
     <>
-      <S.Container>
+      <Background>
         <S.TitleBar>
           <NanoomSquare weight="800" size="20px" color="#3A3A3A">
             나만의 부적을 만들어볼까요?
@@ -92,8 +104,8 @@ const RegisterMenu = () => {
             />
             {
               {
-                id: <S.Text>아이디 형식 제공</S.Text>,
-                pw: <S.Text>비밀번호 형식 제공</S.Text>,
+                // id: <S.Text>아이디 형식 제공</S.Text>,
+                // pw: <S.Text>비밀번호 형식 제공</S.Text>,
                 pw2: isValidPassword ? (
                   <S.Text color="green">비밀번호가 일치합니다.</S.Text>
                 ) : (
@@ -118,7 +130,7 @@ const RegisterMenu = () => {
             </S.Button>
           </S.InputForm>
         </S.LoginBox>
-      </S.Container>
+      </Background>
     </>
   );
 };

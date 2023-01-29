@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../common/Header";
 import { Container } from "../SendCheer/SendCheer.style";
 import { Space } from "./Logout.style";

@@ -1,14 +1,20 @@
 import React, { useCallback, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./CreateCharm.style";
+import Background from "../common/Background";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import blueback from "../../assets/images/bluegradient.svg";
 import CustomizedSlider from "./Range.tsx";
 import ImageSelect from "./ImageSelect";
 import { PinkButton } from "../common/PinkButton.style";
+import { CreateCharmA } from "../../api/charm";
+import { RequestGetUser } from "../../api/user";
 
 const CreateCharm = () => {
+  const nav = useNavigate();
   const nickname = "이름이름";
+  const [user, setUser] = useState();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [num, setNum] = useState(5);
@@ -18,6 +24,7 @@ const CreateCharm = () => {
     setContent("");
     setNum(5);
     setImg("");
+    RequestGetUser().then(res => setUser(res.data.data.id));
   }, []);
   const onChangeTitleInput = useCallback(
     e => {
@@ -59,12 +66,17 @@ const CreateCharm = () => {
         ", 사진: ",
         img,
       );
-      console.log("POST & navigate");
+      CreateCharmA(title, user, content, num, img)
+        .then(res => {
+          console.log(res);
+          nav("/");
+        })
+        .catch();
     }
   };
   return (
     <>
-      <S.Container>
+      <Background>
         <Header type="login" />
         <S.TopRect>
           <S.TopImg src={blueback} />
@@ -113,7 +125,7 @@ const CreateCharm = () => {
           부적 생성 시작!
         </PinkButton>
         <Footer />
-      </S.Container>
+      </Background>
     </>
   );
 };

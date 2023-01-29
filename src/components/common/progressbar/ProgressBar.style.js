@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import clovericon from "../../../assets/images/Landing/clover3.svg";
 
 export const Container = styled.div`
   width: 100%;
@@ -65,11 +64,13 @@ export const Progress = styled.div`
   } */
 `;
 
-export const CloverIcon = styled.img.attrs({ src: `${clovericon}` })`
+export const CloverIcon = styled.div`
   position: absolute;
   left: ${props => -7 + props.percent}%;
   z-index: 5;
-  transform: rotate(-33.39deg);
+  width: 19px;
+  height: 19px;
+  //transform: rotate(-33.39deg);
 
   // 애니메이션 관련, 미완
 

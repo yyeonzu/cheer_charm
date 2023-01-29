@@ -4,6 +4,7 @@ import Header from "../common/Header";
 import { Galmuri } from "../../css/Font";
 import { PinkButton } from "../common/PinkButton.style";
 import Modal from "../common/Modal";
+import Background from "../common/Background";
 
 // login 상태에서도 sendcheer를 할 수 있는지 질문!! -> Header 상태를 토큰값에 따라 변경해야함
 
@@ -74,7 +75,7 @@ const SendCheerMenu = () => {
   };
   return (
     <>
-      <S.Container>
+      <Background>
         <Header type="logout"></Header>
         <S.TitleText direction={nickname.length > 4 ? "column" : "row"}>
           <Galmuri size="18px">{nickname} 님</Galmuri>
@@ -117,7 +118,7 @@ const SendCheerMenu = () => {
         >
           응원 보내기
         </PinkButton>
-      </S.Container>
+      </Background>
       {isModal ? (
         <Modal
           isModalOpen={true}
