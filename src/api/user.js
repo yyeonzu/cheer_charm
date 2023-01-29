@@ -27,9 +27,7 @@ export const RequestLogin = async (id, pw) => {
     // 로컬 스토리지에 토큰 저장
     localStorage.setItem("token", response.data.data.access_token);
     localStorage.setItem("refresh_token", response.data.data.refresh_token);
-    //localStorage.setItem("nickname", response.data.data.nickname);
-    //localStorage.setItem("id", response.data.data.id);
-    console.log(response);
+    window.location.reload();
   } catch (error) {
     Refresh(error);
   }
@@ -38,15 +36,14 @@ export const RequestLogin = async (id, pw) => {
 // 토큰 만료 & Refresh token (GET)
 export const Refresh = async error => {
   const refresh = localStorage.getItem("refresh_token");
-  console.log("refresh", refresh);
   if (
     error.response.data.detail === "Given token not valid for any token type"
   ) {
     const response = await http.post(`/accounts/token/refresh/`, {
       refresh: refresh,
     });
-    console.log(response);
     localStorage.setItem("token", response.data.access);
+    window.location.reload();
   }
 };
 
@@ -61,12 +58,7 @@ export const RequestLogout = async () => {
 export const RequestGetUser = async () => {
   try {
     const response = await http.get(`/accounts/login/`);
-    console.log(response);
-    // 추후에 어떻게 변경될지...
-    localStorage.setItem("nickname", response.data.data.nickname);
-    localStorage.setItem("id", response.data.data.id);
-    const nickname = response.data.data.nickname;
-    const id = response.data.data.id;
+    return Promise.resolve(response);
   } catch (error) {
     console.log(error);
     Refresh(error);

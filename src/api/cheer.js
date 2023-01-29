@@ -1,12 +1,14 @@
 import CheerService from "./services/cheerservice";
+import { Refresh } from "./user";
 
 // 전체 응원 조회 (GET)
 export const GetAllCheer = async id => {
   try {
     const response = await CheerService.getAllCheer(id);
-    console.log(response);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error);
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
@@ -14,9 +16,10 @@ export const GetAllCheer = async id => {
 export const GetCheer = async cid => {
   try {
     const response = await CheerService.getCheer(cid);
-    console.log(response);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error);
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
@@ -24,8 +27,9 @@ export const GetCheer = async cid => {
 export const SendCheer = async (id, nickname, content) => {
   try {
     const response = await CheerService.sendCheer(id, nickname, content);
-    console.log(response);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error);
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
