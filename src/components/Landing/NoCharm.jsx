@@ -9,7 +9,7 @@ const NoCharm = () => {
   const navigate = useNavigate();
 
   const onClick = () => {
-    alert("생성으로 이동");
+    navigate("/create-charm");
   };
 
   return (
