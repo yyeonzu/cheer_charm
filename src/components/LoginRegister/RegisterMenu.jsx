@@ -11,11 +11,14 @@ import pwIcon from "../../assets/images/Login/pwicon.png";
 import nicknameIcon from "../../assets/images/Login/nicknameicon.png";
 
 // import api
-import { requestSignin } from "../../api/user";
+import { RequestSignin } from "../../api/user";
+import { useNavigate } from "react-router-dom";
 
 const RegisterMenu = () => {
   // 아이디 중복 확인 방식 어떻게 할 지 정하기 -> lower priority
   // 이외 모든 기능 퍼블리싱 완료
+
+  const navigate = useNavigate();
 
   // Input 상태 관리
   const [id, setId] = useState("");
@@ -37,7 +40,9 @@ const RegisterMenu = () => {
   // Submit
   const onSubmitAccount = e => {
     e.preventDefault();
-    requestSignin(id, pw, nickname);
+    RequestSignin(id, pw, nickname);
+    alert("회원가입 성공!");
+    navigate("/login");
   };
 
   return (
