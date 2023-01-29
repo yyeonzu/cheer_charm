@@ -3,7 +3,8 @@ import { Galmuri, NanoomSquare } from "../../css/Font";
 import * as S from "./YesCharm.style";
 import ProgressBar from "../common/progressbar/ProgressBar";
 import { PinkButton } from "../common/PinkButton.style";
-import { charmlist } from "../../_mock/data";
+import { GetCreatingCharm } from "../../api/charm";
+import { RequestGetUser } from "../../api/user";
 
 /*
   미완성
@@ -21,13 +22,16 @@ import { charmlist } from "../../_mock/data";
 
 const YesCharm = () => {
   // 닉네임
-  const nickname = "연주";
+  const [nickname, setNickname] = useState("");
 
   // 닉네임 길이 (title bar overflow 관련)
-  const namelength = nickname.length;
+  const [namelength, setNicknamelength] = useState(0);
 
-  // 전체 부적 개수
-  const numberOfCheer = charmlist.length;
+  // 전체 부적 리스트 (생성중인)
+  const [charmlists, setCharmlists] = useState();
+
+  // 전체 부적 개수 (생성중인)
+  const [numberOfCheer, setNumberOfCheer] = useState();
 
   // 현재 보여지는 부적 id
   const [charmId, setCharmId] = useState(1);
@@ -39,13 +43,23 @@ const YesCharm = () => {
   // 부적 링크
   const [hlink, setHlink] = useState("");
 
-  // 완성된 부적인지에 대한 값
-  const [unfinished, setUnfinished] = useState("");
-
   useEffect(() => {
-    setDone(charmlist[charmId - 1].cur_cheer);
-    setTotal(charmlist[charmId - 1].total_cheer);
-    setUnfinished(!charmlist[charmId - 1].is_created);
+    GetCreatingCharm().then(response => {
+      setCharmlists(response.data.data);
+      setNumberOfCheer(response.data.data.length);
+    });
+    RequestGetUser().then(response => {
+      setNickname(response.data.data.username);
+      setNicknamelength(response.data.data.username.length);
+    });
+  }, []);
+
+  // 현재 보여지는 부적에 따른 progress bar 변경
+  useEffect(() => {
+    // early return
+    if (!charmlists) return;
+    setDone(charmlists[charmId - 1].cur_cheer);
+    setTotal(charmlists[charmId - 1].total_cheer);
   }, [charmId]);
 
   // 이미지 슬라이더를 위한 Ref
@@ -113,8 +127,8 @@ const YesCharm = () => {
         <S.Transparent>
           <S.SlideWrapper>
             <S.ImageWrapper ref={slideRef}>
-              {charmlist &&
-                charmlist.map(data => (
+              {charmlists &&
+                charmlists.map(data => (
                   <S.Div key={data.id}>{data.image}</S.Div>
                 ))}
             </S.ImageWrapper>
