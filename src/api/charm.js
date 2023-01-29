@@ -1,51 +1,40 @@
 import CharmService from "./services/charmservice";
-import { requestLogout } from "./user";
+import { Refresh, requestLogout } from "./user";
 
+// 전체 부적 조회 (GET)
 export const GetAllCharm = async () => {
   try {
     const response = await CharmService.getAllCharm();
     return Promise.resolve(response);
   } catch (error) {
-    if (
-      error.response.data.detail ==
-      "이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다"
-    ) {
-      requestLogout();
-    }
-    return Promise.reject(error, "모든 부적 조회 실패");
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
+// 현재 진행중인 부적 조회 (GET)
 export const GetCreatingCharm = async () => {
   try {
     const response = await CharmService.getCreatingCharm();
     return Promise.resolve(response);
   } catch (error) {
-    if (
-      error.response.data.detail ==
-      "이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다"
-    ) {
-      requestLogout();
-    }
-    return Promise.reject(error, "모든 생성 중인 부적 조회 실패");
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
+// 개별 부적 조회(GET)
 export const GetCharm = async id => {
   try {
     const response = await CharmService.getCharm(id);
     return Promise.resolve(response);
   } catch (error) {
-    if (
-      error.response.data.detail ==
-      "이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다"
-    ) {
-      requestLogout();
-    }
-    return Promise.reject(error, "개별 부적 조회 실패");
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
+// 부적 생성 (POST)
 export const CreateCharmA = async (
   title,
   user,
@@ -63,27 +52,18 @@ export const CreateCharmA = async (
     );
     return Promise.resolve(response);
   } catch (error) {
-    if (
-      error.response.data.detail ==
-      "이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다"
-    ) {
-      requestLogout();
-    }
-    return Promise.reject(error, "부적 생성 실패");
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
+// 부적 삭제 (DELETE)
 export const DeleteCharm = async id => {
   try {
     const response = await CharmService.deleteCharm(id);
     return Promise.resolve(response);
   } catch (error) {
-    if (
-      error.response.data.detail ==
-      "이 토큰은 모든 타입의 토큰에 대해 유효하지 않습니다"
-    ) {
-      requestLogout();
-    }
-    return Promise.reject(error, "부적 삭제 실패");
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
