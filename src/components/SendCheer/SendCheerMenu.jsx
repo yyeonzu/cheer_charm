@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import * as S from "./SendCheer.style";
 import Header from "../common/Header";
 import { Galmuri } from "../../css/Font";
@@ -9,9 +10,9 @@ import { GetCharm } from "../../api/charm";
 import { RequestGetUser } from "../../api/user";
 import { SendCheer } from "../../api/cheer";
 
-// login 상태에서도 sendcheer를 할 수 있는지 질문!! -> Header 상태를 토큰값에 따라 변경해야함
-
 const SendCheerMenu = () => {
+  // Header 상태를 토큰값에 따라 변경
+  const isLogin = !!localStorage.getItem("token");
   // 닉네임 (받는사람)
   const [nickname, setNickname] = useState("");
   // 부적 제목
@@ -19,8 +20,9 @@ const SendCheerMenu = () => {
   // 부적 내용
   const [content, setContent] = useState("");
 
-  // 응원 전송하고자 하는 id -> params 통해서 받아오면 될 것 같은데!
-  const id = 5;
+  // 응원 전송하고자 하는 id -> params
+  const params = useParams();
+  const id = params.charm_id;
 
   // 응원 내용과 응원하는 사람의 닉네임
   const [cheerContent, setCheerContent] = useState("");
@@ -84,7 +86,7 @@ const SendCheerMenu = () => {
     } else {
       setModalId(0);
       // 이곳에서 request 예정
-      SendCheer(id, nickname, content).then(response => console.log(response));
+      SendCheer(id, cheerName, content).then(response => console.log(response));
       setCheerContent("");
       setCheerName("");
     }
@@ -93,7 +95,7 @@ const SendCheerMenu = () => {
   return (
     <>
       <Background>
-        <Header type="logout"></Header>
+        <Header type={isLogin ? "login" : "logout"} />
         <S.TitleText direction={nickname.length > 4 ? "column" : "row"}>
           <Galmuri size="18px">{nickname} 님</Galmuri>
           <S.exNameText>
