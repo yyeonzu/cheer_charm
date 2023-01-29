@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import * as S from "./CheeredCharm.style";
 import CompleteCharm from "../CompletedCharm/CompleteCharm";
+import Header from "../common/Header";
 import Footer from "../common/Footer";
 import ProgressBar from "../common/progressbar/ProgressBar";
 import CheeredList from "./CheeredList";
@@ -12,7 +13,6 @@ import { MdOutlineFlipCameraAndroid } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
 import Background from "../common/Background";
 import { GetCharm } from "../../api/charm";
-import { RequestGetUser } from "../../api/user";
 
 import charm1 from "../../assets/images/Charm/charm1.svg";
 import charm2 from "../../assets/images/Charm/charm2.svg";
@@ -24,45 +24,29 @@ import charm6 from "../../assets/images/Charm/charm6.svg";
 const CheeredCharm = () => {
   const isLogin = !!localStorage.getItem("token");
   const params = useParams();
-  const nav = useNavigate();
   const src = [charm1, charm2, charm3, charm4, charm5, charm6];
   const nickname = "이이름이름";
-  const currentURL = window.location.href;
   const [modal, setModal] = useState(false);
 
   // 부적 이미지 애니메이션 관리
   const [charmclick, setCharmclick] = useState(true);
 
-  const [cId, setCId] = useState(3);
-  // 부적 개별 조회 api
-
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
   const [cur, setCur] = useState(0);
-  const [user, setUser] = useState("");
-  const [currnetUser, setCurrentUser] = useState("");
   useEffect(() => {
     GetCharm(params.charm_id)
       .then(res => {
         setCurrentCharm(res.data.data);
         setTotal(res.data.data.total_cheer);
         setCur(res.data.data.cur_cheer);
-        setUser(res.data.data.user);
       })
       .catch();
-    RequestGetUser().then(res => setCurrentUser(res.data.data.id));
   }, []);
-  const [isMine, setIsMine] = useState(false);
-  useEffect(() => {
-    if (user === currnetUser) {
-      setIsMine(true);
-    } else {
-      setIsMine(false);
-    }
-  }, [user]);
   return (
     <>
       <Background>
+        <Header type={isLogin ? "login" : "logout"} />
         <S.LogoContainer>
           <S.LogoImg src={logo} />
         </S.LogoContainer>
@@ -107,7 +91,7 @@ const CheeredCharm = () => {
         </S.CheerTitleContainer>
         <S.CheerContainer>
           <div className="inner">
-            <CheeredList cId={cId} modal={modal} setModal={setModal} />
+            <CheeredList modal={modal} setModal={setModal} />
           </div>
         </S.CheerContainer>
         <Footer />

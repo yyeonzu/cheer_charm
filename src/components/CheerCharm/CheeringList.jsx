@@ -1,27 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import * as S from "./CheerList.style";
 import cheer1 from "../../assets/images/CharmPage/cheer1.svg";
 import cheer2 from "../../assets/images/CharmPage/cheer2.svg";
 import cheer3 from "../../assets/images/CharmPage/cheer3.svg";
-import { testlist } from "../../_mock/data2";
 import { Galmuri } from "../../css/Font";
+import { GetAllCheer } from "../../api/cheer";
 
-const CheeringList = ({ setModal, cId }) => {
+const CheeringList = fadeOut => {
+  const params = useParams();
   const src = [cheer1, cheer2, cheer3];
-  // 부적 개별 조회 api
-
-  const [currentCharm, setCurrentCharm] = useState({});
   const [cheerlist, setCheerlist] = useState([]);
   useEffect(() => {
-    for (let i = 0; i < testlist.length; i++) {
-      if (testlist[i].id === cId) {
-        setCurrentCharm(testlist[i]);
-      }
-    }
-    console.log(currentCharm);
-    setCheerlist(currentCharm.cheer);
-    console.log(cheerlist);
-  });
+    GetAllCheer(params.charm_id)
+      .then(res => {
+        setCheerlist(res.data.data);
+      })
+      .catch();
+  }, []);
   return (
     <>
       {cheerlist &&
@@ -38,7 +34,7 @@ const CheeringList = ({ setModal, cId }) => {
                 return (
                   <S.CheerRect
                     key={ch.nickname + idx}
-                    onClick={() => setModal(true)}
+                    onClick={() => fadeOut()}
                   >
                     <S.CheerImg src={src[idx % 3]} />
                     <S.CheerText>{ch.nickname}</S.CheerText>

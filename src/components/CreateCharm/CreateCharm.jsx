@@ -66,10 +66,7 @@ const CreateCharm = () => {
         img,
       );
       CreateCharmA(title, user, content, num, img)
-        .then(res => {
-          console.log(res.data);
-          nav(`/${user}/charm_id=${res.data.data.id}`);
-        })
+        .then(res => nav(`/${user}/charm_id/${res.data.data.id}`))
         .catch();
     }
   };
