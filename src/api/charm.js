@@ -1,13 +1,14 @@
 import CharmService from "./services/charmservice";
-import { requestLogout } from "./user";
+import { Refresh, requestLogout } from "./user";
 
 // 전체 부적 조회 (GET)
 export const GetAllCharm = async () => {
   try {
     const response = await CharmService.getAllCharm();
-    console.log(response);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(MediaError);
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
@@ -15,9 +16,10 @@ export const GetAllCharm = async () => {
 export const GetCreatingCharm = async () => {
   try {
     const response = await CharmService.getCreatingCharm();
-    console.log(response);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error);
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
@@ -25,9 +27,10 @@ export const GetCreatingCharm = async () => {
 export const GetCharm = async id => {
   try {
     const response = await CharmService.getCharm(id);
-    console.log(response);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error);
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
@@ -47,9 +50,10 @@ export const CreateCharmA = async (
       total_cheer,
       image,
     );
-    console.log(response);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error);
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
 
@@ -57,8 +61,9 @@ export const CreateCharmA = async (
 export const DeleteCharm = async id => {
   try {
     const response = await CharmService.deleteCharm(id);
-    console.log(response);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error);
+    Refresh(error);
+    return Promise.reject(error);
   }
 };
