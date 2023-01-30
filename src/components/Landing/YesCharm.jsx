@@ -16,7 +16,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 
 const YesCharm = () => {
   // baseURL (배포 이후 변경 예정)
-  const BASE_URL = "http://localhost:3000";
+  const BASE_URL = "https://cheer-charm.vercel.app";
   const navigate = useNavigate();
   // id value
   const [id, setId] = useState();
@@ -33,7 +33,7 @@ const YesCharm = () => {
   const [numberOfCheer, setNumberOfCheer] = useState();
 
   // 현재 보여지는 부적 id
-  const [charmId, setCharmId] = useState(1);
+  const [charmId, setCharmId] = useState(0);
 
   // 응원 개수
   const [done, setDone] = useState(0);
@@ -46,6 +46,7 @@ const YesCharm = () => {
     GetCreatingCharm().then(response => {
       setCharmlists(response.data.data);
       setNumberOfCheer(response.data.data.length);
+      setCharmId(1);
     });
     RequestGetUser().then(response => {
       if (response) {
@@ -54,18 +55,15 @@ const YesCharm = () => {
         setNicknamelength(response.data.data.username.length);
       }
     });
-    // console.log("렌더링");
   }, []);
 
   // 현재 보여지는 부적에 따른 progress bar 변경
   useEffect(() => {
-    // console.log("렌더링2");
     // early return
     if (!charmlists) return;
     setDone(charmlists[charmId - 1].cur_cheer);
     setTotal(charmlists[charmId - 1].total_cheer);
     setHlink(charmlists[charmId - 1].id);
-    // console.log("렌더링3");
   }, [charmId]);
 
   // 이미지 슬라이더를 위한 Ref
@@ -137,6 +135,7 @@ const YesCharm = () => {
                 charmlists.map(data => (
                   <S.Img
                     key={data.id}
+                    onClick={() => navigate(`/${id}/charm_id/${hlink}`)}
                     src={require(`../../assets/images/Charm/${data.image.toLowerCase()}charm.png`)}
                   ></S.Img>
                 ))}
