@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./SendCheer.style";
 import Header from "../common/Header";
 import { Galmuri } from "../../css/Font";
@@ -11,6 +11,8 @@ import { SendCheer } from "../../api/cheer";
 import Footer from "../common/Footer";
 
 const SendCheerMenu = () => {
+  const navigate = useNavigate();
+
   // Header 상태를 토큰값에 따라 변경
   const isLogin = !!localStorage.getItem("token");
   // 닉네임 (받는사람)
@@ -23,6 +25,7 @@ const SendCheerMenu = () => {
   // 응원 전송하고자 하는 id -> params
   const params = useParams();
   const id = params.charm_id;
+  const user = params.user;
 
   // 응원 내용과 응원하는 사람의 닉네임
   const [cheerContent, setCheerContent] = useState("");
@@ -48,9 +51,8 @@ const SendCheerMenu = () => {
 
   const textlist = {
     0: {
-      maintext:
-        "응원을 남겼습니다! 다짐과 목표를 적고 응원을 담은 나만의 부적을 만들러 가볼까요?",
-      buttontext: "나도 응원받기",
+      maintext: `응원을 남겼습니다!\n${nickname}님의 부적을 구경하러 가볼까요?`,
+      buttontext: "확인",
     },
     1: {
       maintext: "응원 내용을 입력해주세요.",
@@ -69,8 +71,7 @@ const SendCheerMenu = () => {
   // 모달 속 버튼 클릭했을 때 (정상 제출 || 부족한 경우 )
   const onClickModalButton = () => {
     if (modalId === 0) {
-      alert("부적생성 or 랜딩으로 이동");
-      // 무조건 랜딩으로 이동! -> 다만 로그인 상태는 그대로 유지
+      navigate(`/${user}/charm_id/${id}`);
     }
     setIsModal(false);
   };
