@@ -27,7 +27,7 @@ const LogoutLanding = () => {
           </Galmuri>
         </S.TitleBar>
         <S.ImageWrapper>
-          <img src={landingimage} />
+          <S.Image src={landingimage} />
         </S.ImageWrapper>
         <PinkButton width="173px" height="50px" radius="30px" onClick={onClick}>
           부적 만들러 가기
