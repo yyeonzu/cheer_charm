@@ -56,7 +56,7 @@ const YesCharm = () => {
     });
     RequestGetUser().then(response => {
       setId(response.data.data.id);
-      setNickname(response.data.data.username);
+      setNickname(response.data.data.nickname);
       setNicknamelength(response.data.data.username.length);
     });
     // console.log("렌더링");
