@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import * as S from './LoginRegister.style';
-import { NanoomSquare } from '../../css/Font';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import idIcon from '../../assets/images/Login/idicon.svg';
-import pwIcon from '../../assets/images/Login/pwicon.svg';
-import axios from 'axios';
+// import style.js & fonts
+import * as S from "./LoginRegister.style";
+import { NanoomSquare } from "../../css/Font";
+import Background from "../common/Background";
+
+// import Images
+import idIcon from "../../assets/images/Login/idicon.png";
+import pwIcon from "../../assets/images/Login/pwicon.png";
+import kakao from "../../assets/images/Login/kakao1.png";
+
+// import api
+import { RequestLogin } from "../../api/user";
+import { RequestGetUser } from "../../api/user";
 
 /*
   JWT Token을 사용한 사용자 인증절차
@@ -23,86 +32,99 @@ import axios from 'axios';
   -Fake API 사용
 */
 
-// const apiTest = (url) => {
-//   return new Promise((resolve, reject) => {
-//     const response = {
-//       data: { message: 'Hello world!' },
-//       status: 200,
-//       statusText: 'OK',
-//       // headers:; config:; request:;
-//     };
-
-//     setTimeout(() => {
-//       resolve(response);
-//     }, 1000);
-//   });
-// };
-
 const LoginMenu = () => {
-  const [id, setId] = useState('');
-  const [pw, setPw] = useState('');
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
 
-  // 로그인 기능 함수 (미완)
-  const Login = (e) => {
+  const REST_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
+  const REDIRECT_URI = "http://localhost:3000/oauth";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+  // 회원가입 navigate
+  const navigate = useNavigate();
+
+  // 로그인 기능 함수
+  const Login = e => {
     e.preventDefault();
 
     if (!id) {
-      return alert('아이디를 입력해주세요');
+      return alert("아이디를 입력해주세요");
     } else if (!pw) {
-      return alert('비밀번호를 입력해주세요');
+      return alert("비밀번호를 입력해주세요");
     } else {
-      return alert('아이디와 비밀번호가 전송은 되고 있답니다');
+      RequestLogin(id, pw)
+        .then(response => {
+          console.log(response);
+          // navigate("/");
+        })
+        .catch(error => {
+          console.log("콘 솔", error);
+        });
+      // if (token) navigate("/");
+      // else {
+      //   alert("다시 로그인");
+      // }
     }
   };
 
   return (
     <>
-      <S.Container>
+      <Background>
         <S.TitleBar>
-          <NanoomSquare weight='800' size='20px' color='#3A3A3A'>
+          <NanoomSquare weight="800" size="20px" color="#3A3A3A">
             나만의 부적을 만들어볼까요?
           </NanoomSquare>
         </S.TitleBar>
-        <S.LoginBox height='380px'>
-          <NanoomSquare weight='800' size='18px' margin='30px'>
+        <S.LoginBox height="380px">
+          <NanoomSquare weight="800" size="18px" margin="30px">
             로그인
           </NanoomSquare>
           <S.InputForm onSubmit={Login}>
             <S.Input
-              type='text'
-              placeholder='아이디'
-              fontFamily='NanoomSquare'
+              type="text"
+              placeholder="아이디"
+              fontFamily="NanoomSquare"
               icon={idIcon}
               value={id}
-              onChange={(e) => {
+              onChange={e => {
                 setId(e.target.value);
               }}
             />
             <S.Input
-              type='password'
-              placeholder='비밀번호'
+              type="password"
+              fontFamily="Pretendard"
+              fontWeight="300"
+              placeholder="비밀번호"
               icon={pwIcon}
               value={pw}
-              onChange={(e) => {
+              onChange={e => {
                 setPw(e.target.value);
               }}
             />
 
-            <S.Button type='submit'>
-              <NanoomSquare weight='800' size='15px' color='#545454'>
+            <S.Button type="submit">
+              <NanoomSquare weight="800" size="15px" color="#545454">
                 로그인
               </NanoomSquare>
             </S.Button>
           </S.InputForm>
+          <S.ButtonforRegister onClick={() => navigate("/auth/join")}>
+            회원가입
+          </S.ButtonforRegister>
         </S.LoginBox>
         <S.Line>
           <S.Hr></S.Hr>
-          <NanoomSquare weight='800' size='10px' color='#FFFFFF'>
+          <NanoomSquare weight="800" size="10px" color="#FFFFFF">
             OR
           </NanoomSquare>
           <S.Hr></S.Hr>
         </S.Line>
-      </S.Container>
+        <br />
+        <a href={KAKAO_AUTH_URL}>
+          <img src={kakao} />
+        </a>
+        <br />
+      </Background>
     </>
   );
 };

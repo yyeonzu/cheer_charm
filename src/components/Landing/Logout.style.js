@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import landingimage from '../../assets/images/landinglogo.svg';
+import styled from "styled-components";
 
 export const TitleBar = styled.div`
   display: flex;
@@ -13,3 +12,10 @@ export const ImageWrapper = styled.div`
   margin-top: 60px;
   margin-bottom: 60px;
 `;
+
+export const Space = styled.div`
+  width: 100%;
+  height: 60px;
+`;
+
+export const Image = styled.img``;

@@ -1,0 +1,19 @@
+{
+  "name": "응원이 부적해",
+  "short_name": "CheerCharm",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-256x256.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
