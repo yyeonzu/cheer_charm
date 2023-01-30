@@ -16,6 +16,7 @@ export const RequestSignin = async (id, pw, nickname) => {
   }
 };
 
+// 카카오 로그인 (GET)
 export const KaKaoLogin = async code => {
   try {
     const response = await http.get(
@@ -23,8 +24,11 @@ export const KaKaoLogin = async code => {
     );
     const ACCESS_TOKEN = response.data.data.access_token;
     const REFRESH_TOKEN = response.data.data.refresh_token;
+
     localStorage.setItem("token", ACCESS_TOKEN);
     localStorage.setItem("refresh_token", REFRESH_TOKEN);
+
+    // window.location.replace("/");
     return Promise.resolve(response);
   } catch (error) {
     return Promise.reject(error);
