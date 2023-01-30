@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as S from "./SendCheer.style";
-import Header from "../common/Header";
+import Header from "../common/header/Header";
 import { Galmuri } from "../../css/Font";
 import { PinkButton } from "../common/PinkButton.style";
-import Modal from "../common/Modal";
+import Modal from "../common/modal/Modal";
 import Background from "../common/Background";
 import { GetCharm } from "../../api/charm";
 import { RequestGetUser } from "../../api/user";

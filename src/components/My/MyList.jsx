@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./My.style";
-import Modal from "../common/Modal";
+import Modal from "../common/modal/Modal";
 import { Galmuri } from "../../css/Font";
 import { BiTrash } from "react-icons/bi";
 import {

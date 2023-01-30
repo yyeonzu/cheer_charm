@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import * as S from "./CheerList.style";
-import cheer1 from "../../assets/images/CharmPage/cheer1.svg";
-import cheer2 from "../../assets/images/CharmPage/cheer2.svg";
-import cheer3 from "../../assets/images/CharmPage/cheer3.svg";
-import CheerModal from "./CheerModal";
-import PopUp from "./PopUp";
-import { RequestGetUser } from "../../api/user";
-import { GetAllCheer } from "../../api/cheer";
+import * as S from "../CheerList.style";
+import cheer1 from "../../../assets/images/CharmPage/cheer1.svg";
+import cheer2 from "../../../assets/images/CharmPage/cheer2.svg";
+import cheer3 from "../../../assets/images/CharmPage/cheer3.svg";
+import CheerModal from "../CheerModal";
+import { RequestGetUser } from "../../../api/user";
+import { GetAllCheer } from "../../../api/cheer";
 
 const CheeredList = ({ modal, setModal, popup, setPopup }) => {
   const params = useParams();

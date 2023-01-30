@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./Logout.style";
-import Header from "../common/Header";
+import Header from "../common/header/Header";
 import Background from "../common/Background";
 import { Galmuri } from "../../css/Font";
 import { PinkButton } from "../common/PinkButton.style";

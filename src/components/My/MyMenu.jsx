@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import * as S from "./My.style";
-import * as H from "../common/Header.style";
+import * as H from "../common/header/Header.style";
 import logo from "../../assets/images/minilogo.svg";
 import { RequestGetUser } from "../../api/user";
 import { RequestLogout } from "../../api/user";
-import Footer from "../common/Footer";
+import Footer from "../common/footer/Footer";
 import { Galmuri } from "../../css/Font";
 import MyList from "./MyList";
 import Background from "../common/Background";
