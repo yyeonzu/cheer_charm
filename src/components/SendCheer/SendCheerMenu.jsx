@@ -8,7 +8,8 @@ import Modal from "../common/modal/Modal";
 import Background from "../common/Background";
 import { GetCharm } from "../../api/charm";
 import { SendCheer } from "../../api/cheer";
-import Footer from "../common/Footer";
+import Footer from "../common/footer/Footer";
+import { RequestGetUser } from "../../api/user";
 
 const SendCheerMenu = () => {
   const navigate = useNavigate();
