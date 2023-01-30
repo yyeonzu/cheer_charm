@@ -25,7 +25,6 @@ const CheeredCharm = () => {
   const isLogin = !!localStorage.getItem("token");
   const params = useParams();
   const src = [charm1, charm2, charm3, charm4, charm5, charm6];
-  const nickname = "이이름이름";
   const [modal, setModal] = useState(false);
 
   // 부적 이미지 애니메이션 관리
@@ -81,7 +80,9 @@ const CheeredCharm = () => {
         <S.CheerTitleContainer>
           <S.CheerTitleBlue className="icon">💌</S.CheerTitleBlue>
           <div className="inner">
-            <S.CheerTitleBlue className="name">{nickname}</S.CheerTitleBlue>
+            <S.CheerTitleBlue className="name">
+              {currentCharm.nickname}
+            </S.CheerTitleBlue>
             <S.CheerTitle>님에게 도착한</S.CheerTitle>
             <div className="one">
               <S.CheerTitleBlue>{cur}</S.CheerTitleBlue>

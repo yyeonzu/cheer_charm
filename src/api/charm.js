@@ -23,6 +23,17 @@ export const GetCreatingCharm = async () => {
   }
 };
 
+// 완성된 부적 조회 (GET)
+export const GetCreatedCharm = async () => {
+  try {
+    const response = await CharmService.getCreatedCharm();
+    return Promise.resolve(response);
+  } catch (error) {
+    Refresh(error);
+    return Promise.reject(error);
+  }
+};
+
 // 개별 부적 조회(GET)
 export const GetCharm = async id => {
   try {
