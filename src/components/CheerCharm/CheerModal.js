@@ -27,7 +27,7 @@ const CheerModal = props => {
               <Text1>From. {from}</Text1>
               <div className="inner">
                 <Text2>
-                  {text.includes("\n") ? (
+                  {text && text.includes("\n") ? (
                     <>
                       {text.split("\n").map(line => {
                         return (

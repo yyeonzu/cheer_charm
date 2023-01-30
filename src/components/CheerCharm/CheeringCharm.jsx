@@ -37,15 +37,8 @@ const CheeringCharm = () => {
     else if (string === "MONKEY") return charm5;
     else if (string === "BIRD") return charm6;
   };
-  const nickname = "일이삼사오육칠팔";
   const currentURL = window.location.href;
   const [modal, setModal] = useState(false);
-  const fadeOut = () => {
-    setModal(true);
-    setTimeout(() => {
-      setModal(false);
-    }, 3000);
-  };
 
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
@@ -108,22 +101,6 @@ const CheeringCharm = () => {
             </S.LinkRect>
           </CopyToClipboard>
         ) : null}
-        <S.CheerTitleContainer>
-          <S.CheerTitleBlue className="icon">💌</S.CheerTitleBlue>
-          <div className="inner">
-            <S.CheerTitleBlue className="name">{nickname}</S.CheerTitleBlue>
-            <S.CheerTitle>님에게 도착한</S.CheerTitle>
-            <div className="one">
-              <S.CheerTitleBlue>{cur}</S.CheerTitleBlue>
-              <S.CheerTitle>개의 응원</S.CheerTitle>
-            </div>
-          </div>
-        </S.CheerTitleContainer>
-        <S.CheerContainer>
-          <div className="inner">
-            <CheeringList fadeOut={fadeOut} />
-          </div>
-        </S.CheerContainer>
         {isMine ? null : (
           <S.ButtonContainer>
             <div
@@ -144,6 +121,24 @@ const CheeringCharm = () => {
             </div>
           </S.ButtonContainer>
         )}
+        <S.CheerTitleContainer>
+          <S.CheerTitleBlue className="icon">💌</S.CheerTitleBlue>
+          <div className="inner">
+            <S.CheerTitleBlue className="name">
+              {currentCharm.nickname}
+            </S.CheerTitleBlue>
+            <S.CheerTitle>님에게 도착한</S.CheerTitle>
+            <div className="one">
+              <S.CheerTitleBlue>{cur}</S.CheerTitleBlue>
+              <S.CheerTitle>개의 응원</S.CheerTitle>
+            </div>
+          </div>
+        </S.CheerTitleContainer>
+        <S.CheerContainer>
+          <div className="inner">
+            <CheeringList modal={modal} setModal={setModal} />
+          </div>
+        </S.CheerContainer>
         <Footer />
       </Background>
       {modal ? (

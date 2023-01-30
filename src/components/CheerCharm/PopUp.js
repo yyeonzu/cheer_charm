@@ -11,11 +11,11 @@ const PopUp = ({ isModalOpen, text1, text2 }) => {
     if (opacity > 96) {
       setTimeout(() => {
         setOpacity(opacity - 1);
-      }, 500);
+      }, 400);
     } else if (opacity > 5)
       setTimeout(() => {
         setOpacity(opacity - 8);
-      }, 80);
+      }, 50);
   }
   return (
     <>
@@ -100,7 +100,7 @@ const Text = styled.div`
   font-stretch: condensed;
   font-size: 13px;
   width: 90%;
-  height: 15px;
+  height: auto;
   text-align: center;
   margin: 3px 0;
   word-break: keep-all;

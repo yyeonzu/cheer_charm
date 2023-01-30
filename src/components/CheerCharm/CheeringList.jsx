@@ -7,7 +7,7 @@ import cheer3 from "../../assets/images/CharmPage/cheer3.svg";
 import { Galmuri } from "../../css/Font";
 import { GetAllCheer } from "../../api/cheer";
 
-const CheeringList = fadeOut => {
+const CheeringList = ({ modal, setModal }) => {
   const params = useParams();
   const src = [cheer1, cheer2, cheer3];
   const [cheerlist, setCheerlist] = useState([]);
@@ -18,6 +18,12 @@ const CheeringList = fadeOut => {
       })
       .catch();
   }, []);
+  const fadeOut = () => {
+    setModal(true);
+    setTimeout(() => {
+      setModal(false);
+    }, 2500);
+  };
   return (
     <>
       {cheerlist &&
