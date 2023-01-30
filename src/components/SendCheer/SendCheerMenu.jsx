@@ -31,11 +31,12 @@ const SendCheerMenu = () => {
   // 변경하지 않는 값 불러오기
   useEffect(() => {
     // 여기서 request를 할 수가 없지... GetCharm에서 할 수 있도록 해야함.
-    RequestGetUser().then(response => setNickname(response.data.data.nickname));
+    // RequestGetUser().then(response => setNickname(response.data.data.nickname));
     GetCharm(id).then(response => {
       console.log(response);
       setContent(response.data.data.content);
       setTitle(response.data.data.title);
+      setNickname(response.data.data.nickname);
     });
   }, []);
 
