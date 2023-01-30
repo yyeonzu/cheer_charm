@@ -98,7 +98,7 @@ const SendCheerMenu = () => {
   return (
     <>
       <Background>
-        <Header type={isLogin ? "login" : "logout"} />
+        <Header />
         <S.TitleText direction={nickname.length > 4 ? "column" : "row"}>
           <Galmuri size="18px">{nickname} 님</Galmuri>
           <S.exNameText>

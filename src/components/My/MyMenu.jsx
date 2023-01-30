@@ -9,6 +9,7 @@ import Footer from "../common/Footer";
 import { Galmuri } from "../../css/Font";
 import MyList from "./MyList";
 import Background from "../common/Background";
+import Header from "../common/Header";
 
 const MyMenu = () => {
   const nav = useNavigate();
@@ -22,11 +23,7 @@ const MyMenu = () => {
   return (
     <>
       <Background>
-        <H.Container>
-          <H.LogoWrapper onClick={() => nav("/")}>
-            <H.LogoImage src={logo} />
-          </H.LogoWrapper>
-        </H.Container>
+        <Header />
         <S.Top>
           <div style={{ display: "flex" }}>
             <Galmuri weight="600" size="16px" color="#4A4A4A">
