@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as S from "./CheeringCharm.style";
+import Header from "../common/Header";
 import Footer from "../common/Footer";
 import ProgressBar from "../common/progressbar/ProgressBar";
 import CheeringList from "./CheeringList";
-import NotYetModal from "./NotYetModal";
+import PopUp from "./PopUp";
 import logo from "../../assets/images/CharmPage/charmpagelogo.svg";
 import speechbubble from "../../assets/images/CharmPage/speechbubble.svg";
 import button1 from "../../assets/images/CharmPage/button1.svg";
@@ -46,36 +47,32 @@ const CheeringCharm = () => {
     }, 3000);
   };
 
-  const [cId, setCId] = useState(1);
-  // 부적 개별 조회 api
-
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
   const [cur, setCur] = useState(0);
-  const [user, setUser] = useState("");
-  const [currnetUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
   useEffect(() => {
     GetCharm(params.charm_id)
       .then(res => {
         setCurrentCharm(res.data.data);
         setTotal(res.data.data.total_cheer);
         setCur(res.data.data.cur_cheer);
-        setUser(res.data.data.user);
       })
       .catch();
     RequestGetUser().then(res => setCurrentUser(res.data.data.id));
   }, []);
   const [isMine, setIsMine] = useState(false);
   useEffect(() => {
-    if (user === currnetUser) {
+    if (params.user === currentUser) {
       setIsMine(true);
     } else {
       setIsMine(false);
     }
-  }, [user]);
+  }, [currentUser]);
   return (
     <>
       <Background>
+        <Header type={isLogin ? "login" : "logout"} />
         <S.LogoContainer>
           <S.LogoImg src={logo} />
         </S.LogoContainer>
@@ -124,7 +121,7 @@ const CheeringCharm = () => {
         </S.CheerTitleContainer>
         <S.CheerContainer>
           <div className="inner">
-            <CheeringList setModal={fadeOut} cId={cId} />
+            <CheeringList fadeOut={fadeOut} />
           </div>
         </S.CheerContainer>
         {isMine ? null : (
@@ -149,7 +146,13 @@ const CheeringCharm = () => {
         )}
         <Footer />
       </Background>
-      {modal ? <NotYetModal isModalOpen={modal} /> : null}
+      {modal ? (
+        <PopUp
+          isModalOpen={modal}
+          text1="🥺🪄⏱️"
+          text2="부적이 완성되어야 친구들의 응원 메시지를 확인할 수 있어요!"
+        />
+      ) : null}
     </>
   );
 };
