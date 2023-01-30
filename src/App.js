@@ -14,6 +14,8 @@ import CreateCharmPage from "./pages/CreateCharmPage";
 import SendCheerPage from "./pages/SendCheerPage";
 // 부적 공유 페이지
 import CharmPage from "./pages/CharmPage";
+// 카카오 redirect 페이지
+import OAuthkakao from "./components/LoginRegister/OAuthkakao";
 
 function App() {
   return (
@@ -42,6 +44,9 @@ function App() {
             element={<CharmPage />}
           />
           {/* 부적 결과 페이지 */}
+
+          {/* 카카오 소셜 로그인 관련 페이지 */}
+          <Route exact path="/oauth" element={<OAuthkakao />} />
         </Routes>
       </BrowserRouter>
     </>
