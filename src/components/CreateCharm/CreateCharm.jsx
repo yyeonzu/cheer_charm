@@ -13,8 +13,8 @@ import { RequestGetUser } from "../../api/user";
 
 const CreateCharm = () => {
   const nav = useNavigate();
-  const nickname = "이름이름";
   const [user, setUser] = useState();
+  const [nickname, setNickname] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [num, setNum] = useState(5);
@@ -24,7 +24,10 @@ const CreateCharm = () => {
     setContent("");
     setNum(5);
     setImg("");
-    RequestGetUser().then(res => setUser(res.data.data.id));
+    RequestGetUser().then(res => {
+      setUser(res.data.data.id);
+      setNickname(res.data.data.nickname);
+    });
   }, []);
   const onChangeTitleInput = useCallback(
     e => {

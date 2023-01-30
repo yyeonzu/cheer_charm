@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import * as S from "./My.style";
 import * as H from "../common/Header.style";
 import logo from "../../assets/images/minilogo.svg";
-import Header from "../common/Header";
+import { RequestGetUser } from "../../api/user";
+import { RequestLogout } from "../../api/user";
 import Footer from "../common/Footer";
 import { Galmuri } from "../../css/Font";
-import { MdEdit } from "react-icons/md";
 import MyList from "./MyList";
 import Background from "../common/Background";
 
 const MyMenu = () => {
-  const nickname = "이름이름";
-  // 닉네임 수정 api 없으면 수정 아이콘 삭제
+  const nav = useNavigate();
+  const [nickname, setNickname] = useState("");
   const [isDoneTab, setIsDoneTab] = useState(true);
+  useEffect(() => {
+    RequestGetUser().then(res => {
+      setNickname(res.data.data.nickname);
+    });
+  }, []);
   return (
     <>
       <Background>
         <H.Container>
-          <H.LogoWrapper>
+          <H.LogoWrapper onClick={() => nav("/")}>
             <H.LogoImage src={logo} />
           </H.LogoWrapper>
         </H.Container>
@@ -31,9 +37,7 @@ const MyMenu = () => {
             weight="400"
             size="12px"
             margin="4px 0 0 0"
-            onClick={() => {
-              console.log("로그아웃 성공");
-            }}
+            onClick={() => RequestLogout()}
           >
             로그아웃
           </Galmuri>
