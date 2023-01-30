@@ -40,9 +40,19 @@ const RegisterMenu = () => {
   // Submit
   const onSubmitAccount = e => {
     e.preventDefault();
-    RequestSignin(id, pw, nickname);
-    alert("회원가입 성공!");
-    navigate("/login");
+    RequestSignin(id, pw, nickname)
+      .then(response => {
+        alert("회원가입 성공!");
+        navigate("/auth/login");
+        console.log("네비게이트");
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
+          setId("");
+          alert("이미 존재하는 아이디입니다. 다시 입력해주세요");
+          return;
+        }
+      });
   };
 
   return (

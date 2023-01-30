@@ -9,6 +9,7 @@ import Background from "../common/Background";
 // import Images
 import idIcon from "../../assets/images/Login/idicon.png";
 import pwIcon from "../../assets/images/Login/pwicon.png";
+import kakao from "../../assets/images/Login/kakao1.png";
 
 // import api
 import { RequestLogin } from "../../api/user";
@@ -35,10 +36,14 @@ const LoginMenu = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
+  const REST_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
+  const REDIRECT_URI = "http://localhost:3000/oauth";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
   // 회원가입 navigate
   const navigate = useNavigate();
 
-  // 로그인 기능 함수 (미완)
+  // 로그인 기능 함수
   const Login = e => {
     e.preventDefault();
 
@@ -47,8 +52,18 @@ const LoginMenu = () => {
     } else if (!pw) {
       return alert("비밀번호를 입력해주세요");
     } else {
-      RequestLogin(id, pw);
-      navigate("/");
+      RequestLogin(id, pw)
+        .then(response => {
+          console.log(response);
+          // navigate("/");
+        })
+        .catch(error => {
+          console.log("콘 솔", error);
+        });
+      // if (token) navigate("/");
+      // else {
+      //   alert("다시 로그인");
+      // }
     }
   };
 
@@ -104,6 +119,11 @@ const LoginMenu = () => {
           </NanoomSquare>
           <S.Hr></S.Hr>
         </S.Line>
+        <br />
+        <a href={KAKAO_AUTH_URL}>
+          <img src={kakao} />
+        </a>
+        <br />
       </Background>
     </>
   );

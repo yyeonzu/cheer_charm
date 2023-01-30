@@ -16,8 +16,8 @@ const Header = props => {
   return (
     <>
       <S.Container>
-        <S.LogoWrapper>
-          <S.LogoImage src={logo} />
+        <S.LogoWrapper onClick={() => navigate("/")}>
+          <S.LogoImage src={logo} onClick={() => navigate("/")} />
         </S.LogoWrapper>
         <S.Menus>
           {status === "logout" && (

@@ -1,22 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import * as S from "./SendCheer.style";
 import Header from "../common/Header";
 import { Galmuri } from "../../css/Font";
 import { PinkButton } from "../common/PinkButton.style";
 import Modal from "../common/Modal";
 import Background from "../common/Background";
-
-// login 상태에서도 sendcheer를 할 수 있는지 질문!! -> Header 상태를 토큰값에 따라 변경해야함
+import { GetCharm } from "../../api/charm";
+import { RequestGetUser } from "../../api/user";
+import { SendCheer } from "../../api/cheer";
 
 const SendCheerMenu = () => {
-  // 토큰값의 response를 통해 가져올 예정
-  const nickname = "연주";
-  const content =
-    "감사위원은 원장의 제청으로 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다. 모든 국민은 사생활의 비밀과 자유를 침해받지 아니한다. 누구든지 체포 또는 구속을 당한 때에는 적부의 심사를 법원에 청구할 권리를 가진다.";
+  // Header 상태를 토큰값에 따라 변경
+  const isLogin = !!localStorage.getItem("token");
+  // 닉네임 (받는사람)
+  const [nickname, setNickname] = useState("반영안됨");
+  // 부적 제목
+  const [title, setTitle] = useState("");
+  // 부적 내용
+  const [content, setContent] = useState("");
+
+  // 응원 전송하고자 하는 id -> params
+  const params = useParams();
+  const id = params.charm_id;
 
   // 응원 내용과 응원하는 사람의 닉네임
   const [cheerContent, setCheerContent] = useState("");
   const [cheerName, setCheerName] = useState("");
+
+  // 변경하지 않는 값 불러오기
+  useEffect(() => {
+    // 여기서 request를 할 수가 없지... GetCharm에서 할 수 있도록 해야함.
+    RequestGetUser().then(response => setNickname(response.data.data.nickname));
+    GetCharm(id).then(response => {
+      console.log(response);
+      setContent(response.data.data.content);
+      setTitle(response.data.data.title);
+    });
+  }, []);
 
   // 모달 관리
   const [isModal, setIsModal] = useState(false);
@@ -67,7 +88,7 @@ const SendCheerMenu = () => {
     } else {
       setModalId(0);
       // 이곳에서 request 예정
-      console.log(cheerContent, cheerName);
+      SendCheer(id, cheerName, content).then(response => console.log(response));
       setCheerContent("");
       setCheerName("");
     }
@@ -76,7 +97,7 @@ const SendCheerMenu = () => {
   return (
     <>
       <Background>
-        <Header type="logout"></Header>
+        <Header type={isLogin ? "login" : "logout"} />
         <S.TitleText direction={nickname.length > 4 ? "column" : "row"}>
           <Galmuri size="18px">{nickname} 님</Galmuri>
           <S.exNameText>
@@ -91,7 +112,7 @@ const SendCheerMenu = () => {
         </S.TitleText>
         <S.Line />
         <S.ContentTitle>
-          <Galmuri size="15px">{nickname}님이 소망하는 내용</Galmuri>
+          <Galmuri size="15px">{title}</Galmuri>
         </S.ContentTitle>
         <S.ContentText>
           <Galmuri size="12px">{content}</Galmuri>

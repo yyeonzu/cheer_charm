@@ -42,7 +42,6 @@ const CreateCharm = () => {
     setNum(value);
   };
   useEffect(() => {});
-
   const onPost = () => {
     if (title === "" && content === "" && img === "")
       alert("부적의 이름, 내용을 입력하고 이미지를 선택해주세요.");
@@ -67,10 +66,7 @@ const CreateCharm = () => {
         img,
       );
       CreateCharmA(title, user, content, num, img)
-        .then(res => {
-          console.log(res);
-          nav("/");
-        })
+        .then(res => nav(`/${user}/charm_id/${res.data.data.id}`))
         .catch();
     }
   };

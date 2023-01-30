@@ -66,11 +66,12 @@ export const Progress = styled.div`
 
 export const CloverIcon = styled.div`
   position: absolute;
+  /* border: solid 1px; */
   left: ${props => -7 + props.percent}%;
   z-index: 5;
-  width: 19px;
-  height: 19px;
-  //transform: rotate(-33.39deg);
+  width: 20px;
+  height: 23px;
+  transform: rotate(-33.39deg);
 
   // 애니메이션 관련, 미완
 

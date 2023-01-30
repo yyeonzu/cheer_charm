@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const NotYetModal = isModalOpen => {
+const PopUp = ({ isModalOpen, text1, text2 }) => {
   const [opacity, setOpacity] = useState(100);
   useEffect(() => {
     softRemover();
@@ -25,10 +25,8 @@ const NotYetModal = isModalOpen => {
           <ModalBlock opacity={`${opacity}%`}>
             <Contents>
               <div className="inner">
-                <Text>🥺🪄⏱️</Text>
-                <Text style={{ marginBottom: "5px" }}>
-                  부적이 완성되어야 친구들의 응원 메시지를 확인할 수 있어요!
-                </Text>
+                <Text>{text1}</Text>
+                <Text style={{ marginBottom: "5px" }}>{text2}</Text>
               </div>
             </Contents>
           </ModalBlock>
@@ -38,7 +36,7 @@ const NotYetModal = isModalOpen => {
   );
 };
 
-export default React.memo(NotYetModal);
+export default React.memo(PopUp);
 
 const Container = styled.div`
   position: fixed;
@@ -70,6 +68,7 @@ const ModalBlock = styled.div`
   border-radius: 18px;
   animation: modal-show 0.3s;
   opacity: ${props => props.opacity};
+  overflow: hidden;
   @keyframes modal-show {
     from {
       opacity: 0;
@@ -101,6 +100,7 @@ const Text = styled.div`
   font-stretch: condensed;
   font-size: 13px;
   width: 90%;
+  height: 15px;
   text-align: center;
   margin: 3px 0;
   word-break: keep-all;

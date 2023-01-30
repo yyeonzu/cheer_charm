@@ -13,10 +13,9 @@ import CreateCharmPage from "./pages/CreateCharmPage";
 // 응원 전송 페이지
 import SendCheerPage from "./pages/SendCheerPage";
 // 부적 공유 페이지
-import CheeringCharm from "./pages/CheeringCharmPage";
-
-// 부적 결과 페이지
-import CheeredCharm from "./pages/CheeredCharmPage";
+import CharmPage from "./pages/CharmPage";
+// 카카오 redirect 페이지
+import OAuthkakao from "./components/LoginRegister/OAuthkakao";
 
 function App() {
   return (
@@ -26,22 +25,28 @@ function App() {
           {/* 로그인 & 회원가입 */}
           <Route exact path="/auth/login" element={<LoginPage />} />
           <Route exact path="/auth/join" element={<RegisterPage />} />
-
           {/* 랜딩페이지 (메인페이지) */}
           <Route exact path="/" element={<LandingPage />} />
-
           {/* 마이페이지 */}
           <Route exact path="/mypage" element={<MyPage />} />
-
           {/* 부적 생성 페이지 */}
           <Route exact path="/create-charm" element={<CreateCharmPage />} />
-
           {/* 응원 전송 페이지 */}
-          <Route exact path="/send-cheer" element={<SendCheerPage />} />
+          <Route
+            exact
+            path="/:user/charm_id/:charm_id/send-cheer"
+            element={<SendCheerPage />}
+          />
+          {/* 부적 공유 페이지 */}
+          <Route
+            exact
+            path="/:user/charm_id/:charm_id"
+            element={<CharmPage />}
+          />
+          {/* 부적 결과 페이지 */}
 
-          {/* 부적 공유 페이지 & 부적 결과 페이지 */}
-          <Route exact path="/cheering" element={<CheeringCharm />} />
-          <Route exact path="/cheered" element={<CheeredCharm />} />
+          {/* 카카오 소셜 로그인 관련 페이지 */}
+          <Route exact path="/oauth" element={<OAuthkakao />} />
         </Routes>
       </BrowserRouter>
     </>
