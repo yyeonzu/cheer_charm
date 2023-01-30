@@ -42,7 +42,7 @@
     <td  align="center"><img src = "https://ifh.cc/g/cSVQ1D.jpg" width="60px"/></td>
     </tr>
     <tr width="100%">
-      <td  align="center"><p>부적 생성 페이지</p><p>마이페이지</p><p>부적 열람 페이지</p><p>부적 결과 페이지(응원)</p></td>
+      <td  align="center"><p>부적 생성 페이지</p><p>마이페이지</p><p>부적 링크 페이지</p><p>부적 결과 페이지(응원)</p></td>
       <td  align="center"><p>로그인/회원가입</p><p>랜딩 페이지</p><p>응원 전송 페이지</p><p>부적 결과 페이지(부적)</p></td>
    </tr>
 </table>
@@ -52,7 +52,7 @@
 <br>
 
 ### 기술 스택
-- Frontend : <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/ReduxToolkit-764ABC?style=flat-square&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/ReduxPersist-764ABC?style=flat-square&logo=Redux&logoColor=white"> <img src="https://img.shields.io/badge/styled_components-DB7093?style=flat-square&logo=styled-components&logoColor=white">
+- Frontend : <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/styled_components-DB7093?style=flat-square&logo=styled-components&logoColor=white">
 - Package Manager : <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white">
 - Code Formmater : <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=React&logoColor=white">
 - ETC : <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/> <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white"/> 
