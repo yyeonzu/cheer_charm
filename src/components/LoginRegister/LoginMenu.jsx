@@ -9,7 +9,7 @@ import Background from "../common/Background";
 // import Images
 import idIcon from "../../assets/images/Login/idicon.png";
 import pwIcon from "../../assets/images/Login/pwicon.png";
-import kakao from "../../assets/images/Login/kakao2.svg";
+import kakao from "../../assets/images/Login/kakao3.svg";
 
 // import Components
 import Footer from "../common/Footer";
@@ -103,7 +103,7 @@ const LoginMenu = () => {
         </S.Line>
         <br />
         <a href={KAKAO_AUTH_URL}>
-          <img src={kakao} />
+          <S.KakaoImage src={kakao} />
         </a>
         <br />
         <Footer />

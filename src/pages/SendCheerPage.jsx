@@ -33,12 +33,6 @@ const SendCheerPage = () => {
   }, [curCheer]);
 
   return <>{isDone ? <Alert /> : <SendCheerMenu />}</>;
-  // return (
-  //   <>
-  //     <SendCheerMenu />
-  //     <Footer />
-  //   </>
-  // );
 };
 
 export default SendCheerPage;
