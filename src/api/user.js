@@ -15,6 +15,19 @@ export const RequestSignin = async (id, pw, nickname) => {
   }
 };
 
+export const KaKaoLogin = async code => {
+  try {
+    const response = await http.get(
+      `/accounts/login/?code=${code}&redirect_uri=/oauth`,
+    );
+    console.log(response);
+    const ACCESS_TOKEN = response.data;
+    localStorage.setItem("token", ACCESS_TOKEN);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // 로그인 (POST)
 export const RequestLogin = async (id, pw) => {
   const userData = {

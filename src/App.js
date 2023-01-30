@@ -17,6 +17,7 @@ import CheeringCharm from "./pages/CheeringCharmPage";
 
 // 부적 결과 페이지
 import CheeredCharm from "./pages/CheeredCharmPage";
+import OAuthkakao from "./components/LoginRegister/OAuthkakao";
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
           {/* 부적 공유 페이지 & 부적 결과 페이지 */}
           <Route exact path="/cheering" element={<CheeringCharm />} />
           <Route exact path="/cheered" element={<CheeredCharm />} />
+          {/* 카카오 소셜 로그인 관련 페이지 */}
+          <Route exact path="/oauth" element={<OAuthkakao />} />
         </Routes>
       </BrowserRouter>
     </>
