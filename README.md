@@ -1,12 +1,13 @@
 # 응원이 부적해 front-end
 
 ## 🍀[배포 페이지](https://cheer-charm.vercel.app/)🍀
-<br>
+
+
 
 <img src="https://user-images.githubusercontent.com/102040717/215572940-661054d0-96cf-410d-9159-a803328bb25f.gif" width="600" height="618" />
 <br>
 
-### 이화여대 멋쟁이사자처럼 10기 졸업 프로젝트 사이트
+### 🦁 이화여대 멋쟁이사자처럼 10기 졸업 프로젝트 사이트 💚
 
 ### 프로젝트 소개
 - 나만의 **커스텀 부적**을 생성하고 **링크 공유*
