@@ -4,7 +4,11 @@ import * as S from "./My.style";
 import Modal from "../common/Modal";
 import { Galmuri } from "../../css/Font";
 import { BiTrash } from "react-icons/bi";
-import { GetCreatingCharm, DeleteCharm } from "../../api/charm";
+import {
+  GetCreatingCharm,
+  GetCreatedCharm,
+  DeleteCharm,
+} from "../../api/charm";
 import { RequestGetUser } from "../../api/user";
 
 import charm1 from "../../assets/images/Charm/mousecharm.png";
@@ -24,6 +28,14 @@ const MyList = ({ isDone }) => {
       .then(res => {
         console.log(res.data);
         setCreatingArr(res.data.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    GetCreatedCharm()
+      .then(res => {
+        console.log(res.data);
+        setDoneArr(res.data.data);
       })
       .catch(err => {
         console.log(err);
