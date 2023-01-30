@@ -89,7 +89,9 @@ const SendCheerMenu = () => {
     } else {
       setModalId(0);
       // 이곳에서 request 예정
-      SendCheer(id, cheerName, content).then(response => console.log(response));
+      SendCheer(id, cheerName, cheerContent).then(response =>
+        console.log(response),
+      );
       setCheerContent("");
       setCheerName("");
     }

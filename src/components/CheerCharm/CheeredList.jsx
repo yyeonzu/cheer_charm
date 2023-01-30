@@ -9,7 +9,7 @@ import PopUp from "./PopUp";
 import { RequestGetUser } from "../../api/user";
 import { GetAllCheer } from "../../api/cheer";
 
-const CheeredList = ({ modal, setModal }) => {
+const CheeredList = ({ modal, setModal, popup, setPopup }) => {
   const params = useParams();
   const src = [cheer1, cheer2, cheer3];
   const [cheerlist, setCheerlist] = useState([]);
@@ -38,12 +38,11 @@ const CheeredList = ({ modal, setModal }) => {
     setText(content);
     setModal(true);
   };
-  const [popup, setPopup] = useState(false);
   const fadeOut = () => {
     setPopup(true);
     setTimeout(() => {
       setPopup(false);
-    }, 3000);
+    }, 2500);
   };
   return (
     <>
@@ -73,13 +72,6 @@ const CheeredList = ({ modal, setModal }) => {
           closer={() => setModal(false)}
           from={from}
           text={text}
-        />
-      ) : null}
-      {popup ? (
-        <PopUp
-          isModalOpen={popup}
-          text1="🤫🔒🚫"
-          text2="도착한 응원은 부적을 만든 사람만 열어볼 수 있어요!"
         />
       ) : null}
     </>
