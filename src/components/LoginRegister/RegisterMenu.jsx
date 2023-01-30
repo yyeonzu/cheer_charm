@@ -140,6 +140,13 @@ const RegisterMenu = () => {
             </S.Button>
           </S.InputForm>
         </S.LoginBox>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </Background>
     </>
   );
