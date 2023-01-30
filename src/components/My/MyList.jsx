@@ -24,31 +24,27 @@ const MyList = ({ isDone }) => {
   const [creatingArr, setCreatingArr] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
   const getArrays = () => {
-    GetCreatingCharm()
-      .then(res => {
-        console.log(res.data);
-        setCreatingArr(res.data.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    GetCreatedCharm()
-      .then(res => {
-        console.log(res.data);
-        setDoneArr(res.data.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    GetCreatingCharm().then(res => {
+      setCreatingArr(res.data.data);
+    });
+    GetCreatedCharm().then(res => {
+      setDoneArr(res.data.data);
+    });
   };
   useEffect(() => {
     RequestGetUser().then(res => setCurrentUser(res.data.data.id));
     getArrays();
   }, []);
 
-  const findById = (arr, fId) => {
-    for (let i = 0; i < arr.length; i++) {
-      if (fId === arr[i].id) return arr[i].title;
+  const findById = fId => {
+    if (isDone) {
+      for (let i = 0; i < doneArr.length; i++) {
+        if (fId === doneArr[i].id) return doneArr[i].title;
+      }
+    } else {
+      for (let i = 0; i < creatingArr.length; i++) {
+        if (fId === creatingArr[i].id) return creatingArr[i].title;
+      }
     }
   };
   const src = [charm1, charm2, charm3, charm4, charm5, charm6];

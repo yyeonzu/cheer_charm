@@ -140,7 +140,7 @@ export const ButtonContainer = styled.div`
   height: 85px;
   display: flex;
   justify-content: space-between;
-  margin: 20px 0 40px 0;
+  margin: 20px 0;
   .inner {
     position: relative;
     width: 48%;
@@ -148,6 +148,19 @@ export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  @media (min-width: 490px) {
+    width: 70%;
+    justify-content: center;
+    .inner {
+      position: relative;
+      width: 170px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 5px;
+    }
   }
 `;
 
@@ -166,4 +179,11 @@ export const ButtonText = styled.div`
   position: relative;
   z-index: 5;
   padding: 0 3px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 490px) {
+    font-size: 17px;
+  }
 `;
