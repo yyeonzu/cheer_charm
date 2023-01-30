@@ -68,7 +68,6 @@ export const ImageWrapper = styled.div`
   top: 0;
   left: 0;
   display: flex;
-  z-index: -1;
 `;
 
 // 예시, API 나오면 사라질 컴포넌트
@@ -80,6 +79,7 @@ export const Div = styled.div`
 export const Img = styled.img`
   width: 238px;
   height: 337px;
+  opacity: 0.7;
 `;
 
 export const ArrowWrapperR = styled.img.attrs({ src: `${arrowR}` })``;
