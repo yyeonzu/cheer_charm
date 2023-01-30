@@ -7,8 +7,8 @@ import { PinkButton } from "../common/PinkButton.style";
 import Modal from "../common/Modal";
 import Background from "../common/Background";
 import { GetCharm } from "../../api/charm";
-import { RequestGetUser } from "../../api/user";
 import { SendCheer } from "../../api/cheer";
+import Footer from "../common/Footer";
 
 const SendCheerMenu = () => {
   // Header 상태를 토큰값에 따라 변경
@@ -30,10 +30,7 @@ const SendCheerMenu = () => {
 
   // 변경하지 않는 값 불러오기
   useEffect(() => {
-    // 여기서 request를 할 수가 없지... GetCharm에서 할 수 있도록 해야함.
-    // RequestGetUser().then(response => setNickname(response.data.data.nickname));
     GetCharm(id).then(response => {
-      console.log(response);
       setContent(response.data.data.content);
       setTitle(response.data.data.title);
       setNickname(response.data.data.nickname);
@@ -142,6 +139,11 @@ const SendCheerMenu = () => {
         >
           응원 보내기
         </PinkButton>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Footer />
       </Background>
       {isModal ? (
         <Modal
