@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { http } from "./http";
 
 // 회원가입 (POST)
@@ -8,23 +9,25 @@ export const RequestSignin = async (id, pw, nickname) => {
     nickname: nickname,
   };
   try {
-    await http.post(`/accounts/signup/`, userData);
+    const response = await http.post(`/accounts/signup/`, userData);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error.response);
-    alert("회원가입에 실패했습니다. 다시 요청해주세요.");
+    return Promise.reject(error);
   }
 };
 
 export const KaKaoLogin = async code => {
   try {
     const response = await http.get(
-      `/accounts/login/?code=${code}&redirect_uri=/oauth`,
+      `/accounts/kakao/login/?code=${code}&redirect_uri=http://localhost:3000/oauth`,
     );
-    console.log(response);
-    const ACCESS_TOKEN = response.data;
+    const ACCESS_TOKEN = response.data.data.access_token;
+    const REFRESH_TOKEN = response.data.data.refresh_token;
     localStorage.setItem("token", ACCESS_TOKEN);
+    localStorage.setItem("refresh_token", REFRESH_TOKEN);
+    return Promise.resolve(response);
   } catch (error) {
-    console.log(error);
+    return Promise.reject(error);
   }
 };
 
@@ -40,18 +43,21 @@ export const RequestLogin = async (id, pw) => {
     // 로컬 스토리지에 토큰 저장
     localStorage.setItem("token", response.data.data.access_token);
     localStorage.setItem("refresh_token", response.data.data.refresh_token);
-    window.location.reload();
+    window.location.replace("/");
+    return Promise.resolve(response);
   } catch (error) {
-    Refresh(error);
+    // Refresh(error);
+    // 비밀번호 틀렸을 때의 response가 없다...
+    return Promise.reject(error);
   }
 };
 
 // 토큰 만료 & Refresh token (GET)
 export const Refresh = async error => {
-  const refresh = localStorage.getItem("refresh_token");
   if (
     error.response.data.detail === "Given token not valid for any token type"
   ) {
+    const refresh = localStorage.getItem("refresh_token");
     try {
       const response = await http.post(`/accounts/token/refresh/`, {
         refresh: refresh,
@@ -71,6 +77,7 @@ export const Refresh = async error => {
 // 로그아웃
 export const RequestLogout = async () => {
   window.localStorage.removeItem("token");
+  window.localStorage.removeItem("refresh_token");
   // window.location.href = `${serverURL}/accounts/login/`;
   window.location.href = "/auth/login";
 };
