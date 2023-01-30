@@ -16,7 +16,9 @@ const MyMenu = () => {
   const [isDoneTab, setIsDoneTab] = useState(true);
   useEffect(() => {
     RequestGetUser().then(res => {
-      setNickname(res.data.data.nickname);
+      if (res) {
+        setNickname(res.data.data.nickname);
+      }
     });
   }, []);
   return (

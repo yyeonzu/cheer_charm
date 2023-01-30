@@ -25,8 +25,10 @@ const CreateCharm = () => {
     setNum(5);
     setImg("");
     RequestGetUser().then(res => {
-      setUser(res.data.data.id);
-      setNickname(res.data.data.nickname);
+      if (res) {
+        setUser(res.data.data.id);
+        setNickname(res.data.data.nickname);
+      }
     });
   }, []);
   const onChangeTitleInput = useCallback(

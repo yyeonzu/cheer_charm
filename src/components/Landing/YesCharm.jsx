@@ -14,13 +14,6 @@ import { RequestGetUser } from "../../api/user";
 // import library
 import CopyToClipboard from "react-copy-to-clipboard";
 
-/*
-  미완성
-
-  4. 애니메이션 (눈내리기, 프로그레스바)
-
-*/
-
 const YesCharm = () => {
   // baseURL (배포 이후 변경 예정)
   const BASE_URL = "http://localhost:3000";
@@ -55,9 +48,11 @@ const YesCharm = () => {
       setNumberOfCheer(response.data.data.length);
     });
     RequestGetUser().then(response => {
-      setId(response.data.data.id);
-      setNickname(response.data.data.nickname);
-      setNicknamelength(response.data.data.username.length);
+      if (response) {
+        setId(response.data.data.id);
+        setNickname(response.data.data.nickname);
+        setNicknamelength(response.data.data.username.length);
+      }
     });
     // console.log("렌더링");
   }, []);

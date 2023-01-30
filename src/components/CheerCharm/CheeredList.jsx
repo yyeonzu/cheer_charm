@@ -20,7 +20,9 @@ const CheeredList = ({ modal, setModal, popup, setPopup }) => {
         setCheerlist(res.data.data);
       })
       .catch();
-    RequestGetUser().then(res => setCurrentUser(res.data.data.id));
+    RequestGetUser().then(res => {
+      if (res) setCurrentUser(res.data.data.id);
+    });
   }, []);
   const [isMine, setIsMine] = useState(false);
   useEffect(() => {

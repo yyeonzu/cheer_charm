@@ -32,7 +32,9 @@ const MyList = ({ isDone }) => {
     });
   };
   useEffect(() => {
-    RequestGetUser().then(res => setCurrentUser(res.data.data.id));
+    RequestGetUser().then(res => {
+      if (res) setCurrentUser(res.data.data.id);
+    });
     getArrays();
   }, []);
 

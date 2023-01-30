@@ -52,7 +52,9 @@ const CheeringCharm = () => {
         setCur(res.data.data.cur_cheer);
       })
       .catch();
-    RequestGetUser().then(res => setCurrentUser(res.data.data.id));
+    RequestGetUser().then(res => {
+      if (res) setCurrentUser(res.data.data.id);
+    });
   }, []);
   const [isMine, setIsMine] = useState(false);
   useEffect(() => {
