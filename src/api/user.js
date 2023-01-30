@@ -20,7 +20,7 @@ export const RequestSignin = async (id, pw, nickname) => {
 export const KaKaoLogin = async code => {
   try {
     const response = await http.get(
-      `/accounts/kakao/login/?code=${code}&redirect_uri=http://localhost:3000/oauth`,
+      `/accounts/kakao/login/?code=${code}&redirect_uri=https://cheer-charm.vercel.app/oauth`,
     );
     const ACCESS_TOKEN = response.data.data.access_token;
     const REFRESH_TOKEN = response.data.data.refresh_token;
