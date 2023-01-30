@@ -46,7 +46,7 @@ const Modal = props => {
                         <>
                           {maintext.split("\n").map(line => {
                             return (
-                              <span>
+                              <span key={line}>
                                 {line}
                                 <br />
                               </span>
