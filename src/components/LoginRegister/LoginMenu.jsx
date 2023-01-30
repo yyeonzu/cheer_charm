@@ -11,6 +11,9 @@ import idIcon from "../../assets/images/Login/idicon.png";
 import pwIcon from "../../assets/images/Login/pwicon.png";
 import kakao from "../../assets/images/Login/kakao2.svg";
 
+// import Components
+import Footer from "../common/Footer";
+
 // import api
 import { RequestLogin } from "../../api/user";
 
@@ -103,6 +106,7 @@ const LoginMenu = () => {
           <img src={kakao} />
         </a>
         <br />
+        <Footer />
       </Background>
     </>
   );
