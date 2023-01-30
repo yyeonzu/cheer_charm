@@ -37,6 +37,7 @@ const LoginMenu = () => {
   const [pw, setPw] = useState("");
 
   const REST_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
+  console.log("콘솔", REST_API_KEY);
   const REDIRECT_URI = "https://cheer-charm.vercel.app/oauth";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
