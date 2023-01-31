@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import * as S from "./My.style";
-import * as H from "../common/Header.style";
-import logo from "../../assets/images/minilogo.svg";
+import Header from "../common/header/Header";
 import { RequestGetUser } from "../../api/user";
 import { RequestLogout } from "../../api/user";
-import Footer from "../common/Footer";
+import Footer from "../common/footer/Footer";
 import { Galmuri } from "../../css/Font";
 import MyList from "./MyList";
 import Background from "../common/Background";
-import Header from "../common/Header";
 
 const MyMenu = () => {
   const nav = useNavigate();
@@ -17,7 +15,9 @@ const MyMenu = () => {
   const [isDoneTab, setIsDoneTab] = useState(true);
   useEffect(() => {
     RequestGetUser().then(res => {
-      setNickname(res.data.data.nickname);
+      if (res) {
+        setNickname(res.data.data.nickname);
+      }
     });
   }, []);
   return (

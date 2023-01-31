@@ -14,13 +14,6 @@ import { RequestGetUser } from "../../api/user";
 // import library
 import CopyToClipboard from "react-copy-to-clipboard";
 
-/*
-  미완성
-  1. 처음 랜딩 이후에 -> 모든 상태를 한번씩 가져와야하는데.
-  4. 애니메이션 (눈내리기, 프로그레스바)
-
-*/
-
 const YesCharm = () => {
   // baseURL (배포 이후 변경 예정)
   const BASE_URL = "https://cheer-charm.vercel.app";
@@ -56,9 +49,11 @@ const YesCharm = () => {
       setCharmId(1);
     });
     RequestGetUser().then(response => {
-      setId(response.data.data.id);
-      setNickname(response.data.data.nickname);
-      setNicknamelength(response.data.data.username.length);
+      if (response) {
+        setId(response.data.data.id);
+        setNickname(response.data.data.nickname);
+        setNicknamelength(response.data.data.username.length);
+      }
     });
   }, []);
 

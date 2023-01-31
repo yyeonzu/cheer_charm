@@ -2,8 +2,8 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./CreateCharm.style";
 import Background from "../common/Background";
-import Header from "../common/Header";
-import Footer from "../common/Footer";
+import Header from "../common/header/Header";
+import Footer from "../common/footer/Footer";
 import blueback from "../../assets/images/bluegradient.svg";
 import CustomizedSlider from "./Range.tsx";
 import ImageSelect from "./ImageSelect";
@@ -25,8 +25,10 @@ const CreateCharm = () => {
     setNum(5);
     setImg("");
     RequestGetUser().then(res => {
-      setUser(res.data.data.id);
-      setNickname(res.data.data.nickname);
+      if (res) {
+        setUser(res.data.data.id);
+        setNickname(res.data.data.nickname);
+      }
     });
   }, []);
   const onChangeTitleInput = useCallback(

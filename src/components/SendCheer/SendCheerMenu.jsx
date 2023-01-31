@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./SendCheer.style";
-import Header from "../common/Header";
+import Header from "../common/header/Header";
 import { Galmuri } from "../../css/Font";
 import { PinkButton } from "../common/PinkButton.style";
-import Modal from "../common/Modal";
+import Modal from "../common/modal/Modal";
 import Background from "../common/Background";
 import { GetCharm } from "../../api/charm";
 import { SendCheer } from "../../api/cheer";
-import Footer from "../common/Footer";
+import Footer from "../common/footer/Footer";
+import { RequestGetUser } from "../../api/user";
 
 const SendCheerMenu = () => {
   const navigate = useNavigate();
@@ -33,6 +34,10 @@ const SendCheerMenu = () => {
 
   // 변경하지 않는 값 불러오기
   useEffect(() => {
+    // 여기서 request를 할 수가 없지... GetCharm에서 할 수 있도록 해야함.
+    RequestGetUser().then(response => {
+      if (response) setNickname(response.data.data.nickname);
+    });
     GetCharm(id).then(response => {
       setContent(response.data.data.content);
       setTitle(response.data.data.title);

@@ -5,10 +5,10 @@ import { useNavigate } from "react-router";
 import * as S from "./Header.style";
 
 // import Image
-import logo from "../../assets/images/minilogo.svg";
+import logo from "../../../assets/images/minilogo.svg";
 
 // import api
-import { RequestLogout } from "../../api/user";
+import { RequestLogout } from "../../../api/user";
 
 const Header = props => {
   const status = props.type;

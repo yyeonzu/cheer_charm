@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as S from "./Modal.style";
-import { Galmuri } from "../../css/Font";
-import { PinkButton } from "./PinkButton.style";
+import { Galmuri } from "../../../css/Font";
+import { PinkButton } from "../PinkButton.style";
 import { MdClose } from "react-icons/md";
 
 const Modal = props => {
