@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import style.js & fonts
 import { Galmuri, NanoomSquare } from "../../css/Font";
 import * as S from "./YesCharm.style";
+
 // import Components
 import ProgressBar from "../common/progressbar/ProgressBar";
 import { PinkButton } from "../common/PinkButton.style";
@@ -102,9 +103,33 @@ const YesCharm = () => {
     setCharmId(charmId + 1);
   };
 
+  // const [images, setImages] = useState("");
+  // window.onload = () => {
+  //   const snowflake1 = document.createElement("img");
+  //   snowflake1.src = "../../assets/images/Landing/snowy2.png";
+
+  //   setImages([snowflake1]);
+  // };
+
   return (
     <>
       <S.SnowingBack>
+        {/* {images && (
+          <Snowfall
+            snowflakeCount={15}
+            speed={[0.3, 0.5]}
+            wind={[0, 0]}
+            radius={[5, 6]}
+            style={{
+              position: "absolute",
+              zIndex: "-1",
+              width: "100%",
+              height: "75px",
+              top: "66px",
+            }}
+            images={images}
+          />
+        )} */}
         <S.TitleBar length={namelength}>
           <Galmuri size="15px" weight="700">
             {nickname}님의 부적을 위한
