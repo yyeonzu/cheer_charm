@@ -50,7 +50,7 @@ const MyMenu = () => {
               }}
               style={{ textDecoration: isDoneTab ? "underline" : null }}
             >
-              내 부적함
+              완성된 부적함
             </Galmuri>
             <Galmuri
               weight="400"

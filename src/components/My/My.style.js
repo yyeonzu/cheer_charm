@@ -36,7 +36,7 @@ export const MyBox = styled.div`
 `;
 
 export const TabTitle = styled.div`
-  width: 70%;
+  width: 75%;
   display: flex;
   justify-content: space-between;
   margin: 30px 0;
