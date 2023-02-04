@@ -44,38 +44,59 @@ const design = [
 ];
 
 const CharmImage = props => {
+  const formData = new FormData();
   const { num } = props;
 
   if (props.upload) {
-    html2canvas(document.getElementById("capture"), {
+    html2canvas(document.getElementById("capture_front"), {
       backgroundColor: null,
       allowTaint: true,
       useCORS: true,
     }).then(canvas => {
       canvas.toBlob(function (blob) {
-        const formData = new FormData();
         formData.append("file_front", blob);
-        formData.append("file_back", blob);
-        console.log(props.id);
-        UploadImage(props.id, formData)
-          .then(response => console.log(response))
-          .catch(error => console.log(error));
+      });
+      html2canvas(document.getElementById("capture_back"), {
+        backgroundColor: null,
+        allowTaint: true,
+        useCORS: true,
+      }).then(canvas => {
+        canvas.toBlob(function (blob) {
+          formData.append("file_back", blob);
+          UploadImage(props.id, formData)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+        });
       });
     });
   }
-
+  useEffect(() => {}, [formData]);
   return (
     <>
       <Container>
-        <Template id="capture">
+        <Template id="capture_front">
           <img className="background" src={design[num].template} />
           <Character src={design[num].animal} />
           <Wrapper
+            front={true}
             background={design[num].background}
             border={design[num].border}
           >
-            당신이 받은 {props.title}!
-            <br />이 부적을 지니고 있으면 당신의 소망이 현실이 됩니다.
+            <div className="front">{props.title}</div>
+          </Wrapper>
+        </Template>
+        <Template id="capture_back">
+          <img className="background" src={design[num].template} />
+          <Character src={design[num].animal} />
+          <Wrapper
+            front={false}
+            background={design[num].background}
+            border={design[num].border}
+          >
+            <div className="back">
+              당신이 받은 {props.title}!
+              <br />이 부적을 지니고 있으면 당신의 소망이 현실이 됩니다.
+            </div>
           </Wrapper>
         </Template>
         {/* <button onClick={() => onCapture()}>다운로드</button> */}
@@ -90,7 +111,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -129,6 +150,7 @@ const Wrapper = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   // props로 받아올 것 (background color, border clolr)
   background-color: ${props => props.background};
@@ -138,6 +160,28 @@ const Wrapper = styled.div`
 
   font-family: PFstardust;
   text-align: center;
-  font-size: 13px;
-  line-height: 13px;
+
+  .front {
+    width: 70px;
+    height: 120px;
+
+    font-size: 24px;
+    line-height: 24px;
+
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+
+  .back {
+    width: 90px;
+    height: 135px;
+
+    font-size: 13px;
+    line-height: 13px;
+
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
 `;

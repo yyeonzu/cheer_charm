@@ -36,6 +36,9 @@ const YesCharm = () => {
   // 현재 보여지는 부적 id
   const [charmId, setCharmId] = useState(0);
 
+  // 부적 이미지
+  const [image, setImage] = useState();
+
   // 응원 개수
   const [done, setDone] = useState(0);
   const [total, setTotal] = useState(0);
@@ -64,6 +67,7 @@ const YesCharm = () => {
     if (!charmlists) return;
     setDone(charmlists[charmId - 1].cur_cheer);
     setTotal(charmlists[charmId - 1].total_cheer);
+    setImage(charmlists[charmId - 1].charm_image[0].img_front);
     setHlink(charmlists[charmId - 1].id);
   }, [charmId]);
 
@@ -103,33 +107,9 @@ const YesCharm = () => {
     setCharmId(charmId + 1);
   };
 
-  // const [images, setImages] = useState("");
-  // window.onload = () => {
-  //   const snowflake1 = document.createElement("img");
-  //   snowflake1.src = "../../assets/images/Landing/snowy2.png";
-
-  //   setImages([snowflake1]);
-  // };
-
   return (
     <>
       <S.SnowingBack>
-        {/* {images && (
-          <Snowfall
-            snowflakeCount={15}
-            speed={[0.3, 0.5]}
-            wind={[0, 0]}
-            radius={[5, 6]}
-            style={{
-              position: "absolute",
-              zIndex: "-1",
-              width: "100%",
-              height: "75px",
-              top: "66px",
-            }}
-            images={images}
-          />
-        )} */}
         <S.TitleBar length={namelength}>
           <Galmuri size="15px" weight="700">
             {nickname}님의 부적을 위한
@@ -161,7 +141,8 @@ const YesCharm = () => {
                   <S.Img
                     key={data.id}
                     onClick={() => navigate(`/${id}/charm_id/${hlink}`)}
-                    src={require(`../../assets/images/Charm/${data.image.toLowerCase()}charm.png`)}
+                    // src={require(`../../assets/images/Charm/${data.image.toLowerCase()}charm.png`)}
+                    src={image}
                   ></S.Img>
                 ))}
             </S.ImageWrapper>
