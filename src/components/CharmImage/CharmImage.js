@@ -45,21 +45,25 @@ const design = [
 
 const CharmImage = props => {
   const num = 1; // 나중에 img num으로 받아오는 상수
-  html2canvas(document.getElementById("capture"), {
-    backgroundColor: null,
-    allowTaint: true,
-    useCORS: true,
-  }).then(canvas => {
-    canvas.toBlob(function (blob) {
-      const formData = new FormData();
-      formData.append("file_front", blob);
-      formData.append("file_back", blob);
-      console.log(props.id);
-      UploadImage(props.id, formData)
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
+
+  if (props.upload) {
+    html2canvas(document.getElementById("capture"), {
+      backgroundColor: null,
+      allowTaint: true,
+      useCORS: true,
+    }).then(canvas => {
+      canvas.toBlob(function (blob) {
+        const formData = new FormData();
+        formData.append("file_front", blob);
+        formData.append("file_back", blob);
+        console.log(props.id);
+        UploadImage(props.id, formData)
+          .then(response => console.log(response))
+          .catch(error => console.log(error));
+      });
     });
-  });
+  }
+
   return (
     <>
       <Container>

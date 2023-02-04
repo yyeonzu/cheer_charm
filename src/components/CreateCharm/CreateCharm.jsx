@@ -18,6 +18,8 @@ const CreateCharm = () => {
   const [wait, setWait] = useState(true);
   // charm id
   const [charmId, setCharmId] = useState();
+  // 부적 이미지 업로드
+  const [upload, setUpload] = useState(false);
 
   const [user, setUser] = useState();
   const [nickname, setNickname] = useState("");
@@ -137,7 +139,7 @@ const CreateCharm = () => {
         </PinkButton>
         <Footer />
       </Background>
-      {wait && <CharmImage title={title} id={charmId} />}
+      {wait && <CharmImage title={title} id={charmId} upload={upload} />}
     </>
   );
 };
