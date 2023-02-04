@@ -81,6 +81,7 @@ const CreateCharm = () => {
       CreateCharmA(title, user, content, num, img)
         .then(res => {
           setCharmId(res.data.data.id);
+          setUpload(true);
           setWait(true);
           // nav(`/${user}/charm_id/${res.data.data.id}`);
         })
