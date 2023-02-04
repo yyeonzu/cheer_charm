@@ -10,9 +10,15 @@ import ImageSelect from "./ImageSelect";
 import { PinkButton } from "../common/PinkButton.style";
 import { CreateCharmA } from "../../api/charm";
 import { RequestGetUser } from "../../api/user";
+import CharmImage from "../CharmImage/CharmImage";
 
 const CreateCharm = () => {
   const nav = useNavigate();
+  // 부적 이미지 생성중
+  const [wait, setWait] = useState(true);
+  // charm id
+  const [charmId, setCharmId] = useState();
+
   const [user, setUser] = useState();
   const [nickname, setNickname] = useState("");
   const [title, setTitle] = useState("");
@@ -71,7 +77,11 @@ const CreateCharm = () => {
         img,
       );
       CreateCharmA(title, user, content, num, img)
-        .then(res => nav(`/${user}/charm_id/${res.data.data.id}`))
+        .then(res => {
+          setCharmId(res.data.data.id);
+          setWait(true);
+          // nav(`/${user}/charm_id/${res.data.data.id}`);
+        })
         .catch();
     }
   };
@@ -127,6 +137,7 @@ const CreateCharm = () => {
         </PinkButton>
         <Footer />
       </Background>
+      {wait && <CharmImage title={title} id={charmId} />}
     </>
   );
 };
