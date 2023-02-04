@@ -58,6 +58,19 @@ export const Ques = styled.div`
   left: 0;
 `;
 
+export const Ques1 = styled.div`
+  font-family: "Galmuri";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  overflow: initial;
+  text-align: left;
+  word-break: keep-all;
+  position: absolute;
+  left: 0;
+  margin-bottom: 5px;
+`;
+
 export const TitleInput = styled.input`
   width: 85%;
   height: 35px;
@@ -128,7 +141,7 @@ export const RangeRect = styled.div`
 
 export const ImageContainer = styled.div`
   width: 85%;
-  min-height: 830px;
+  height: 500px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -137,7 +150,7 @@ export const ImageContainer = styled.div`
 
 export const CharmRect = styled.div`
   width: 48%;
-  min-height: 260px;
+  height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -8,19 +8,6 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const LogoContainer = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const LogoImg = styled.img`
-  width: 50%;
-  padding: 40px;
-`;
-
 export const CharmContainer = styled.div`
   width: 100%;
   height: auto;
@@ -29,6 +16,7 @@ export const CharmContainer = styled.div`
   align-items: center;
   margin-bottom: 10px;
   position: relative;
+  padding: 10px;
 `;
 
 export const CharmImg = styled.img`

@@ -8,19 +8,6 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const LogoContainer = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const LogoImg = styled.img`
-  width: 60%;
-  padding-top: 40px;
-`;
-
 export const CharmContainer = styled.div`
   width: 100%;
   height: auto;
@@ -31,10 +18,12 @@ export const CharmContainer = styled.div`
   position: relative;
 `;
 
-export const CharmImg = styled.img`
-  width: 50%;
-  height: auto;
-  padding: 20px;
+export const ButtonContainer = styled.div`
+  width: 70%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ButtonRect = styled.div`
