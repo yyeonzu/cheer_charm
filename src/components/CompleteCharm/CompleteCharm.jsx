@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import CharmImage from "../CharmImage/CharmImage";
+import cloud from "../../assets/images/CharmImage/clouds.png";
 import * as S from "./CompleteCharm.style";
 
+// 완성된 부적의 애니메이션
 const CompleteCharm = props => {
   const [front, setFront] = useState(true);
 
@@ -10,12 +13,13 @@ const CompleteCharm = props => {
 
   return (
     <>
+      <S.Cloud src={cloud} />
       <S.Container>
-        <S.FlipWrapper left="35%" blur="2px">
+        <S.FlipWrapper left="32%" blur="2px">
           <S.FrontWrapper cur={!front}></S.FrontWrapper>
           <S.BackWrapper cur={front}></S.BackWrapper>
         </S.FlipWrapper>
-        <S.FlipWrapper left="25%">
+        <S.FlipWrapper left="27%">
           <S.FrontWrapper cur={front}></S.FrontWrapper>
           <S.BackWrapper cur={!front}></S.BackWrapper>
         </S.FlipWrapper>
@@ -25,6 +29,3 @@ const CompleteCharm = props => {
 };
 
 export default CompleteCharm;
-
-// 부모 div로 하위를 모두 감싸야 함
-// 하위 div는 나머지는 동일한데,

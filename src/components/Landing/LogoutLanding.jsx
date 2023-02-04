@@ -17,7 +17,7 @@ const LogoutLanding = () => {
   return (
     <>
       <Background>
-        <Header type="logout" />
+        <Header />
         <S.TitleBar>
           <Galmuri size="13px" weight="400" padding="5px">
             내 소원을 응원하는 마음이 가득 담긴
