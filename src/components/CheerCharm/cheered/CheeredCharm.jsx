@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as S from "./CheeredCharm.style";
-import CompleteCharm from "../CompletedCharm/CompleteCharm";
-import Header from "../common/Header";
-import Footer from "../common/Footer";
-import ProgressBar from "../common/progressbar/ProgressBar";
+import CompleteCharm from "../../CompleteCharm/CompleteCharm";
+import Header from "../../common/header/Header";
+import Footer from "../../common/footer/Footer";
+import ProgressBar from "../../common/progressbar/ProgressBar";
 import CheeredList from "./CheeredList";
-import PopUp from "./PopUp";
-import logo from "../../assets/images/CharmPage/charmpagelogo.svg";
-import speechbubble from "../../assets/images/CharmPage/speechbubble.svg";
-import { NanoomSquare, Galmuri } from "../../css/Font.js";
+import PopUp from "../PopUp";
+import logo from "../../../assets/images/CharmPage/charmpagelogo.svg";
+import speechbubble from "../../../assets/images/CharmPage/speechbubble.svg";
+import { NanoomSquare, Galmuri } from "../../../css/Font";
 import { MdOutlineFlipCameraAndroid } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
-import Background from "../common/Background";
-import { GetCharm } from "../../api/charm";
+import Background from "../../common/Background";
+import { GetCharm } from "../../../api/charm";
 
-import charm1 from "../../assets/images/Charm/charm1.svg";
-import charm2 from "../../assets/images/Charm/charm2.svg";
-import charm3 from "../../assets/images/Charm/charm3.svg";
-import charm4 from "../../assets/images/Charm/charm4.svg";
-import charm5 from "../../assets/images/Charm/charm5.svg";
-import charm6 from "../../assets/images/Charm/charm6.svg";
+import charm1 from "../../../assets/images/Charm/charm1.svg";
+import charm2 from "../../../assets/images/Charm/charm2.svg";
+import charm3 from "../../../assets/images/Charm/charm3.svg";
+import charm4 from "../../../assets/images/Charm/charm4.svg";
+import charm5 from "../../../assets/images/Charm/charm5.svg";
+import charm6 from "../../../assets/images/Charm/charm6.svg";
 
 const CheeredCharm = () => {
   const isLogin = !!localStorage.getItem("token");

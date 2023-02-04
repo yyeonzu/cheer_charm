@@ -20,7 +20,7 @@ export const RequestSignin = async (id, pw, nickname) => {
 export const KaKaoLogin = async code => {
   try {
     const response = await http.get(
-      `/accounts/kakao/login/?code=${code}&redirect_uri=http://localhost:3000/oauth`,
+      `/accounts/kakao/login/?code=${code}&redirect_uri=https://cheer-charm.vercel.app/oauth`,
     );
     const ACCESS_TOKEN = response.data.data.access_token;
     const REFRESH_TOKEN = response.data.data.refresh_token;
@@ -28,7 +28,6 @@ export const KaKaoLogin = async code => {
     localStorage.setItem("token", ACCESS_TOKEN);
     localStorage.setItem("refresh_token", REFRESH_TOKEN);
 
-    // window.location.replace("/");
     return Promise.resolve(response);
   } catch (error) {
     return Promise.reject(error);
@@ -44,14 +43,15 @@ export const RequestLogin = async (id, pw) => {
 
   try {
     const response = await http.post(`/accounts/login/`, userData);
-    // 로컬 스토리지에 토큰 저장
+
     localStorage.setItem("token", response.data.data.access_token);
     localStorage.setItem("refresh_token", response.data.data.refresh_token);
+
     window.location.replace("/");
+
     return Promise.resolve(response);
   } catch (error) {
-    // Refresh(error);
-    // 비밀번호 틀렸을 때의 response가 없다...
+    Refresh(error);
     return Promise.reject(error);
   }
 };
@@ -69,11 +69,11 @@ export const Refresh = async error => {
       localStorage.setItem("token", response.data.access);
       window.location.reload();
     } catch (error) {
-      // test를 아직 못해봄
+      // test 미완
       alert("세션 만료. 다시 로그인해주세요.");
       localStorage.removeItem("token");
       localStorage.removeItem("refresh_token");
-      window.location.href("/auth/login");
+      window.location.replace("/auth/login");
     }
   }
 };
@@ -83,16 +83,21 @@ export const RequestLogout = async () => {
   window.localStorage.removeItem("token");
   window.localStorage.removeItem("refresh_token");
   // window.location.href = `${serverURL}/accounts/login/`;
-  window.location.href = "/auth/login";
+  window.location.replace("/");
 };
 
 // User 프로필 (GET) (id(hashed), nickname, password, username 반환)
 export const RequestGetUser = async () => {
-  try {
-    const response = await http.get(`/accounts/login/`);
-    return Promise.resolve(response);
-  } catch (error) {
-    console.log(error);
-    Refresh(error);
+  const isLogout = !localStorage.getItem("token");
+  if (isLogout) {
+    return;
+  } else {
+    try {
+      const response = await http.get(`/accounts/login/`);
+      return Promise.resolve(response);
+    } catch (error) {
+      console.log(error);
+      Refresh(error);
+    }
   }
 };

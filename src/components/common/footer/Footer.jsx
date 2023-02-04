@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./Footer.style";
-import { NanoomSquare } from "../../css/Font";
+import { NanoomSquare } from "../../../css/Font";
 import { BsGithub } from "react-icons/bs";
 
 const Footer = () => {

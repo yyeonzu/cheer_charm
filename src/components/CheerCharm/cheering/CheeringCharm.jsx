@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as S from "./CheeringCharm.style";
-import Header from "../common/Header";
-import Footer from "../common/Footer";
-import ProgressBar from "../common/progressbar/ProgressBar";
+import Header from "../../common/header/Header";
+import Footer from "../../common/footer/Footer";
+import ProgressBar from "../../common/progressbar/ProgressBar";
 import CheeringList from "./CheeringList";
-import PopUp from "./PopUp";
-import logo from "../../assets/images/CharmPage/charmpagelogo.svg";
-import speechbubble from "../../assets/images/CharmPage/speechbubble.svg";
-import button1 from "../../assets/images/CharmPage/button1.svg";
-import button2 from "../../assets/images/CharmPage/button2.svg";
-import { NanoomSquare, Galmuri } from "../../css/Font.js";
+import PopUp from "../PopUp";
+import logo from "../../../assets/images/CharmPage/charmpagelogo.svg";
+import speechbubble from "../../../assets/images/CharmPage/speechbubble.svg";
+import button1 from "../../../assets/images/CharmPage/button1.svg";
+import button2 from "../../../assets/images/CharmPage/button2.svg";
+import { NanoomSquare, Galmuri } from "../../../css/Font.js";
 import { AiOutlineLink } from "react-icons/ai";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import Background from "../common/Background";
-import { GetCharm } from "../../api/charm";
-import { RequestGetUser } from "../../api/user";
+import Background from "../../common/Background";
+import { GetCharm } from "../../../api/charm";
+import { RequestGetUser } from "../../../api/user";
 
-import charm1 from "../../assets/images/Charm/mousecharm.png";
-import charm2 from "../../assets/images/Charm/rabbitcharm.png";
-import charm3 from "../../assets/images/Charm/squirrelcharm.png";
-import charm4 from "../../assets/images/Charm/goatcharm.png";
-import charm5 from "../../assets/images/Charm/monkeycharm.png";
-import charm6 from "../../assets/images/Charm/birdcharm.png";
+import charm1 from "../../../assets/images/Charm/mousecharm.png";
+import charm2 from "../../../assets/images/Charm/rabbitcharm.png";
+import charm3 from "../../../assets/images/Charm/squirrelcharm.png";
+import charm4 from "../../../assets/images/Charm/goatcharm.png";
+import charm5 from "../../../assets/images/Charm/monkeycharm.png";
+import charm6 from "../../../assets/images/Charm/birdcharm.png";
 
 const CheeringCharm = () => {
   const isLogin = !!localStorage.getItem("token");
@@ -52,7 +52,9 @@ const CheeringCharm = () => {
         setCur(res.data.data.cur_cheer);
       })
       .catch();
-    RequestGetUser().then(res => setCurrentUser(res.data.data.id));
+    RequestGetUser().then(res => {
+      if (res) setCurrentUser(res.data.data.id);
+    });
   }, []);
   const [isMine, setIsMine] = useState(false);
   useEffect(() => {

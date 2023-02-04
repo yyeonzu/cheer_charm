@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import * as S from "./My.style";
-import * as H from "../common/Header.style";
-import logo from "../../assets/images/minilogo.svg";
+import Header from "../common/header/Header";
 import { RequestGetUser } from "../../api/user";
 import { RequestLogout } from "../../api/user";
-import Footer from "../common/Footer";
+import Footer from "../common/footer/Footer";
 import { Galmuri } from "../../css/Font";
 import MyList from "./MyList";
 import Background from "../common/Background";
@@ -16,17 +15,15 @@ const MyMenu = () => {
   const [isDoneTab, setIsDoneTab] = useState(true);
   useEffect(() => {
     RequestGetUser().then(res => {
-      setNickname(res.data.data.nickname);
+      if (res) {
+        setNickname(res.data.data.nickname);
+      }
     });
   }, []);
   return (
     <>
       <Background>
-        <H.Container>
-          <H.LogoWrapper onClick={() => nav("/")}>
-            <H.LogoImage src={logo} />
-          </H.LogoWrapper>
-        </H.Container>
+        <Header />
         <S.Top>
           <div style={{ display: "flex" }}>
             <Galmuri weight="600" size="16px" color="#4A4A4A">
@@ -53,7 +50,7 @@ const MyMenu = () => {
               }}
               style={{ textDecoration: isDoneTab ? "underline" : null }}
             >
-              내 부적함
+              완성된 부적함
             </Galmuri>
             <Galmuri
               weight="400"

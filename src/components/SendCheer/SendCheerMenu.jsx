@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./SendCheer.style";
-import Header from "../common/Header";
+import Header from "../common/header/Header";
 import { Galmuri } from "../../css/Font";
 import { PinkButton } from "../common/PinkButton.style";
-import Modal from "../common/Modal";
+import Modal from "../common/modal/Modal";
 import Background from "../common/Background";
 import { GetCharm } from "../../api/charm";
-import { RequestGetUser } from "../../api/user";
 import { SendCheer } from "../../api/cheer";
+import Footer from "../common/footer/Footer";
+import { RequestGetUser } from "../../api/user";
 
 const SendCheerMenu = () => {
+  const navigate = useNavigate();
+
   // Header 상태를 토큰값에 따라 변경
   const isLogin = !!localStorage.getItem("token");
   // 닉네임 (받는사람)
@@ -23,6 +26,7 @@ const SendCheerMenu = () => {
   // 응원 전송하고자 하는 id -> params
   const params = useParams();
   const id = params.charm_id;
+  const user = params.user;
 
   // 응원 내용과 응원하는 사람의 닉네임
   const [cheerContent, setCheerContent] = useState("");
@@ -31,11 +35,13 @@ const SendCheerMenu = () => {
   // 변경하지 않는 값 불러오기
   useEffect(() => {
     // 여기서 request를 할 수가 없지... GetCharm에서 할 수 있도록 해야함.
-    RequestGetUser().then(response => setNickname(response.data.data.nickname));
+    RequestGetUser().then(response => {
+      if (response) setNickname(response.data.data.nickname);
+    });
     GetCharm(id).then(response => {
-      console.log(response);
       setContent(response.data.data.content);
       setTitle(response.data.data.title);
+      setNickname(response.data.data.nickname);
     });
   }, []);
 
@@ -50,9 +56,8 @@ const SendCheerMenu = () => {
 
   const textlist = {
     0: {
-      maintext:
-        "응원을 남겼습니다! 다짐과 목표를 적고 응원을 담은 나만의 부적을 만들러 가볼까요?",
-      buttontext: "나도 응원받기",
+      maintext: `응원을 남겼습니다!\n${nickname}님의 부적을 구경하러 가볼까요?`,
+      buttontext: "확인",
     },
     1: {
       maintext: "응원 내용을 입력해주세요.",
@@ -71,8 +76,7 @@ const SendCheerMenu = () => {
   // 모달 속 버튼 클릭했을 때 (정상 제출 || 부족한 경우 )
   const onClickModalButton = () => {
     if (modalId === 0) {
-      alert("부적생성 or 랜딩으로 이동");
-      // 무조건 랜딩으로 이동! -> 다만 로그인 상태는 그대로 유지
+      navigate(`/${user}/charm_id/${id}`);
     }
     setIsModal(false);
   };
@@ -99,7 +103,7 @@ const SendCheerMenu = () => {
   return (
     <>
       <Background>
-        <Header type={isLogin ? "login" : "logout"} />
+        <Header />
         <S.TitleText direction={nickname.length > 4 ? "column" : "row"}>
           <Galmuri size="18px">{nickname} 님</Galmuri>
           <S.exNameText>
@@ -141,6 +145,11 @@ const SendCheerMenu = () => {
         >
           응원 보내기
         </PinkButton>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Footer />
       </Background>
       {isModal ? (
         <Modal
