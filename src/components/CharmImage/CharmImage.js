@@ -10,10 +10,14 @@ import { UploadImage } from "../../api/charm";
 // import template
 import yellow from "../../assets/images/CharmImage/template_yellow.svg";
 import pink from "../../assets/images/CharmImage/template_pink.svg";
+import purple from "../../assets/images/CharmImage/template_purple.svg";
+import blue from "../../assets/images/CharmImage/template_blue.svg";
 
 // import animal
-import cat from "../../assets/images/CharmImage/yellow_cat.svg";
-import bear from "../../assets/images/CharmImage/pink_bear.svg";
+import cat1 from "../../assets/images/CharmImage/yellow_cat.svg";
+import bear1 from "../../assets/images/CharmImage/pink_bear.svg";
+import cat2 from "../../assets/images/CharmImage/purple_cat.svg";
+import bear2 from "../../assets/images/CharmImage/blue_bear.svg";
 
 // 부적 디자인 정리
 const design = [
@@ -30,16 +34,30 @@ const design = [
   {
     id: 0,
     template: yellow,
-    animal: cat,
+    animal: cat1,
     border: "#e6ce92",
     background: "#fefff5",
   },
   {
     id: 1,
     template: pink,
-    animal: bear,
+    animal: bear1,
     border: "#FF9CC6",
     background: "#FFEBFC",
+  },
+  {
+    id: 2,
+    template: purple,
+    animal: cat2,
+    border: "#BD6ADA",
+    background: "#FBEBFF",
+  },
+  {
+    id: 3,
+    template: blue,
+    animal: bear2,
+    border: "#5A749A",
+    background: "#EBEBFF",
   },
 ];
 
