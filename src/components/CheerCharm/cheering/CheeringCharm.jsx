@@ -6,7 +6,6 @@ import Footer from "../../common/footer/Footer";
 import ProgressBar from "../../common/progressbar/ProgressBar";
 import CheeringList from "./CheeringList";
 import PopUp from "../PopUp";
-import logo from "../../../assets/images/CharmPage/charmpagelogo.svg";
 import speechbubble from "../../../assets/images/CharmPage/speechbubble.svg";
 import button1 from "../../../assets/images/CharmPage/button1.svg";
 import button2 from "../../../assets/images/CharmPage/button2.svg";
@@ -68,9 +67,6 @@ const CheeringCharm = () => {
     <>
       <Background>
         <Header type={isLogin ? "login" : "logout"} />
-        <S.LogoContainer>
-          <S.LogoImg src={logo} />
-        </S.LogoContainer>
         <S.CharmContainer>
           <S.CharmImg src={imgSrc(currentCharm.image)} />
         </S.CharmContainer>

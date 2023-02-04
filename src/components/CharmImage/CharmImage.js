@@ -44,8 +44,8 @@ const design = [
 ];
 
 const CharmImage = props => {
-  const num = 1; // 나중에 img num으로 받아오는 상수
   const formData = new FormData();
+  const { num } = props;
 
   if (props.upload) {
     html2canvas(document.getElementById("capture_front"), {
@@ -108,17 +108,17 @@ const CharmImage = props => {
 export default CharmImage;
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   position: absolute;
-  /* top: 0;
-  left: 0; */
-  z-index: -100;
-  background-color: #ffffff;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: transparent;
 `;
 
 const Template = styled.div`

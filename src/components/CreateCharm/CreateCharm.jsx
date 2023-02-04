@@ -15,7 +15,7 @@ import CharmImage from "../CharmImage/CharmImage";
 const CreateCharm = () => {
   const nav = useNavigate();
   // 부적 이미지 생성중
-  const [wait, setWait] = useState(true);
+  const [wait, setWait] = useState(false);
   // charm id
   const [charmId, setCharmId] = useState();
   // 부적 이미지 업로드
@@ -26,12 +26,12 @@ const CreateCharm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [num, setNum] = useState(5);
-  const [img, setImg] = useState("");
+  const [design, setDesign] = useState("");
   useEffect(() => {
     setTitle("");
     setContent("");
     setNum(5);
-    setImg("");
+    setDesign("");
     RequestGetUser().then(res => {
       if (res) {
         setUser(res.data.data.id);
@@ -56,17 +56,17 @@ const CreateCharm = () => {
   };
   useEffect(() => {});
   const onPost = () => {
-    if (title === "" && content === "" && img === "")
-      alert("부적의 이름, 내용을 입력하고 이미지를 선택해주세요.");
+    if (title === "" && content === "" && design === "")
+      alert("부적의 이름, 소개를 입력하고 배경 디자인을 선택해주세요.");
     else if (title === "" && content === "")
-      alert("부적의 이름, 내용을 입력해주세요.");
-    else if (img === "" && content === "")
-      alert("부적의 내용을 입력하고 이미지를 선택해주세요.");
-    else if (title === "" && img === "")
-      alert("부적의 이름을 입력하고 이미지를 선택해주세요.");
+      alert("부적의 이름, 소개를 입력해주세요.");
+    else if (design === "" && content === "")
+      alert("부적의 소개를 입력하고 배경 디자인을 선택해주세요.");
+    else if (title === "" && design === "")
+      alert("부적의 이름을 입력하고 배경 디자인을 선택해주세요.");
     else if (title === "") alert("부적의 이름을 입력해주세요.");
-    else if (content === "") alert("부적의 내용을 입력해주세요.");
-    else if (img === "") alert("부적의 이미지를 선택해주세요.");
+    else if (content === "") alert("부적의 소개를 입력해주세요.");
+    else if (design === "") alert("부적 배경 디자인을 선택해주세요.");
     else {
       console.log(
         "제목: ",
@@ -76,10 +76,11 @@ const CreateCharm = () => {
         ", 사람: ",
         num,
         ", 사진: ",
-        img,
+        design,
       );
-      CreateCharmA(title, user, content, num, img)
+      CreateCharmA(title, user, content, num, "RABBIT")
         .then(res => {
+          console.log(res);
           setCharmId(res.data.data.id);
           setUpload(true);
           setWait(true);
@@ -101,13 +102,15 @@ const CreateCharm = () => {
         </S.QuesRect>
         <S.TitleInput
           type="text"
-          maxLength={8}
+          maxLength={12}
           onChange={onChangeTitleInput}
           autoComplete="off"
-          placeholder="최대 8글자 이하"
+          placeholder="최대 12글자 이하"
         />
-        <S.QuesRect>
-          <S.Ques>부적의 내용을 적어주세요</S.Ques>
+        <S.QuesRect style={{ paddingTop: "10px" }}>
+          <S.Ques1>
+            응원을 남기러 온 친구들이 볼 부적의 소개를 적어주세요.
+          </S.Ques1>
         </S.QuesRect>
         <S.ContentInput
           maxLength={100}
@@ -122,10 +125,10 @@ const CreateCharm = () => {
           <CustomizedSlider value={num} onChange={onChangeNumInput} />
         </S.RangeRect>
         <S.QuesRect>
-          <S.Ques>원하는 부적 이미지를 골라주세요</S.Ques>
+          <S.Ques>원하는 부적 배경 디자인을 선택해주세요.</S.Ques>
         </S.QuesRect>
         <S.ImageContainer>
-          <ImageSelect setImg={setImg} />
+          <ImageSelect setDesign={setDesign} />
         </S.ImageContainer>
         <PinkButton
           width="165px"
@@ -140,7 +143,9 @@ const CreateCharm = () => {
         </PinkButton>
         <Footer />
       </Background>
-      {wait && <CharmImage title={title} id={charmId} upload={upload} />}
+      {wait && (
+        <CharmImage title={title} id={charmId} upload={upload} num={design} />
+      )}
     </>
   );
 };
