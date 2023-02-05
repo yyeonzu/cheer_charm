@@ -12,12 +12,16 @@ import yellow from "../../assets/images/CharmImage/template_yellow.svg";
 import pink from "../../assets/images/CharmImage/template_pink.svg";
 import purple from "../../assets/images/CharmImage/template_purple.svg";
 import blue from "../../assets/images/CharmImage/template_blue.svg";
+import green from "../../assets/images/CharmImage/template_green.svg";
+import mint from "../../assets/images/CharmImage/template_mint.svg";
 
 // import animal
-import cat1 from "../../assets/images/CharmImage/yellow_cat.svg";
-import bear1 from "../../assets/images/CharmImage/pink_bear.svg";
-import cat2 from "../../assets/images/CharmImage/purple_cat.svg";
-import bear2 from "../../assets/images/CharmImage/blue_bear.svg";
+import yellow_animal from "../../assets/images/CharmImage/animal_yellow.svg";
+import pink_animal from "../../assets/images/CharmImage/animal_pink.svg";
+import purple_animal from "../../assets/images/CharmImage/animal_purple.svg";
+import blue_animal from "../../assets/images/CharmImage/animal_blue.svg";
+import green_animal from "../../assets/images/CharmImage/animal_green.svg";
+import mint_animal from "../../assets/images/CharmImage/animal_mint.svg";
 
 // 부적 디자인 정리
 const design = [
@@ -34,30 +38,44 @@ const design = [
   {
     id: 0,
     template: yellow,
-    animal: cat1,
-    border: "#e6ce92",
-    background: "#fefff5",
+    animal: yellow_animal,
+    border: "#F5DA93",
+    background: "#FFFAED",
   },
   {
     id: 1,
     template: pink,
-    animal: bear1,
-    border: "#FF9CC6",
+    animal: pink_animal,
+    border: "#FDB3EE",
     background: "#FFEBFC",
   },
   {
     id: 2,
     template: purple,
-    animal: cat2,
-    border: "#BD6ADA",
-    background: "#FBEBFF",
+    animal: purple_animal,
+    border: "#AD9AE2",
+    background: "#F1EBFF",
   },
   {
     id: 3,
     template: blue,
-    animal: bear2,
-    border: "#5A749A",
-    background: "#EBEBFF",
+    animal: blue_animal,
+    border: "#A3C3E0",
+    background: "#E2EEFF",
+  },
+  {
+    id: 4,
+    template: green,
+    animal: green_animal,
+    border: "#AFDB94",
+    background: "#F0F6EA",
+  },
+  {
+    id: 5,
+    template: mint,
+    animal: mint_animal,
+    border: "#84BDA2",
+    background: "#E6F5EB",
   },
 ];
 
@@ -216,6 +234,7 @@ const Wrapper = styled.div`
     text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .back {
@@ -228,5 +247,6 @@ const Wrapper = styled.div`
     text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 `;
