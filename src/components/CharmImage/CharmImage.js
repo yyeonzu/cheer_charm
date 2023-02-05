@@ -15,6 +15,13 @@ import blue from "../../assets/images/CharmImage/template_blue.svg";
 import green from "../../assets/images/CharmImage/template_green.svg";
 import mint from "../../assets/images/CharmImage/template_mint.svg";
 
+import brown from "../../assets/images/CharmImage/template_brown.svg";
+import warmpink from "../../assets/images/CharmImage/template_warmpink.svg";
+import red from "../../assets/images/CharmImage/template_red.svg";
+import warmblue from "../../assets/images/CharmImage/template_warmblue.svg";
+import warmgreen from "../../assets/images/CharmImage/template_warmgreen.svg";
+import orange from "../../assets/images/CharmImage/template_orange.svg";
+
 // import animal
 import yellow_animal from "../../assets/images/CharmImage/animal_yellow.svg";
 import pink_animal from "../../assets/images/CharmImage/animal_pink.svg";
@@ -22,6 +29,13 @@ import purple_animal from "../../assets/images/CharmImage/animal_purple.svg";
 import blue_animal from "../../assets/images/CharmImage/animal_blue.svg";
 import green_animal from "../../assets/images/CharmImage/animal_green.svg";
 import mint_animal from "../../assets/images/CharmImage/animal_mint.svg";
+
+import brown_animal from "../../assets/images/CharmImage/animal_brown.svg";
+import warmpink_animal from "../../assets/images/CharmImage/animal_warmpink.svg";
+import red_animal from "../../assets/images/CharmImage/animal_red.svg";
+import warmblue_animal from "../../assets/images/CharmImage/animal_warmblue.svg";
+import warmgreen_animal from "../../assets/images/CharmImage/animal_warmgreen.svg";
+import orange_animal from "../../assets/images/CharmImage/animal_orange.svg";
 
 // 부적 디자인 정리
 const design = [
@@ -76,6 +90,48 @@ const design = [
     animal: mint_animal,
     border: "#84BDA2",
     background: "#E6F5EB",
+  },
+  {
+    id: 6,
+    template: brown,
+    animal: brown_animal,
+    border: "#A17F6C",
+    background: "#F3E6DD",
+  },
+  {
+    id: 7,
+    template: warmpink,
+    animal: warmpink_animal,
+    border: "#F6B4B4",
+    background: "#FFEEEE",
+  },
+  {
+    id: 8,
+    template: red,
+    animal: red_animal,
+    border: "#ED726B",
+    background: "#FAECEC",
+  },
+  {
+    id: 9,
+    template: warmblue,
+    animal: warmblue_animal,
+    border: "#83A3C1",
+    background: "#EBF3FF",
+  },
+  {
+    id: 10,
+    template: warmgreen,
+    animal: warmgreen_animal,
+    border: "#819A87",
+    background: "#E8F3E9",
+  },
+  {
+    id: 11,
+    template: orange,
+    animal: orange_animal,
+    border: "#FFBD70",
+    background: "#FFF8EE",
   },
 ];
 
