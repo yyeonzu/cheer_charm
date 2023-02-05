@@ -96,7 +96,7 @@ const SendCheerMenu = () => {
       SendCheer(id, cheerName, cheerContent)
         .then()
         .catch(error => {
-          console.log(error);
+          //console.log(error);
           alert(
             "이미 응원이 채워진 부적입니다!\n친구의 부적을 구경하러 갈까요?",
           );

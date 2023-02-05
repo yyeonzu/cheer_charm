@@ -71,7 +71,7 @@ export const Ques1 = styled.div`
 
 export const TitleInput = styled.input`
   width: 85%;
-  height: 35px;
+  height: 40px;
   background-color: #fdfbf7;
   border-radius: 8px;
   border: 0;
@@ -82,7 +82,7 @@ export const TitleInput = styled.input`
   font-weight: 400;
   font-size: 14px;
   margin: 10px 0;
-  padding-left: 10px;
+  padding: 3px 0 3px 10px;
 `;
 
 export const ContentInput = styled.textarea`

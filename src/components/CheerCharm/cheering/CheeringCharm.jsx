@@ -16,29 +16,12 @@ import Background from "../../common/Background";
 import { GetCharm } from "../../../api/charm";
 import { RequestGetUser } from "../../../api/user";
 
-import charm1 from "../../../assets/images/Charm/mousecharm.png";
-import charm2 from "../../../assets/images/Charm/rabbitcharm.png";
-import charm3 from "../../../assets/images/Charm/squirrelcharm.png";
-import charm4 from "../../../assets/images/Charm/goatcharm.png";
-import charm5 from "../../../assets/images/Charm/monkeycharm.png";
-import charm6 from "../../../assets/images/Charm/birdcharm.png";
-
 const CheeringCharm = () => {
   const isLogin = !!localStorage.getItem("token");
   const params = useParams();
   const nav = useNavigate();
-  const src = [charm1, charm2, charm3, charm4, charm5, charm6];
-  const imgSrc = string => {
-    if (string === "MOUSE") return charm1;
-    else if (string === "RABBIT") return charm2;
-    else if (string === "SQUIRREL") return charm3;
-    else if (string === "GOAT") return charm4;
-    else if (string === "MONKEY") return charm5;
-    else if (string === "BIRD") return charm6;
-  };
   const currentURL = window.location.href;
   const [modal, setModal] = useState(false);
-
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
   const [cur, setCur] = useState(0);
@@ -87,7 +70,6 @@ const CheeringCharm = () => {
           <CopyToClipboard
             text={currentURL}
             onCopy={() => {
-              console.log("주소 복사 성공, ", currentURL);
               alert(
                 "현재 부적 링크를 클립보드에 복사했습니다.\n다양한 곳에 공유하여 응원을 모아보세요!",
               );

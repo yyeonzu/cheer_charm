@@ -38,39 +38,37 @@ const Modal = props => {
               <MdClose size="25" fill="#6B6A6A" />
             </S.DeleteRect>
             <S.Contents>
-              <div>
-                <S.TextWrapper padding={padding}>
-                  <Galmuri size={size || "14px"}>
-                    {maintext &&
-                      (maintext.includes("\n") ? (
-                        <>
-                          {maintext.split("\n").map(line => {
-                            return (
-                              <span key={line}>
-                                {line}
-                                <br />
-                              </span>
-                            );
-                          })}
-                        </>
-                      ) : (
-                        <>
-                          <span>{maintext}</span>
-                        </>
-                      ))}
-                  </Galmuri>
-                </S.TextWrapper>
-                <S.ButtonWrapper>
-                  <PinkButton
-                    onClick={onClick}
-                    width="123px"
-                    height="45px"
-                    size={size}
-                  >
-                    {buttontext}
-                  </PinkButton>
-                </S.ButtonWrapper>
-              </div>
+              <S.TextWrapper padding={padding}>
+                <Galmuri size={size || "14px"}>
+                  {maintext &&
+                    (maintext.includes("\n") ? (
+                      <>
+                        {maintext.split("\n").map(line => {
+                          return (
+                            <span key={line}>
+                              {line}
+                              <br />
+                            </span>
+                          );
+                        })}
+                      </>
+                    ) : (
+                      <>
+                        <span>{maintext}</span>
+                      </>
+                    ))}
+                </Galmuri>
+              </S.TextWrapper>
+              <S.ButtonWrapper>
+                <PinkButton
+                  onClick={onClick}
+                  width="123px"
+                  height="45px"
+                  size={size}
+                >
+                  {buttontext}
+                </PinkButton>
+              </S.ButtonWrapper>
             </S.Contents>
           </S.ModalBlock>
         </S.Container>

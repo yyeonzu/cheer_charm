@@ -73,6 +73,7 @@ export const CloverIcon = styled.div`
   width: 20px;
   height: 23px;
   transform: rotate(-33.39deg);
+  overflow-x: initial;
 
   // 애니메이션 관련, 미완
 
