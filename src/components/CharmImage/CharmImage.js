@@ -203,7 +203,7 @@ const Template = styled.div`
 `;
 
 const Character = styled.img`
-  height: 45px;
+  object-fit: cover;
 `;
 
 const Wrapper = styled.div`
@@ -234,7 +234,6 @@ const Wrapper = styled.div`
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
   }
 
   .back {
@@ -247,6 +246,5 @@ const Wrapper = styled.div`
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
   }
 `;
