@@ -28,11 +28,11 @@ export const FlipWrapper = styled.div`
 `;
 
 export const FrontWrapper = styled.div`
-  width: 160px;
+  width: 170px;
   height: 240px;
   position: absolute;
   backface-visibility: hidden;
-  background-image: url(${frontImage});
+  background-image: url(${props => props.image});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -41,11 +41,11 @@ export const FrontWrapper = styled.div`
 `;
 
 export const BackWrapper = styled.div`
-  width: 160px;
+  width: 170px;
   height: 240px;
   position: absolute;
   backface-visibility: hidden;
-  background-image: url(${backImage});
+  background-image: url(${props => props.image});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

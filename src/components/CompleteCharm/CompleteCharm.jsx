@@ -6,6 +6,12 @@ import * as S from "./CompleteCharm.style";
 const CompleteCharm = props => {
   const [front, setFront] = useState(true);
 
+  // const [imageFront, setImageFront] = useState("");
+  // const [imageBack, setImageBack] = useState("");
+
+  const imageFront = props.front;
+  const imageBack = props.back;
+
   useEffect(() => {
     setFront(props.click);
   });
@@ -16,12 +22,12 @@ const CompleteCharm = props => {
       <S.Cloud src={cloud} />
       <S.Container>
         <S.FlipWrapper left="32%" blur="2px">
-          <S.FrontWrapper cur={!front}></S.FrontWrapper>
-          <S.BackWrapper cur={front}></S.BackWrapper>
+          <S.FrontWrapper cur={!front} image={imageFront}></S.FrontWrapper>
+          <S.BackWrapper cur={front} image={imageBack}></S.BackWrapper>
         </S.FlipWrapper>
         <S.FlipWrapper left="27%">
-          <S.FrontWrapper cur={front}></S.FrontWrapper>
-          <S.BackWrapper cur={!front}></S.BackWrapper>
+          <S.FrontWrapper cur={front} image={imageFront}></S.FrontWrapper>
+          <S.BackWrapper cur={!front} image={imageBack}></S.BackWrapper>
         </S.FlipWrapper>
       </S.Container>
     </>
