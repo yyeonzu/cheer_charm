@@ -14,8 +14,8 @@ export const Container = styled.div`
 `;
 
 export const FlipWrapper = styled.div`
-  width: 160px;
-  height: 250px;
+  width: 170px;
+  height: 260px;
   perspective: 1000px;
 
   position: absolute;
