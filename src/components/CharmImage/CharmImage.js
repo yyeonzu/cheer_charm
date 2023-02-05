@@ -100,8 +100,12 @@ const CharmImage = props => {
         canvas.toBlob(function (blob) {
           formData.append("file_back", blob);
           UploadImage(props.id, formData)
-            .then(response => console.log(response))
-            .catch(error => console.log(error));
+            .then(response => {
+              //console.log(response);
+            })
+            .catch(error => {
+              //console.log(error);
+            });
         });
       });
     });
@@ -149,7 +153,19 @@ const CharmImage = props => {
             </div>
           </Wrapper>
         </Template>
-        <ModalBox></ModalBox>
+        <ModalBox>
+          <TextWrapper>
+            <div className="track">
+              <div className="content">
+                부적 생성중 . . . 부적 생성중 . . . 부적 생성중 . . . 부적
+                생성중 . . . 부적 생성중 . . . 부적 생성중 . . .&nbsp;
+              </div>
+            </div>
+            <div className="notice">
+              PC 환경에서는 부적 이미지의 비율이 망가질 수도 있어요.
+            </div>
+          </TextWrapper>
+        </ModalBox>
         {/* <button onClick={() => onCapture()}>다운로드</button> */}
       </Container>
     </>
@@ -182,6 +198,44 @@ const ModalBox = styled.div`
   position: absolute;
   background-color: #f5f5f5;
   z-index: -5;
+  margin-top: 70px;
+`;
+
+const TextWrapper = styled.div`
+  position: relative;
+  width: 90%;
+  font-family: PFstardust;
+  margin-top: 270px;
+  height: 60px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  .notice {
+    font-family: PFstardust;
+    color: #929292;
+    font-size: 11px;
+    text-align: center;
+  }
+  .track {
+    margin-top: 20px;
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 5s linear infinite;
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (hover: hover) and (min-width: 700px) {
+    .animated-title .content {
+      -webkit-transform: translateY(calc(100% - 8rem));
+      transform: translateY(calc(100% - 8rem));
+    }
+  }
 `;
 
 const Template = styled.div`

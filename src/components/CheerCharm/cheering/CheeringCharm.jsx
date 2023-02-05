@@ -87,7 +87,6 @@ const CheeringCharm = () => {
           <CopyToClipboard
             text={currentURL}
             onCopy={() => {
-              console.log("주소 복사 성공, ", currentURL);
               alert(
                 "현재 부적 링크를 클립보드에 복사했습니다.\n다양한 곳에 공유하여 응원을 모아보세요!",
               );
