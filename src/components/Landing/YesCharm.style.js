@@ -81,7 +81,7 @@ export const Img = styled.img`
   width: 238px;
   height: 337px;
   object-fit: cover;
-  opacity: 0.7;
+  /* opacity: 0.8; */
 `;
 
 export const ArrowWrapperR = styled.img.attrs({ src: `${arrowR}` })``;
