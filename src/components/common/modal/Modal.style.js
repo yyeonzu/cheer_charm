@@ -61,10 +61,12 @@ export const Contents = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin-top: 60px;
 `;
 
 export const TextWrapper = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -84,7 +84,7 @@ const CreateCharm = () => {
       setTimeout(() => {
         setWait(false);
         nav(`/${user}/charm_id/${charmId}`);
-      }, 2500);
+      }, 4000);
     }
   }, [wait]);
   return (
