@@ -141,7 +141,7 @@ export const RangeRect = styled.div`
 
 export const ImageContainer = styled.div`
   width: 85%;
-  height: 500px;
+  height: 480px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
