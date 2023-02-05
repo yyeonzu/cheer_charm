@@ -31,6 +31,10 @@ const CheeredCharm = () => {
   // 부적 이미지 애니메이션 관리
   const [charmclick, setCharmclick] = useState(true);
 
+  // 부적 이미지 관리
+  const [charmFront, setCharmFront] = useState("");
+  const [charmBack, setCharmBack] = useState("");
+
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
   const [cur, setCur] = useState(0);
@@ -40,15 +44,22 @@ const CheeredCharm = () => {
         setCurrentCharm(res.data.data);
         setTotal(res.data.data.total_cheer);
         setCur(res.data.data.cur_cheer);
+        setCharmFront(res.data.data.charm_image[0].img_front);
+        setCharmBack(res.data.data.charm_image[0].img_back);
       })
       .catch();
   }, []);
+
   return (
     <>
       <Background>
         <Header type={isLogin ? "login" : "logout"} />
         <S.CharmContainer>
-          <CompleteCharm click={charmclick} />
+          <CompleteCharm
+            click={charmclick}
+            front={charmFront}
+            back={charmBack}
+          />
         </S.CharmContainer>
         <Galmuri size="18px" weight="700" color="#3A3A3A" margin="0 0 5px 0">
           {currentCharm.title}
@@ -60,7 +71,7 @@ const CheeredCharm = () => {
               부적 뒷면 보기
             </NanoomSquare>
           </S.ButtonRect>
-          <S.ButtonRect onClick={() => alert("아직 구현중..^^")}>
+          <S.ButtonRect onClick={() => window.open(charmFront)}>
             <FiDownload size="12" />
             <NanoomSquare size="11px" weight="400">
               부적 이미지 저장하기
