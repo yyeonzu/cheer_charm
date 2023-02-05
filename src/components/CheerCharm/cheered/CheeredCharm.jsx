@@ -7,7 +7,6 @@ import Footer from "../../common/footer/Footer";
 import ProgressBar from "../../common/progressbar/ProgressBar";
 import CheeredList from "./CheeredList";
 import PopUp from "../PopUp";
-import logo from "../../../assets/images/CharmPage/charmpagelogo.svg";
 import speechbubble from "../../../assets/images/CharmPage/speechbubble.svg";
 import { NanoomSquare, Galmuri } from "../../../css/Font";
 import { MdOutlineFlipCameraAndroid } from "react-icons/md";
@@ -32,6 +31,10 @@ const CheeredCharm = () => {
   // 부적 이미지 애니메이션 관리
   const [charmclick, setCharmclick] = useState(true);
 
+  // 부적 이미지 관리
+  const [charmFront, setCharmFront] = useState("");
+  const [charmBack, setCharmBack] = useState("");
+
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
   const [cur, setCur] = useState(0);
@@ -41,40 +44,44 @@ const CheeredCharm = () => {
         setCurrentCharm(res.data.data);
         setTotal(res.data.data.total_cheer);
         setCur(res.data.data.cur_cheer);
+        setCharmFront(res.data.data.charm_image[0].img_front);
+        setCharmBack(res.data.data.charm_image[0].img_back);
       })
       .catch();
   }, []);
+
   return (
     <>
       <Background>
         <Header type={isLogin ? "login" : "logout"} />
-        <S.LogoContainer>
-          <S.LogoImg src={logo} />
-        </S.LogoContainer>
         <S.CharmContainer>
-          <CompleteCharm click={charmclick} />
+          <CompleteCharm
+            click={charmclick}
+            front={charmFront}
+            back={charmBack}
+          />
         </S.CharmContainer>
-        <Galmuri size="18px" weight="700" color="#3A3A3A" margin="0 0 10px 0">
+        <Galmuri size="18px" weight="700" color="#3A3A3A" margin="0 0 5px 0">
           {currentCharm.title}
         </Galmuri>
-        <S.ButtonRect
-          onClick={e => setCharmclick(!charmclick)}
-          style={{ marginTop: "20px" }}
-        >
-          <MdOutlineFlipCameraAndroid size="12" />
-          <NanoomSquare size="11px" weight="400">
-            부적 뒷면 보기
-          </NanoomSquare>
-        </S.ButtonRect>
-        <S.ButtonRect
-          onClick={() => alert("아직 구현중..^^")}
-          style={{ marginBottom: "20px" }}
-        >
-          <FiDownload size="12" />
-          <NanoomSquare size="11px" weight="400">
-            부적 이미지 저장하기
-          </NanoomSquare>
-        </S.ButtonRect>
+        <S.ButtonContainer>
+          <S.ButtonRect onClick={e => setCharmclick(!charmclick)}>
+            <MdOutlineFlipCameraAndroid size="12" />
+            <NanoomSquare size="11px" weight="400">
+              부적 뒷면 보기
+            </NanoomSquare>
+          </S.ButtonRect>
+          <S.ButtonRect
+            onClick={() =>
+              charmclick ? window.open(charmFront) : window.open(charmBack)
+            }
+          >
+            <FiDownload size="12" />
+            <NanoomSquare size="11px" weight="400">
+              부적 이미지 저장하기
+            </NanoomSquare>
+          </S.ButtonRect>
+        </S.ButtonContainer>
         <ProgressBar total={total} done={cur} isRight={false} />
         <S.BubbleContainer>
           <S.BubbleImg src={speechbubble} />

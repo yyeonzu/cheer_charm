@@ -8,19 +8,6 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const LogoContainer = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const LogoImg = styled.img`
-  width: 50%;
-  padding: 40px;
-`;
-
 export const CharmContainer = styled.div`
   width: 100%;
   height: auto;
@@ -29,14 +16,14 @@ export const CharmContainer = styled.div`
   align-items: center;
   margin-bottom: 10px;
   position: relative;
+  padding: 10px;
 `;
 
 export const CharmImg = styled.img`
   width: 40%;
   height: auto;
   padding: 20px;
-  filter: blur(2px);
-  opacity: 0.6;
+  filter: blur(3px);
 `;
 
 export const BubbleContainer = styled.div`
@@ -74,6 +61,7 @@ export const LinkRect = styled.div`
   justify-content: center;
   align-items: center;
   margin: 20px;
+  filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
   svg {
     margin: 0 2px 1px 0;
   }

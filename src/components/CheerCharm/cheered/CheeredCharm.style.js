@@ -8,19 +8,6 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const LogoContainer = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const LogoImg = styled.img`
-  width: 60%;
-  padding-top: 40px;
-`;
-
 export const CharmContainer = styled.div`
   width: 100%;
   height: auto;
@@ -31,10 +18,12 @@ export const CharmContainer = styled.div`
   position: relative;
 `;
 
-export const CharmImg = styled.img`
-  width: 50%;
-  height: auto;
-  padding: 20px;
+export const ButtonContainer = styled.div`
+  width: 75%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ButtonRect = styled.div`
@@ -46,6 +35,7 @@ export const ButtonRect = styled.div`
   justify-content: center;
   align-items: center;
   margin: 5px;
+  filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
   svg {
     margin: 0 3px 1px 0;
   }
@@ -128,8 +118,9 @@ export const CheerContainer = styled.div`
   .inner {
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
+    width: 100%;
     height: auto;
     margin-bottom: 10px;
+    padding: 10px;
   }
 `;

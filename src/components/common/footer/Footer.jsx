@@ -16,7 +16,10 @@ const Footer = () => {
             <NanoomSquare weight="500" size="12px" margin="0px 0px 0px 0px">
               Copyright ⓒ 소원수리 연구소
             </NanoomSquare>
-            <S.Link href="https://github.com/CheerCharm" target="_blank">
+            <S.Link
+              href="https://github.com/CheerCharm/CheerCharm_Front/blob/main/README.md"
+              target="_blank"
+            >
               <BsGithub size="12" style={{ margin: "0px 0px 0px 5px" }} />
               <NanoomSquare weight="500" size="12px" margin="0px 0px 0px 5px">
                 GitHub

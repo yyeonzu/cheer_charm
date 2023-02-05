@@ -6,7 +6,6 @@ import Footer from "../../common/footer/Footer";
 import ProgressBar from "../../common/progressbar/ProgressBar";
 import CheeringList from "./CheeringList";
 import PopUp from "../PopUp";
-import logo from "../../../assets/images/CharmPage/charmpagelogo.svg";
 import speechbubble from "../../../assets/images/CharmPage/speechbubble.svg";
 import button1 from "../../../assets/images/CharmPage/button1.svg";
 import button2 from "../../../assets/images/CharmPage/button2.svg";
@@ -43,6 +42,7 @@ const CheeringCharm = () => {
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
   const [cur, setCur] = useState(0);
+  const [imgsrc, setImgsrc] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   useEffect(() => {
     GetCharm(params.charm_id)
@@ -50,6 +50,7 @@ const CheeringCharm = () => {
         setCurrentCharm(res.data.data);
         setTotal(res.data.data.total_cheer);
         setCur(res.data.data.cur_cheer);
+        setImgsrc(res.data.data.charm_image[0]);
       })
       .catch();
     RequestGetUser().then(res => {
@@ -68,11 +69,8 @@ const CheeringCharm = () => {
     <>
       <Background>
         <Header type={isLogin ? "login" : "logout"} />
-        <S.LogoContainer>
-          <S.LogoImg src={logo} />
-        </S.LogoContainer>
         <S.CharmContainer>
-          <S.CharmImg src={imgSrc(currentCharm.image)} />
+          {imgsrc && <S.CharmImg src={imgsrc.img_front} />}
         </S.CharmContainer>
         <Galmuri size="18px" weight="700" color="#3A3A3A" margin="0 0 10px 0">
           {currentCharm.title}
@@ -89,7 +87,6 @@ const CheeringCharm = () => {
           <CopyToClipboard
             text={currentURL}
             onCopy={() => {
-              console.log("주소 복사 성공, ", currentURL);
               alert(
                 "현재 부적 링크를 클립보드에 복사했습니다.\n다양한 곳에 공유하여 응원을 모아보세요!",
               );

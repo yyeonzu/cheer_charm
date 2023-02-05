@@ -15,9 +15,10 @@ const SendCheerMenu = () => {
   const navigate = useNavigate();
 
   // Header 상태를 토큰값에 따라 변경
-  const isLogin = !!localStorage.getItem("token");
+  // const isLogin = !!localStorage.getItem("token");
+
   // 닉네임 (받는사람)
-  const [nickname, setNickname] = useState("반영안됨");
+  const [nickname, setNickname] = useState("");
   // 부적 제목
   const [title, setTitle] = useState("");
   // 부적 내용
@@ -92,9 +93,15 @@ const SendCheerMenu = () => {
     } else {
       setModalId(0);
       // 이곳에서 request 예정
-      SendCheer(id, cheerName, cheerContent).then(response =>
-        console.log(response),
-      );
+      SendCheer(id, cheerName, cheerContent)
+        .then()
+        .catch(error => {
+          console.log(error);
+          alert(
+            "이미 응원이 채워진 부적입니다!\n친구의 부적을 구경하러 갈까요?",
+          );
+          navigate(`/${user}/charm_id/${id}`);
+        });
       setCheerContent("");
       setCheerName("");
     }
@@ -118,10 +125,30 @@ const SendCheerMenu = () => {
         </S.TitleText>
         <S.Line />
         <S.ContentTitle>
-          <Galmuri size="15px">{title}</Galmuri>
+          <Galmuri size="20px" weight="600">
+            {title}
+          </Galmuri>
         </S.ContentTitle>
         <S.ContentText>
-          <Galmuri size="12px">{content}</Galmuri>
+          <Galmuri size="12px">
+            {content &&
+              (content.includes("\n") ? (
+                <>
+                  {content.split("\n").map(line => {
+                    return (
+                      <span key={line + Math.floor(Math.random() * 10)}>
+                        {line}
+                        <br />
+                      </span>
+                    );
+                  })}
+                </>
+              ) : (
+                <>
+                  <span>{content}</span>
+                </>
+              ))}
+          </Galmuri>
         </S.ContentText>
         <S.CheerText
           placeholder="응원을 남겨주세요"
@@ -132,7 +159,7 @@ const SendCheerMenu = () => {
           }}
         />
         <S.CheerName
-          placeholder="전달할 이름을 남겨주세요"
+          placeholder="전달할 이름을 남겨주세요 (12글자이하)"
           type="text"
           value={cheerName}
           onChange={e => setCheerName(e.target.value)}

@@ -25,7 +25,7 @@ const YesCharm = () => {
   const [nickname, setNickname] = useState("");
 
   // 닉네임 길이 (title bar overflow 관련)
-  const [namelength, setNicknamelength] = useState(0);
+  const [namelength, setNicknamelength] = useState();
 
   // 전체 부적 리스트 (생성중인)
   const [charmlists, setCharmlists] = useState();
@@ -35,6 +35,9 @@ const YesCharm = () => {
 
   // 현재 보여지는 부적 id
   const [charmId, setCharmId] = useState(0);
+
+  // 부적 이미지
+  const [image, setImage] = useState("");
 
   // 응원 개수
   const [done, setDone] = useState(0);
@@ -53,7 +56,7 @@ const YesCharm = () => {
       if (response) {
         setId(response.data.data.id);
         setNickname(response.data.data.nickname);
-        setNicknamelength(response.data.data.username.length);
+        setNicknamelength(response.data.data.nickname.length);
       }
     });
   }, []);
@@ -64,6 +67,7 @@ const YesCharm = () => {
     if (!charmlists) return;
     setDone(charmlists[charmId - 1].cur_cheer);
     setTotal(charmlists[charmId - 1].total_cheer);
+    setImage(charmlists[charmId - 1].charm_image[0]);
     setHlink(charmlists[charmId - 1].id);
   }, [charmId]);
 
@@ -75,7 +79,7 @@ const YesCharm = () => {
 
   // imageOrder가 바뀔 때마다 애니메이션
   useEffect(() => {
-    slideRef.current.style.transition = "all 0.5s ease-in-out";
+    slideRef.current.style.transition = "all 0.4s ease-in-out";
     slideRef.current.style.transform = `translateX(-${slideRange}px)`;
   }, [imageOrder]);
 
@@ -103,51 +107,40 @@ const YesCharm = () => {
     setCharmId(charmId + 1);
   };
 
-  // const [images, setImages] = useState("");
-  // window.onload = () => {
-  //   const snowflake1 = document.createElement("img");
-  //   snowflake1.src = "../../assets/images/Landing/snowy2.png";
-
-  //   setImages([snowflake1]);
-  // };
+  // 부적 생성 버튼
+  const onClickPinkButton = () => {
+    if (charmlists.length >= 3) {
+      alert(
+        "현재 생성 중인 부적이 계정 당 최대 생성 가능 개수인 3개예요.\n생성 중인 부적이 완성되면 다시 새로운 부적 생성을 시도해주세요!",
+      );
+      return;
+    }
+    navigate("/create-charm");
+  };
 
   return (
     <>
       <S.SnowingBack>
-        {/* {images && (
-          <Snowfall
-            snowflakeCount={15}
-            speed={[0.3, 0.5]}
-            wind={[0, 0]}
-            radius={[5, 6]}
-            style={{
-              position: "absolute",
-              zIndex: "-1",
-              width: "100%",
-              height: "75px",
-              top: "66px",
-            }}
-            images={images}
-          />
-        )} */}
-        <S.TitleBar length={namelength}>
-          <Galmuri size="15px" weight="700">
-            {nickname}님의 부적을 위한
-          </Galmuri>
-          <S.MiniTitle>
-            <Galmuri
-              size="18px"
-              weight="700"
-              color="#748EDB"
-              margin="0px 0px 0px 4px"
-            >
-              응원
-            </Galmuri>
+        {namelength && (
+          <S.TitleBar length={namelength}>
             <Galmuri size="15px" weight="700">
-              이 쌓이는 중이에요!
+              {nickname}님의 부적을 위한
             </Galmuri>
-          </S.MiniTitle>
-        </S.TitleBar>
+            <S.MiniTitle>
+              <Galmuri
+                size="18px"
+                weight="700"
+                color="#748EDB"
+                margin="0px 0px 0px 4px"
+              >
+                응원
+              </Galmuri>
+              <Galmuri size="15px" weight="700">
+                이 쌓이는 중이에요!
+              </Galmuri>
+            </S.MiniTitle>
+          </S.TitleBar>
+        )}
       </S.SnowingBack>
 
       {/* 부적 페이지 */}
@@ -156,12 +149,13 @@ const YesCharm = () => {
         <S.Transparent>
           <S.SlideWrapper>
             <S.ImageWrapper ref={slideRef}>
-              {charmlists &&
+              {image &&
                 charmlists.map(data => (
                   <S.Img
                     key={data.id}
                     onClick={() => navigate(`/${id}/charm_id/${hlink}`)}
-                    src={require(`../../assets/images/Charm/${data.image.toLowerCase()}charm.png`)}
+                    // src={require(`../../assets/images/Charm/${data.image.toLowerCase()}charm.png`)}
+                    src={image.img_front}
                   ></S.Img>
                 ))}
             </S.ImageWrapper>
@@ -189,7 +183,7 @@ const YesCharm = () => {
       </S.CharmWrapper>
       <S.ButtonWrapper>
         <PinkButton
-          onClick={() => navigate("/create-charm")}
+          onClick={() => onClickPinkButton()}
           width="160px"
           height="50px"
           radius="30px"

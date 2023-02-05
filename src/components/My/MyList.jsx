@@ -11,13 +11,6 @@ import {
 } from "../../api/charm";
 import { RequestGetUser } from "../../api/user";
 
-import charm1 from "../../assets/images/Charm/mousecharm.png";
-import charm2 from "../../assets/images/Charm/rabbitcharm.png";
-import charm3 from "../../assets/images/Charm/squirrelcharm.png";
-import charm4 from "../../assets/images/Charm/goatcharm.png";
-import charm5 from "../../assets/images/Charm/monkeycharm.png";
-import charm6 from "../../assets/images/Charm/birdcharm.png";
-
 const MyList = ({ isDone }) => {
   const nav = useNavigate();
   const [doneArr, setDoneArr] = useState([]);
@@ -37,7 +30,6 @@ const MyList = ({ isDone }) => {
     });
     getArrays();
   }, []);
-
   const findById = fId => {
     if (isDone) {
       for (let i = 0; i < doneArr.length; i++) {
@@ -48,15 +40,6 @@ const MyList = ({ isDone }) => {
         if (fId === creatingArr[i].id) return creatingArr[i].title;
       }
     }
-  };
-  const src = [charm1, charm2, charm3, charm4, charm5, charm6];
-  const imgSrc = string => {
-    if (string === "MOUSE") return charm1;
-    else if (string === "RABBIT") return charm2;
-    else if (string === "SQUIRREL") return charm3;
-    else if (string === "GOAT") return charm4;
-    else if (string === "MONKEY") return charm5;
-    else if (string === "BIRD") return charm6;
   };
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,7 +57,6 @@ const MyList = ({ isDone }) => {
   const onButton = () => {
     DeleteCharm(deleteId)
       .then(res => {
-        console.log(res.data);
         getArrays();
       })
       .catch(err => {
@@ -102,7 +84,7 @@ const MyList = ({ isDone }) => {
                         </S.TrashRect>
                       ) : null}
                       <S.CharmImg
-                        src={imgSrc(ch.image)}
+                        src={ch.charm_image[0].img_front}
                         onClick={() => nav(`/${currentUser}/charm_id/${ch.id}`)}
                       />
                       <Galmuri weight="400" size="12px" color="#4A4A4A">
@@ -142,10 +124,12 @@ const MyList = ({ isDone }) => {
                         <BiTrash fill="#155726" size="18" />
                       </S.TrashRect>
                     ) : null}
-                    <S.CharmImg
-                      src={imgSrc(ch.image)}
-                      onClick={() => nav(`/${currentUser}/charm_id/${ch.id}`)}
-                    />
+                    {ch.charm_image && (
+                      <S.CharmImg
+                        src={ch.charm_image[0].img_front}
+                        onClick={() => nav(`/${currentUser}/charm_id/${ch.id}`)}
+                      />
+                    )}
                     <Galmuri weight="400" size="12px" color="#4A4A4A">
                       {ch.title}
                     </Galmuri>
