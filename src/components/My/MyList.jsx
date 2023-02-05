@@ -160,7 +160,7 @@ const MyList = ({ isDone }) => {
           )}' 부적을 삭제하시겠습니까?`}
           buttontext="삭제하기"
           onClick={onButton}
-          height="200px"
+          height="210px"
         />
       ) : null}
     </>
