@@ -143,10 +143,13 @@ const CreateCharm = () => {
         <Footer />
       </Background>
       {wait && (
-        <>
-          <CharmImage title={title} id={charmId} upload={upload} num={design} />
-          <button onClick={() => setUpload(true)}>버튼</button>
-        </>
+        <CharmImage
+          title={title}
+          id={charmId}
+          upload={upload}
+          num={design}
+          setUpload={setUpload}
+        />
       )}
     </>
   );
