@@ -14,17 +14,9 @@ import { FiDownload } from "react-icons/fi";
 import Background from "../../common/Background";
 import { GetCharm } from "../../../api/charm";
 
-import charm1 from "../../../assets/images/Charm/charm1.svg";
-import charm2 from "../../../assets/images/Charm/charm2.svg";
-import charm3 from "../../../assets/images/Charm/charm3.svg";
-import charm4 from "../../../assets/images/Charm/charm4.svg";
-import charm5 from "../../../assets/images/Charm/charm5.svg";
-import charm6 from "../../../assets/images/Charm/charm6.svg";
-
 const CheeredCharm = () => {
   const isLogin = !!localStorage.getItem("token");
   const params = useParams();
-  const src = [charm1, charm2, charm3, charm4, charm5, charm6];
   const [modal, setModal] = useState(false);
   const [popup, setPopup] = useState(false);
 
