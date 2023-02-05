@@ -11,6 +11,7 @@ import { PinkButton } from "../common/PinkButton.style";
 import { CreateCharmA } from "../../api/charm";
 import { RequestGetUser } from "../../api/user";
 import CharmImage from "../CharmImage/CharmImage";
+import { Galmuri } from "../../css/Font";
 
 const CreateCharm = () => {
   const nav = useNavigate();
@@ -107,6 +108,7 @@ const CreateCharm = () => {
         </S.TopRect>
         <S.QuesRect>
           <S.Ques>부적의 이름은 무엇인가요?</S.Ques>
+          <S.Ques1>생성될 부적의 앞면에 들어갈 제목이에요.</S.Ques1>
         </S.QuesRect>
         <S.TitleInput
           type="text"
@@ -116,8 +118,9 @@ const CreateCharm = () => {
           placeholder="최대 12글자 이하"
         />
         <S.QuesRect style={{ paddingTop: "10px" }}>
+          <S.Ques>부적의 소개를 적어주세요.</S.Ques>
           <S.Ques1>
-            응원을 남기러 온 친구들이 볼 부적의 소개를 적어주세요.
+            부적에 응원을 남기러 온 친구들이 보게 될 내용이에요.
           </S.Ques1>
         </S.QuesRect>
         <S.ContentInput
@@ -128,12 +131,14 @@ const CreateCharm = () => {
         />
         <S.QuesRect>
           <S.Ques>몇 명의 응원을 받고 싶나요?</S.Ques>
+          <S.Ques1>응원이 다 차기 전까지는 완성된 부적을 볼 수 없어요.</S.Ques1>
         </S.QuesRect>
         <S.RangeRect>
           <CustomizedSlider value={num} onChange={onChangeNumInput} />
         </S.RangeRect>
-        <S.QuesRect>
+        <S.QuesRect style={{ paddingTop: "10px" }}>
           <S.Ques>원하는 부적 배경 디자인을 선택해주세요.</S.Ques>
+          <S.Ques1>다음 이미지들은 부적의 이름이 적용된 예시예요.</S.Ques1>
         </S.QuesRect>
         <S.ImageContainer>
           <ImageSelect setDesign={setDesign} />
