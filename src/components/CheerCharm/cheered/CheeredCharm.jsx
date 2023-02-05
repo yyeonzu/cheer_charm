@@ -71,7 +71,11 @@ const CheeredCharm = () => {
               부적 뒷면 보기
             </NanoomSquare>
           </S.ButtonRect>
-          <S.ButtonRect onClick={() => window.open(charmFront)}>
+          <S.ButtonRect
+            onClick={() =>
+              charmclick ? window.open(charmFront) : window.open(charmBack)
+            }
+          >
             <FiDownload size="12" />
             <NanoomSquare size="11px" weight="400">
               부적 이미지 저장하기
