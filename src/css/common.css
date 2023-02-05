@@ -5,6 +5,15 @@
   overflow-x: hidden;
 }
 
+/* media query 적용 */
+
+@media (min-width: 576px) {
+  .wrapper {
+    width: 390px;
+    margin: 0 auto;
+  }
+}
+
 /* fonts */
 
 /* for password in Input */
