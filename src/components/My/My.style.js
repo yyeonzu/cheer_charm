@@ -71,6 +71,7 @@ export const CharmImg = styled.img`
   width: 154px;
   height: 221px;
   margin-bottom: 10px;
+  object-fit: cover;
 `;
 
 export const TrashRect = styled.div`

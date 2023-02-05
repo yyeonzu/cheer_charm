@@ -93,9 +93,9 @@ const CreateCharm = () => {
     if (wait) {
       setUpload(true);
       setTimeout(() => {
-        setWait(false);
-        nav(`/${user}/charm_id/${charmId}`);
-      }, 3000);
+        //setWait(false);
+        //nav(`/${user}/charm_id/${charmId}`);
+      }, 2500);
     }
   }, [wait]);
   return (
