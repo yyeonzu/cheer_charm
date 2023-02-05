@@ -42,6 +42,7 @@ const CheeringCharm = () => {
   const [currentCharm, setCurrentCharm] = useState({});
   const [total, setTotal] = useState(0);
   const [cur, setCur] = useState(0);
+  const [imgsrc, setImgsrc] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   useEffect(() => {
     GetCharm(params.charm_id)
@@ -49,6 +50,7 @@ const CheeringCharm = () => {
         setCurrentCharm(res.data.data);
         setTotal(res.data.data.total_cheer);
         setCur(res.data.data.cur_cheer);
+        setImgsrc(res.data.data.charm_image[0]);
       })
       .catch();
     RequestGetUser().then(res => {
@@ -68,7 +70,7 @@ const CheeringCharm = () => {
       <Background>
         <Header type={isLogin ? "login" : "logout"} />
         <S.CharmContainer>
-          <S.CharmImg src={imgSrc(currentCharm.image)} />
+          {imgsrc && <S.CharmImg src={imgsrc.img_front} />}
         </S.CharmContainer>
         <Galmuri size="18px" weight="700" color="#3A3A3A" margin="0 0 10px 0">
           {currentCharm.title}

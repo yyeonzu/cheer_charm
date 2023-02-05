@@ -12,7 +12,7 @@ import Background from "../common/Background";
 const MyMenu = () => {
   const nav = useNavigate();
   const [nickname, setNickname] = useState("");
-  const [isDoneTab, setIsDoneTab] = useState(true);
+  const [isDoneTab, setIsDoneTab] = useState(false);
   useEffect(() => {
     RequestGetUser().then(res => {
       if (res) {
@@ -46,21 +46,21 @@ const MyMenu = () => {
               weight="400"
               size="14px"
               onClick={() => {
-                setIsDoneTab(true);
-              }}
-              style={{ textDecoration: isDoneTab ? "underline" : null }}
-            >
-              완성된 부적함
-            </Galmuri>
-            <Galmuri
-              weight="400"
-              size="14px"
-              onClick={() => {
                 setIsDoneTab(false);
               }}
               style={{ textDecoration: isDoneTab ? null : "underline" }}
             >
               아직 응원이 부족함
+            </Galmuri>
+            <Galmuri
+              weight="400"
+              size="14px"
+              onClick={() => {
+                setIsDoneTab(true);
+              }}
+              style={{ textDecoration: isDoneTab ? "underline" : null }}
+            >
+              완성된 부적함
             </Galmuri>
           </S.TabTitle>
           {isDoneTab ? <MyList isDone={true} /> : <MyList isDone={false} />}
