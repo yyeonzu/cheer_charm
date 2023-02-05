@@ -57,7 +57,6 @@ const MyList = ({ isDone }) => {
   const onButton = () => {
     DeleteCharm(deleteId)
       .then(res => {
-        console.log(res.data);
         getArrays();
       })
       .catch(err => {

@@ -100,8 +100,12 @@ const CharmImage = props => {
         canvas.toBlob(function (blob) {
           formData.append("file_back", blob);
           UploadImage(props.id, formData)
-            .then(response => console.log(response))
-            .catch(error => console.log(error));
+            .then(response => {
+              //console.log(response);
+            })
+            .catch(error => {
+              //console.log(error);
+            });
         });
       });
     });

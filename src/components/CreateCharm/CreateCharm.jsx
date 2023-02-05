@@ -69,19 +69,8 @@ const CreateCharm = () => {
     else if (content === "") alert("부적의 소개를 입력해주세요.");
     else if (design === "") alert("부적 배경 디자인을 선택해주세요.");
     else {
-      console.log(
-        "제목: ",
-        title,
-        ", 내용: ",
-        content,
-        ", 사람: ",
-        num,
-        ", 사진: ",
-        design,
-      );
       CreateCharmA(title, user, content, num, "RABBIT")
         .then(res => {
-          console.log(res.data);
           setCharmId(res.data.data.id);
           setWait(true);
         })
@@ -93,8 +82,8 @@ const CreateCharm = () => {
     if (wait) {
       setUpload(true);
       setTimeout(() => {
-        //setWait(false);
-        //nav(`/${user}/charm_id/${charmId}`);
+        setWait(false);
+        nav(`/${user}/charm_id/${charmId}`);
       }, 2500);
     }
   }, [wait]);
