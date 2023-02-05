@@ -83,11 +83,20 @@ const CreateCharm = () => {
           console.log(res.data);
           setCharmId(res.data.data.id);
           setWait(true);
-          // nav(`/${user}/charm_id/${res.data.data.id}`);
         })
         .catch();
     }
   };
+  // 미리보기 모달이 열리면 업로드 전송 후 대기했다가 모달 끄고 공유 페이지로 이동
+  useEffect(() => {
+    if (wait) {
+      setUpload(true);
+      setTimeout(() => {
+        setWait(false);
+        nav(`/${user}/charm_id/${charmId}`);
+      }, 3000);
+    }
+  }, [wait]);
   return (
     <>
       <Background>
@@ -143,13 +152,7 @@ const CreateCharm = () => {
         <Footer />
       </Background>
       {wait && (
-        <CharmImage
-          title={title}
-          id={charmId}
-          upload={upload}
-          num={design}
-          setUpload={setUpload}
-        />
+        <CharmImage title={title} id={charmId} upload={upload} num={design} />
       )}
     </>
   );

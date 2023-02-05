@@ -63,7 +63,7 @@ const design = [
 
 const CharmImage = props => {
   const formData = new FormData();
-  const { num, setUpload } = props;
+  const { num } = props;
 
   if (props.upload) {
     html2canvas(document.getElementById("capture_front"), {
@@ -106,34 +106,32 @@ const CharmImage = props => {
   return (
     <>
       <Container>
-        <UploadButton onClick={() => setUpload(true)}>확인</UploadButton>
-        <ModalBox>
-          <Template id="capture_front">
-            <img className="background" src={design[num].template} />
-            <Character src={design[num].animal} />
-            <Wrapper
-              front={true}
-              background={design[num].background}
-              border={design[num].border}
-            >
-              <div className="front">{props.title}</div>
-            </Wrapper>
-          </Template>
-          <Template id="capture_back">
-            <img className="background" src={design[num].template} />
-            <Character src={design[num].animal} />
-            <Wrapper
-              front={false}
-              background={design[num].background}
-              border={design[num].border}
-            >
-              <div className="back">
-                당신이 받은 {props.title}!
-                <br />이 부적을 지니고 있으면 당신의 소망이 현실이 됩니다.
-              </div>
-            </Wrapper>
-          </Template>
-        </ModalBox>
+        <Template id="capture_front">
+          <img className="background" src={design[num].template} />
+          <Character src={design[num].animal} />
+          <Wrapper
+            front={true}
+            background={design[num].background}
+            border={design[num].border}
+          >
+            <div className="front">{props.title}</div>
+          </Wrapper>
+        </Template>
+        <Template id="capture_back">
+          <img className="background" src={design[num].template} />
+          <Character src={design[num].animal} />
+          <Wrapper
+            front={false}
+            background={design[num].background}
+            border={design[num].border}
+          >
+            <div className="back">
+              당신이 받은 {props.title}!
+              <br />이 부적을 지니고 있으면 당신의 소망이 현실이 됩니다.
+            </div>
+          </Wrapper>
+        </Template>
+        <ModalBox></ModalBox>
         {/* <button onClick={() => onCapture()}>다운로드</button> */}
       </Container>
     </>
@@ -146,7 +144,6 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -158,19 +155,15 @@ const Container = styled.div`
 
 const ModalBox = styled.div`
   width: 100%;
-  height: 300px;
-  border: 1px solid #000;
+  height: 350px;
+  border-radius: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  position: relative;
-`;
-
-const UploadButton = styled.button`
   position: absolute;
-  top: 500px;
-  z-index: 100;
+  background-color: #f5f5f5;
+  z-index: -5;
 `;
 
 const Template = styled.div`
