@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CharmImage from "../CharmImage/CharmImage";
 import cloud from "../../assets/images/CharmImage/clouds.png";
 import * as S from "./CompleteCharm.style";
 
@@ -11,6 +10,7 @@ const CompleteCharm = props => {
     setFront(props.click);
   });
 
+  useEffect(() => {}, []);
   return (
     <>
       <S.Cloud src={cloud} />

@@ -82,7 +82,7 @@ const CreateCharm = () => {
         .then(res => {
           console.log(res);
           setCharmId(res.data.data.id);
-          setUpload(true);
+          // setUpload(true);
           setWait(true);
           // nav(`/${user}/charm_id/${res.data.data.id}`);
         })
@@ -144,7 +144,10 @@ const CreateCharm = () => {
         <Footer />
       </Background>
       {wait && (
-        <CharmImage title={title} id={charmId} upload={upload} num={design} />
+        <>
+          <CharmImage title={title} id={charmId} upload={upload} num={design} />
+          <button onClick={() => setUpload(true)}>버튼</button>
+        </>
       )}
     </>
   );

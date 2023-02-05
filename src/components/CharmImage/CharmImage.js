@@ -45,7 +45,7 @@ const design = [
 
 const CharmImage = props => {
   const formData = new FormData();
-  const { num } = props;
+  const num = props.num;
 
   if (props.upload) {
     html2canvas(document.getElementById("capture_front"), {
